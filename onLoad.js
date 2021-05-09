@@ -1,10 +1,12 @@
 window.onload = () => {
   createHeader()
   createMainContent()
-  createFooter()
   inputOrder()
   orderList()
   addOrder()
   renderOrdersSaveds()
   headerContent()
+  createPopUp()
+  createFooter()
+  showProductsPopUp()
 }
