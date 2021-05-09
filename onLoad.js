@@ -6,4 +6,5 @@ window.onload = () => {
   orderList()
   addOrder()
   renderOrdersSaveds()
+  headerContent()
 }
