@@ -5,7 +5,7 @@ const saveOrders = () => {
     const clientsSaveds = []
     const ordersSaveds = []
 
-    if (clientOrder.value !== '' && clientName.value !== '') {
+    if (allClients.value !== null && allOrders.value !== null) {
 
         if (allClients !== null && allOrders !== null) {
             for (let index = 0.; index < allClients.length; index += 1) {
