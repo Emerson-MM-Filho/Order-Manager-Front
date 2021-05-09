@@ -6,7 +6,7 @@ const addOrder = () => {
     addOrderButton.addEventListener('click', () => {
         if (clientOrderInput.value !== '' && clientNameInput.value !== '') {
 
-            createOrderContainer(clientOrderInput.value, clientNameInput.value)
+            createOrderContainer(clientNameInput.value, clientOrderInput.value)
 
             clientOrderInput.value = ''
             clientNameInput.value = ''
