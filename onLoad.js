@@ -4,4 +4,5 @@ window.onload = () => {
   createFooter()
   inputOrder()
   orderList()
+  addOrder()
 }
