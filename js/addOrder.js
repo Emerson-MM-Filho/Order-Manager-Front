@@ -25,9 +25,9 @@ const addOrder = () => {
             clientOrder.innerText = clientOrderInput.value
             orderContainer.appendChild(clientOrder)
 
-
-            clientName.value = ''
-            clientOrder.value = ''
+            clientOrderInput.value = ''
+            clientNameInput.value = ''
+            
         } else {
             window.alert('Verifique o pedido e tente novamente!')
         }   
