@@ -5,4 +5,5 @@ window.onload = () => {
   inputOrder()
   orderList()
   addOrder()
+  renderOrdersSaveds()
 }

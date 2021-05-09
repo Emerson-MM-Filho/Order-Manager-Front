@@ -10,7 +10,7 @@ const saveOrders = () => {
         if (allClients !== null && allOrders !== null) {
             for (let index = 0.; index < allClients.length; index += 1) {
                 clientsSaveds.push(allClients[index].innerText)
-                ordersSaveds.push(allOrders[index].classList)
+                ordersSaveds.push(allOrders[index].innerText)
             }
     
         }

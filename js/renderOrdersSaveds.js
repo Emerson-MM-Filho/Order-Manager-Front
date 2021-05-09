@@ -1,36 +1,31 @@
-const addOrder = () => {
-    const clientNameInput = document.querySelector('#clientName')
-    const clientOrderInput = document.querySelector('#clientOrder')
-    const addOrderButton = document.querySelector('#addClientOrder')
+const renderOrdersSaveds = () => {
+    const clientsSavedsInLocal = localStorage.getItem('clients')
+    const ordersSavedsInLocal = localStorage.getItem('orders')
     const orderList = document.querySelector('.orderList')
 
-    addOrderButton.addEventListener('click', () => {
-        if (clientOrder.value !== '' && clientName.value !== '') {
+    
+    if (clientsSavedsInLocal !== null && ordersSavedsInLocal !== null) {
+        const clientsSaveds = clientsSavedsInLocal.split(',')
+        const ordersSaveds = ordersSavedsInLocal.split(',')
 
+        for (let index = 0; index < clientsSaveds.length; index += 1) {
             // create container
             const orderContainer = document.createElement('div')
             orderContainer.classList.toggle('orderContainer')
             orderList.appendChild(orderContainer)
             
-    
+
             // create client name
             const clientName = document.createElement('h3')
             clientName.classList.toggle('orderClientName')
-            clientName.innerText = clientNameInput.value
+            clientName.innerText = clientsSaveds[index]
             orderContainer.appendChild(clientName)
-    
+
             // create client order
             const clientOrder = document.createElement('p')
             clientOrder.classList.toggle('orderClientOrder')
-            clientOrder.innerText = clientOrderInput.value
+            clientOrder.innerText = ordersSaveds[index]
             orderContainer.appendChild(clientOrder)
-
-
-            clientName.value = ''
-            clientOrder.value = ''
-        } else {
-            window.alert('Verifique o pedido e tente novamente!')
-        }   
-        saveOrders()
-    })
+        }
+    }   
 }
