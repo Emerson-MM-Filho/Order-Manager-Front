@@ -10,10 +10,10 @@ const addOrder = () => {
 
             clientOrderInput.value = ''
             clientNameInput.value = ''
+            saveOrders()
             
         } else {
             window.alert('Verifique o pedido e tente novamente!')
         }   
-        saveOrders()
     })
 }
