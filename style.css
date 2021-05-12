@@ -87,13 +87,13 @@ header {
 .orderClientName {
     padding: 1rem 2rem .25rem 2rem;
     font-size: 1.5rem;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     font-weight: 800;
 }
 
 .orderClientOrder {
     padding: .25rem 2rem 1rem 2rem;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 
 .closeOrderButton {

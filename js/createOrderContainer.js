@@ -4,6 +4,7 @@ const createOrderContainer = (client, order) => {
     // create container
     const orderContainer = document.createElement('div')
     orderContainer.classList.toggle('orderContainer')
+    orderContainer.id = client
     orderList.appendChild(orderContainer)
 
 
