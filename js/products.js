@@ -82,8 +82,42 @@ const newProduct = () => {
         savedProductValue.innerText = productValueInput.value
         productContainer.appendChild(savedProductValue)
         
+        saveProducts(productNameInput.value, productValueInput.value)
+
         productNameInput.value = ''
         productValueInput.value = ''
     })
 
+}
+
+const local = JSON.parse(localStorage.getItem('products')) || [];
+
+const saveProducts = (name, price) => {
+
+    local.push({name: name, price: price})
+    localStorage.setItem('products', JSON.stringify(local))
+
+}
+
+const renderProductsSaveds = () => {
+    const productsInLocalStorage = JSON.parse(localStorage.getItem('products'))
+    const savedsProductsList = document.querySelector('#savedsProducts')
+
+    if (productsInLocalStorage !== null) {
+        for (let index = 0; index < productsInLocalStorage.length; index += 1) {
+            const productContainer = document.createElement('div')
+            productContainer.classList.toggle('savedProduct')
+            savedsProductsList.appendChild(productContainer)
+            
+            const savedProductName = document.createElement('h3')
+            savedProductName.classList.toggle('savedProductName')
+            savedProductName.innerText = productsInLocalStorage[index].name
+            productContainer.appendChild(savedProductName)
+    
+            const savedProductValue = document.createElement('p')
+            savedProductValue.classList.toggle('savedProductValue')
+            savedProductValue.innerText = productsInLocalStorage[index].price
+            productContainer.appendChild(savedProductValue)
+        }
+    }
 }

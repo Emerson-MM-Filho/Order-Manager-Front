@@ -9,4 +9,5 @@ window.onload = () => {
   createPopUp()
   createFooter()
   showProductsPopUp()
+  renderProductsSaveds()
 }

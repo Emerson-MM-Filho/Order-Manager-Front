@@ -16,6 +16,10 @@
     font-size: 18px;
 }
 
+*::placeholder {
+    color: var(--main-font);
+}
+
 body {
     background-color: var(--main-background);
 }
