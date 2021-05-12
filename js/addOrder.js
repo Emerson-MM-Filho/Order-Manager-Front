@@ -8,9 +8,10 @@ const addOrder = () => {
 
             createOrderContainer(clientNameInput.value, clientOrderInput.value)
 
+            saveOrders(clientNameInput.value, clientOrderInput.value)
+
             clientOrderInput.value = ''
             clientNameInput.value = ''
-            saveOrders()
             
         } else {
             window.alert('Verifique o pedido e tente novamente!')
