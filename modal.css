@@ -1,0 +1,28 @@
+.modal-dialog {
+    max-width: 80%;
+}
+
+.modal-content {
+    background-color: var(--main-input);
+}
+
+.modal-header {
+    border-bottom: 1px solid #242625;
+}
+
+.newFlavorDiv {
+    margin: 10px 0;
+    position: relative;
+}
+
+.productFlavor {
+    width: 100%;
+    display: inline-block;
+}
+
+.newFlavorDiv .btn-close {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
