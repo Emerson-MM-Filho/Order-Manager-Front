@@ -44,7 +44,6 @@ const createPopUp = () => {
     showNewProductButton()
 }
 
-
 const showProductsPopUp = () => {
     const myModal = new bootstrap.Modal(document.getElementById('modalProducts'))
     
@@ -52,38 +51,72 @@ const showProductsPopUp = () => {
 
     button.addEventListener('click', () => {
         myModal.show()
+
+        const modal = document.querySelector('.modal')
+        if (modal.classList.contains('show')) {
+            document.querySelector('#newProductDiv').classList.add('hidden')
+            document.querySelector('#createProduct').classList.add('hidden')
+            document.querySelector('#newProductButton').innerText = 'Adicionar'
+            const flavorDiv = document.querySelector('#newFlavorDiv')
+            while (flavorDiv.firstChild) {
+                flavorDiv.removeChild(flavorDiv.firstChild)
+            }
+            document.querySelector('#productNameInput').value = ''
+            document.querySelector('#productPriceInput').value = ''
+        }
     })
 }
 
 const showNewProductButton = () => {
     const popUpBody = document.querySelector('.modal-body')
 
+    const buttonsDiv = document.createElement('div')
+    buttonsDiv.classList.toggle('buttonsProducts')
+    popUpBody.appendChild(buttonsDiv)
+
+    const saveProductButton = document.createElement('button')
+    saveProductButton.id = 'createProduct'
+    saveProductButton.innerText = 'Criar Produto'
+    saveProductButton.classList.toggle('btn')
+    saveProductButton.classList.toggle('btn-success')
+    saveProductButton.classList.toggle('hidden')
+    saveProductButton.setAttribute('type', 'button')
+    buttonsDiv.appendChild(saveProductButton)
+
+    saveProductButton.addEventListener('click', () => {
+        saveNewProduct()
+        const flavorDiv = document.querySelector('#newFlavorDiv')
+        while (flavorDiv.firstChild) {
+            flavorDiv.removeChild(flavorDiv.firstChild)
+        }
+    })
+
     const newProductButton = document.createElement('button')
     newProductButton.innerText = 'Adcionar'
+    newProductButton.id = 'newProductButton'
     newProductButton.classList.toggle('btn')
     newProductButton.classList.toggle('btn-primary')
     newProductButton.setAttribute('type', 'button')
+    buttonsDiv.appendChild(newProductButton)
     
-    popUpBody.appendChild(newProductButton)
-
     const divNewProduct = document.querySelector('#newProductDiv')
-
 
     newProductButton.addEventListener('click', () => {
         divNewProduct.classList.toggle('hidden')
-
+        saveProductButton.classList.toggle('hidden')
         if (divNewProduct.classList.contains('hidden')) {
-            newProductButton.innerText = 'Adcionar'
+            newProductButton.innerText = 'Adicionar'
+            document.querySelector('#productNameInput').value = ''
+            document.querySelector('#productPriceInput').value = ''
 
             const flavorDiv = document.querySelector('#newFlavorDiv')
             while (flavorDiv.firstChild) {
                 flavorDiv.removeChild(flavorDiv.firstChild)
             }
         } else {
-            newProductButton.innerText = 'Fechar'
+            newProductButton.innerText = 'Concluir'
         }
     })
-    
 }
 
 const newProductsOption = () => {
@@ -91,7 +124,7 @@ const newProductsOption = () => {
 
     // product name
     const divName = document.createElement('div')
-    divName.classList.toggle('mb-3')
+    divName.classList.toggle('productInput')
     div.appendChild(divName)
     
     const productNameLabel = document.createElement('label')
@@ -109,7 +142,7 @@ const newProductsOption = () => {
 
     // product price
     const divPrice = document.createElement('div')
-    divPrice.classList.toggle('mb-3')
+    divPrice.classList.toggle('productInput')
     div.appendChild(divPrice)
     
     const productPriceLabel = document.createElement('label')
@@ -119,7 +152,7 @@ const newProductsOption = () => {
     divPrice.appendChild(productPriceLabel)
 
     const productPrice = document.createElement('input')
-    productPrice.setAttribute('type', 'text')
+    productPrice.setAttribute('type', 'number')
     productPrice.classList.toggle('form-control')
     productPrice.id = 'productPriceInput'
     productPrice.placeholder = 'Preço'
@@ -127,12 +160,13 @@ const newProductsOption = () => {
 
     // product type unit
     const divTypeUnit = document.createElement('div')
-    divTypeUnit.classList.toggle('mb-3')
+    divTypeUnit.classList.toggle('productInput')
     div.appendChild(divTypeUnit)
     
     const productUnitType = document.createElement('input')
     productUnitType.setAttribute('type', 'radio')
     productUnitType.setAttribute('name', 'productType')
+    productUnitType.setAttribute('value', 'unit')
     productUnitType.classList.toggle('form-check-input')
     productUnitType.id = 'productTypeUnit'
     divTypeUnit.appendChild(productUnitType)
@@ -146,13 +180,14 @@ const newProductsOption = () => {
 
     // product type kilo
     const divTypeKilo = document.createElement('div')
-    divTypeKilo.classList.toggle('mb-3')
+    divTypeKilo.classList.toggle('productInput')
     div.appendChild(divTypeKilo)
 
     const productKiloType = document.createElement('input')
     productKiloType.setAttribute('type', 'radio')
     productKiloType.setAttribute('name', 'productType')
     productKiloType.classList.toggle('form-check-input')
+    productKiloType.setAttribute('value', 'kilo')
     productKiloType.id = 'productKiloType'
     divTypeKilo.appendChild(productKiloType)
 
@@ -173,7 +208,7 @@ const newProductsOption = () => {
 
     const divFlavor = document.createElement('div')
     divFlavor.id = 'newFlavorDiv'
-    divFlavor.classList.toggle('mb-3')
+    divFlavor.classList.toggle('productInput')
     div.appendChild(divFlavor)
 
 
@@ -209,74 +244,42 @@ const newProductFlavor = () => {
 
 }
 
-const removeFlavorsOptions = () => {
+const saveNewProduct = () => {
+
+    const productName = document.querySelector('#productNameInput')
+    const productPrice = document.querySelector('#productPriceInput')
+    const productType = document.querySelector('.newProductDiv input[type="radio"]:checked')
+    const productFlavor = document.querySelectorAll('.productFlavor')
     
-}
+    let productFlavorList = []
+    for (let index = 0; index < productFlavor.length; index += 1) {
+        if (productFlavor[index].value !== '') {
+            productFlavorList.push(productFlavor[index].value)
+        }
+    }
 
-const newProduct = () => {
-    // const showNewProductsOptions = document.querySelector('#showNewProductsOptions')
-    // const productNameInput = document.querySelector('#newProductNameInput')
-    // const productValueInput = document.querySelector('#newProductValueInput')
-    // const addNewProduct = document.querySelector('#addNewProduct')
-    // const savedsProductsList = document.querySelector('#savedsProducts')
-    
-    // showNewProductsOptions.addEventListener('click', () => {
-    //     productNameInput.classList.toggle('hidden')
-    //     productValueInput.classList.toggle('hidden')
-    //     addNewProduct.classList.toggle('hidden')
-    // })
-
-    // addNewProduct.addEventListener('click', () => {
-    //     const productContainer = document.createElement('div')
-    //     productContainer.classList.toggle('savedProduct')
-    //     savedsProductsList.appendChild(productContainer)
+    if (productName.value !== '' && productPrice.value !== '') {
         
-    //     const savedProductName = document.createElement('h3')
-    //     savedProductName.classList.toggle('savedProductName')
-    //     savedProductName.innerText = productNameInput.value
-    //     productContainer.appendChild(savedProductName)
+        const product = {
+            name: productName.value,
+            price: productPrice.value,
+            type: productType.value,
+            flavors: productFlavorList
+        }
 
-    //     const savedProductValue = document.createElement('p')
-    //     savedProductValue.classList.toggle('savedProductValue')
-    //     savedProductValue.innerText = productValueInput.value
-    //     productContainer.appendChild(savedProductValue)
-        
-    //     saveProducts(productNameInput.value, productValueInput.value)
+        productName.value = ''
+        productPrice.value = ''
 
-    //     productNameInput.value = ''
-    //     productValueInput.value = ''
-    // })
+        const productsStorage = JSON.parse(localStorage.getItem('products')) || [];
+        productsStorage.push(product)
+        localStorage.setItem('products', JSON.stringify(productsStorage))
 
-}
-
-const local = JSON.parse(localStorage.getItem('products')) || [];
-
-const saveProducts = (name, price) => {
-
-    // local.push({name: name, price: price})
-    // localStorage.setItem('products', JSON.stringify(local))
+    } else {
+        window.alert('[ERRO] Verifique se todos os campos estão preenchidos')
+    }
 
 }
 
 const renderProductsSaveds = () => {
-    // const productsInLocalStorage = JSON.parse(localStorage.getItem('products'))
-    // const savedsProductsList = document.querySelector('#savedsProducts')
 
-    // if (productsInLocalStorage !== null) {
-    //     for (let index = 0; index < productsInLocalStorage.length; index += 1) {
-    //         const productContainer = document.createElement('div')
-    //         productContainer.classList.toggle('savedProduct')
-    //         savedsProductsList.appendChild(productContainer)
-            
-    //         const savedProductName = document.createElement('h3')
-    //         savedProductName.classList.toggle('savedProductName')
-    //         savedProductName.innerText = productsInLocalStorage[index].name
-    //         productContainer.appendChild(savedProductName)
-    
-    //         const savedProductValue = document.createElement('p')
-    //         savedProductValue.classList.toggle('savedProductValue')
-    //         savedProductValue.innerText = productsInLocalStorage[index].price
-    //         productContainer.appendChild(savedProductValue)
-    //     }
-    // }
 }
