@@ -135,10 +135,14 @@ const showNewProductButton = () => {
 const newProductsOption = () => {
     const div = document.querySelector('.newProductDiv')
 
+    const inputNameAndPriceDiv = document.createElement('div')
+    inputNameAndPriceDiv.id = 'inputNameAndPriceProductDiv'
+    div.appendChild(inputNameAndPriceDiv)
+
     // product name
     const divName = document.createElement('div')
     divName.classList.toggle('productInput')
-    div.appendChild(divName)
+    inputNameAndPriceDiv.appendChild(divName)
     
     const productNameLabel = document.createElement('label')
     productNameLabel.innerText = 'Nome'
@@ -156,7 +160,7 @@ const newProductsOption = () => {
     // product price
     const divPrice = document.createElement('div')
     divPrice.classList.toggle('productInput')
-    div.appendChild(divPrice)
+    inputNameAndPriceDiv.appendChild(divPrice)
     
     const productPriceLabel = document.createElement('label')
     productPriceLabel.innerText = 'Preço'
@@ -171,10 +175,14 @@ const newProductsOption = () => {
     productPrice.placeholder = 'Preço'
     divPrice.appendChild(productPrice)
 
+    const typeProductDiv = document.createElement('div')
+    typeProductDiv.id = 'typeProductDiv'
+    div.appendChild(typeProductDiv)
+
     // product type unit
     const divTypeUnit = document.createElement('div')
     divTypeUnit.classList.toggle('productInput')
-    div.appendChild(divTypeUnit)
+    typeProductDiv.appendChild(divTypeUnit)
     
     const productUnitType = document.createElement('input')
     productUnitType.setAttribute('type', 'radio')
@@ -194,7 +202,7 @@ const newProductsOption = () => {
     // product type kilo
     const divTypeKilo = document.createElement('div')
     divTypeKilo.classList.toggle('productInput')
-    div.appendChild(divTypeKilo)
+    typeProductDiv.appendChild(divTypeKilo)
 
     const productKiloType = document.createElement('input')
     productKiloType.setAttribute('type', 'radio')
@@ -319,9 +327,9 @@ const renderProductsSaveds = () => {
         const id = productsSaveds[index].id
 
         if (type === 'unit') {
-            type = 'Unidade'
+            type = 'Uni'
         } else {
-            type = 'Quilo'
+            type = 'Kg'
         }
 
         const productCard = document.createElement('div')
@@ -333,6 +341,7 @@ const renderProductsSaveds = () => {
         cardHeader.classList.toggle('card-header')
         cardHeader.innerText = name
         productCard.appendChild(cardHeader)
+        generateSvgIcon(cardHeader)
 
         const listGroup = document.createElement('ul')
         listGroup.classList.toggle('list-group')
@@ -341,19 +350,15 @@ const renderProductsSaveds = () => {
 
         const liPrice = document.createElement('li')
         liPrice.classList.toggle('list-group-item')
-        liPrice.innerText = `Preço: ${price}`
+        liPrice.innerText = `R$ ${parseFloat(price).toFixed(2)}/${type}`
         listGroup.appendChild(liPrice)
 
-        const liType = document.createElement('li')
-        liType.classList.toggle('list-group-item')
-        liType.innerText = `Tipo: ${type}`
-        listGroup.appendChild(liType) 
         
         if (flavors.length > 0) {
             const liFlavorHeader = document.createElement('li')
             liFlavorHeader.classList.toggle('list-group-item')
-            liFlavorHeader.classList.toggle('list-group-flavor')
-            liFlavorHeader.innerText = 'Sabores'
+            liFlavorHeader.classList.toggle('list-group-flavor-header')
+            liFlavorHeader.innerText = 'Sabores:'
             listGroup.appendChild(liFlavorHeader)   
         }
 
@@ -361,12 +366,43 @@ const renderProductsSaveds = () => {
             const liFlavor = document.createElement('li')
             liFlavor.classList.toggle('list-group-item')
             liFlavor.classList.toggle('list-group-flavor')
-            liFlavor.innerText = flavors[flavorsIndex]
+            liFlavor.innerHTML = `&#8729 ${flavors[flavorsIndex]}`
             listGroup.appendChild(liFlavor)
         }
-    }
-
-    
+    }    
 }
 
+function generateSvgIcon(fatherElement) {
+    const iconSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+    const iconPath = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'path'
+    )
+    const iconPath2 = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'path'
+      )
+  
+    iconSvg.setAttribute('width', '16')
+    iconSvg.setAttribute('height', '16')
+    iconSvg.setAttribute('fill', 'currentColor')
+    iconSvg.classList.toggle('bi')
+    iconSvg.classList.toggle('bi-pencil-square')
+    iconSvg.classList.toggle('editProductButton')
+    iconSvg.setAttribute('viewBox', '0 0 16 16')
+  
+    iconPath.setAttribute(
+      'd',
+      'M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'
+    )
+    iconPath2.setAttribute(
+        'd',
+        'M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'
+    )
+    iconPath2.setAttribute('fill-rule', 'evenodd')
 
+    iconSvg.appendChild(iconPath)
+    iconSvg.appendChild(iconPath2)
+  
+    return fatherElement.appendChild(iconSvg)
+  }

@@ -10,6 +10,27 @@
     border-bottom: 1px solid #242625;
 }
 
+#newProductDiv {
+    margin-bottom: 50px;
+}
+
+#inputNameAndPriceProductDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+#inputNameAndPriceProductDiv .productInput {
+    width: 48%;
+}
+
+#typeProductDiv {
+    display: flex;
+}
+
+#typeProductDiv .productInput {
+    margin: 10px 15px 0 0;
+}
+
 .newFlavorOption {
     margin: 10px 0;
     position: relative;
@@ -27,10 +48,76 @@
     transform: translateY(-50%);
 }
 
+#newProductButton {
+    background-color: #7ABFB8;
+    border: 1px solid #5a8c87;
+    color: #212529;
+}
+
+#createProduct {
+    background-color: #57a8ff;
+    border: 1px solid #3f7bbb;
+    color: #212529;
+}
+
+#newFlavor {
+    background-color: #57a8ff;
+    border: 1px solid #3f7bbb;
+    color: #212529;
+}
+
 .buttonsProducts {
     margin: 15px 0;
 }
 
 .buttonsProducts button {
     margin: 0 15px 0 0;
+}
+
+#showProductDiv {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#showProductDiv .card {
+    min-width: 200px;
+    border: 1px solid #5a8c87;
+    margin: 5px;
+}
+
+#showProductDiv .card .card-header {
+    background-color: #7ABFB8;
+    text-transform: capitalize;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#showProductDiv .editProductButton {
+    fill: #21252900;
+    margin-left: 15px;
+    transition: fill .5s ease-in-out;
+}
+
+#showProductDiv .card:hover .editProductButton {
+    fill: #212529;
+    transition: fill .5s ease-in-out;
+}
+
+#showProductDiv .card-header:hover .editProductButton:hover {
+    fill: #fff;
+}
+
+#showProductDiv .card .list-group-flavor-header {
+    border: none;
+    font-weight: 700;
+    padding: .5rem 1rem 0 .5rem;
+}
+
+#showProductDiv .card .list-group-flavor{
+    padding: .1rem 1rem .1rem 1.5rem;
+    border: none;
+    text-transform: capitalize;
 }
