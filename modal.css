@@ -10,7 +10,7 @@
     border-bottom: 1px solid #242625;
 }
 
-.newFlavorDiv {
+.newFlavorOption {
     margin: 10px 0;
     position: relative;
 }
@@ -20,7 +20,7 @@
     display: inline-block;
 }
 
-.newFlavorDiv .btn-close {
+.newFlavorOption .btn-close {
     position: absolute;
     right: 5px;
     top: 50%;

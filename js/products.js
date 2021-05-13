@@ -71,10 +71,16 @@ const showNewProductButton = () => {
 
     newProductButton.addEventListener('click', () => {
         divNewProduct.classList.toggle('hidden')
-        if (newProductButton.innerText === 'Adcionar') {
-            newProductButton.innerText = 'Concluir'
-        } else {
+
+        if (divNewProduct.classList.contains('hidden')) {
             newProductButton.innerText = 'Adcionar'
+
+            const flavorDiv = document.querySelector('#newFlavorDiv')
+            while (flavorDiv.firstChild) {
+                flavorDiv.removeChild(flavorDiv.firstChild)
+            }
+        } else {
+            newProductButton.innerText = 'Fechar'
         }
     })
     
@@ -157,17 +163,19 @@ const newProductsOption = () => {
     divTypeKilo.appendChild(productkiloLabel)
 
     // flavors
-    const divFlavor = document.createElement('div')
-    divFlavor.classList.toggle('mb-3')
-    div.appendChild(divFlavor)
-
     const addFlavor = document.createElement('button')
     addFlavor.innerText = 'Adcionar Sabor'
     addFlavor.setAttribute('type', 'button')
     addFlavor.id = 'newFlavor'
     addFlavor.classList.toggle('btn')
     addFlavor.classList.toggle('btn-secondary')
-    divFlavor.appendChild(addFlavor)
+    div.appendChild(addFlavor)
+
+    const divFlavor = document.createElement('div')
+    divFlavor.id = 'newFlavorDiv'
+    divFlavor.classList.toggle('mb-3')
+    div.appendChild(divFlavor)
+
 
     // add new flavor
     addFlavor.addEventListener('click', () => {
@@ -177,10 +185,10 @@ const newProductsOption = () => {
 }
 
 const newProductFlavor = () => {
-    const div = document.querySelector('#newProductDiv')
+    const div = document.querySelector('#newFlavorDiv')
 
     const newFlavorDiv = document.createElement('div')
-    newFlavorDiv.classList.toggle('newFlavorDiv')
+    newFlavorDiv.classList.toggle('newFlavorOption')
     div.appendChild(newFlavorDiv)
 
     const newFlavorInput = document.createElement('input')
@@ -199,6 +207,10 @@ const newProductFlavor = () => {
         botaoClicado.target.parentNode.remove()
     })
 
+}
+
+const removeFlavorsOptions = () => {
+    
 }
 
 const newProduct = () => {
