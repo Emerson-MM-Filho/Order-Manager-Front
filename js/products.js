@@ -303,6 +303,12 @@ const saveNewProduct = () => {
 }
 
 const renderProductsSaveds = () => {
+    const productsDiv = document.querySelector('#showProductDiv')
+
+    while (productsDiv.firstChild) {
+        productsDiv.removeChild(productsDiv.firstChild)
+    }
+
     const productsSaveds = JSON.parse(localStorage.getItem('products'))
     
     for (let index = 0; index < productsSaveds.length; index += 1) {
@@ -317,8 +323,6 @@ const renderProductsSaveds = () => {
         } else {
             type = 'Quilo'
         }
-        
-        const productsDiv = document.querySelector('#showProductDiv')
 
         const productCard = document.createElement('div')
         productCard.classList.toggle('card')
