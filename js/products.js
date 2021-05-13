@@ -282,9 +282,9 @@ const saveNewProduct = () => {
     // create product id
     let productId = ''
     if (productType === 'unit') {
-        productId += `U_${productName}`
+        productId += `U_${productName.replace(' ', '')}`
     } else {
-        productId += `K_${productName}`
+        productId += `K_${productName.replace(' ', '')}`
     }
 
     if (productName !== '' && productPrice !== '') {
@@ -319,60 +319,62 @@ const renderProductsSaveds = () => {
 
     const productsSaveds = JSON.parse(localStorage.getItem('products'))
     
-    for (let index = 0; index < productsSaveds.length; index += 1) {
-        const name = productsSaveds[index].name
-        const price = productsSaveds[index].price
-        let type = productsSaveds[index].type
-        const flavors = productsSaveds[index].flavors
-        const id = productsSaveds[index].id
-
-        if (type === 'unit') {
-            type = 'Uni'
-        } else {
-            type = 'Kg'
-        }
-
-        const productCard = document.createElement('div')
-        productCard.classList.toggle('card')
-        productCard.id = id
-        productsDiv.appendChild(productCard)
-
-        const cardHeader = document.createElement('div')
-        cardHeader.classList.toggle('card-header')
-        cardHeader.innerText = name
-        productCard.appendChild(cardHeader)
-        generateSvgIcon(cardHeader)
-
-        const listGroup = document.createElement('ul')
-        listGroup.classList.toggle('list-group')
-        listGroup.classList.toggle('list-group-flush')
-        productCard.appendChild(listGroup)
-
-        const liPrice = document.createElement('li')
-        liPrice.classList.toggle('list-group-item')
-        liPrice.innerText = `R$ ${parseFloat(price).toFixed(2)}/${type}`
-        listGroup.appendChild(liPrice)
-
-        
-        if (flavors.length > 0) {
-            const liFlavorHeader = document.createElement('li')
-            liFlavorHeader.classList.toggle('list-group-item')
-            liFlavorHeader.classList.toggle('list-group-flavor-header')
-            liFlavorHeader.innerText = 'Sabores:'
-            listGroup.appendChild(liFlavorHeader)   
-        }
-
-        for (let flavorsIndex = 0; flavorsIndex < flavors.length; flavorsIndex += 1) {
-            const liFlavor = document.createElement('li')
-            liFlavor.classList.toggle('list-group-item')
-            liFlavor.classList.toggle('list-group-flavor')
-            liFlavor.innerHTML = `&#8729 ${flavors[flavorsIndex]}`
-            listGroup.appendChild(liFlavor)
-        }
-    }    
+    if (productsSaveds !== null) {
+        for (let index = 0; index < productsSaveds.length; index += 1) {
+            const name = productsSaveds[index].name
+            const price = productsSaveds[index].price
+            let type = productsSaveds[index].type
+            const flavors = productsSaveds[index].flavors
+            const id = productsSaveds[index].id
+    
+            if (type === 'unit') {
+                type = 'Uni'
+            } else {
+                type = 'Kg'
+            }
+    
+            const productCard = document.createElement('div')
+            productCard.classList.toggle('card')
+            productCard.id = id
+            productsDiv.appendChild(productCard)
+    
+            const cardHeader = document.createElement('div')
+            cardHeader.classList.toggle('card-header')
+            cardHeader.innerText = name
+            productCard.appendChild(cardHeader)
+            editProduct(generateSvgIcon(cardHeader))
+    
+            const listGroup = document.createElement('ul')
+            listGroup.classList.toggle('list-group')
+            listGroup.classList.toggle('list-group-flush')
+            productCard.appendChild(listGroup)
+    
+            const liPrice = document.createElement('li')
+            liPrice.classList.toggle('list-group-item')
+            liPrice.innerText = `R$ ${parseFloat(price).toFixed(2)}/${type}`
+            listGroup.appendChild(liPrice)
+    
+            
+            if (flavors.length > 0) {
+                const liFlavorHeader = document.createElement('li')
+                liFlavorHeader.classList.toggle('list-group-item')
+                liFlavorHeader.classList.toggle('list-group-flavor-header')
+                liFlavorHeader.innerText = 'Sabores:'
+                listGroup.appendChild(liFlavorHeader)   
+            }
+    
+            for (let flavorsIndex = 0; flavorsIndex < flavors.length; flavorsIndex += 1) {
+                const liFlavor = document.createElement('li')
+                liFlavor.classList.toggle('list-group-item')
+                liFlavor.classList.toggle('list-group-flavor')
+                liFlavor.innerHTML = `&#8729 ${flavors[flavorsIndex]}`
+                listGroup.appendChild(liFlavor)
+            }
+        }    
+    }
 }
 
-function generateSvgIcon(fatherElement) {
+const generateSvgIcon = (fatherElement) => {
     const iconSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
     const iconPath = document.createElementNS(
       'http://www.w3.org/2000/svg',
@@ -405,4 +407,8 @@ function generateSvgIcon(fatherElement) {
     iconSvg.appendChild(iconPath2)
   
     return fatherElement.appendChild(iconSvg)
-  }
+}
+
+const editProduct = (buttonClicked) => {
+    console.log(buttonClicked.parentNode.parentNode.id)
+}
