@@ -42,6 +42,12 @@ const createPopUp = () => {
     modalBody.appendChild(newProductDiv)
 
     showNewProductButton()
+
+    const showProductDiv = document.createElement('div')
+    showProductDiv.id = 'showProductDiv'
+    showProductDiv.classList.toggle('showProductDiv')
+    modalBody.appendChild(showProductDiv)
+
 }
 
 const showProductsPopUp = () => {
@@ -64,6 +70,8 @@ const showProductsPopUp = () => {
             document.querySelector('#productNameInput').value = ''
             document.querySelector('#productPriceInput').value = ''
         }
+
+        renderProductsSaveds()
     })
 }
 
@@ -85,10 +93,15 @@ const showNewProductButton = () => {
 
     saveProductButton.addEventListener('click', () => {
         saveNewProduct()
+        renderProductsSaveds()
+
         const flavorDiv = document.querySelector('#newFlavorDiv')
         while (flavorDiv.firstChild) {
             flavorDiv.removeChild(flavorDiv.firstChild)
         }
+        document.querySelector('#productNameInput').value = ''
+        document.querySelector('#productPriceInput').value = ''
+
     })
 
     const newProductButton = document.createElement('button')
@@ -246,25 +259,34 @@ const newProductFlavor = () => {
 
 const saveNewProduct = () => {
 
-    const productName = document.querySelector('#productNameInput')
-    const productPrice = document.querySelector('#productPriceInput')
-    const productType = document.querySelector('.newProductDiv input[type="radio"]:checked')
+    const productName = document.querySelector('#productNameInput').value.toLowerCase()
+    const productPrice = document.querySelector('#productPriceInput').value.toLowerCase()
+    const productType = document.querySelector('.newProductDiv input[type="radio"]:checked').value.toLowerCase()
     const productFlavor = document.querySelectorAll('.productFlavor')
     
     let productFlavorList = []
     for (let index = 0; index < productFlavor.length; index += 1) {
         if (productFlavor[index].value !== '') {
-            productFlavorList.push(productFlavor[index].value)
+            productFlavorList.push(productFlavor[index].value.toLowerCase())
         }
     }
 
-    if (productName.value !== '' && productPrice.value !== '') {
+    // create product id
+    let productId = ''
+    if (productType === 'unit') {
+        productId += `U_${productName}`
+    } else {
+        productId += `K_${productName}`
+    }
+
+    if (productName !== '' && productPrice !== '') {
         
         const product = {
-            name: productName.value,
-            price: productPrice.value,
-            type: productType.value,
-            flavors: productFlavorList
+            name: productName,
+            price: productPrice,
+            type: productType,
+            flavors: productFlavorList,
+            id: productId
         }
 
         productName.value = ''
@@ -281,5 +303,66 @@ const saveNewProduct = () => {
 }
 
 const renderProductsSaveds = () => {
+    const productsSaveds = JSON.parse(localStorage.getItem('products'))
+    
+    for (let index = 0; index < productsSaveds.length; index += 1) {
+        const name = productsSaveds[index].name
+        const price = productsSaveds[index].price
+        let type = productsSaveds[index].type
+        const flavors = productsSaveds[index].flavors
+        const id = productsSaveds[index].id
 
+        if (type === 'unit') {
+            type = 'Unidade'
+        } else {
+            type = 'Quilo'
+        }
+        
+        const productsDiv = document.querySelector('#showProductDiv')
+
+        const productCard = document.createElement('div')
+        productCard.classList.toggle('card')
+        productCard.id = id
+        productsDiv.appendChild(productCard)
+
+        const cardHeader = document.createElement('div')
+        cardHeader.classList.toggle('card-header')
+        cardHeader.innerText = name
+        productCard.appendChild(cardHeader)
+
+        const listGroup = document.createElement('ul')
+        listGroup.classList.toggle('list-group')
+        listGroup.classList.toggle('list-group-flush')
+        productCard.appendChild(listGroup)
+
+        const liPrice = document.createElement('li')
+        liPrice.classList.toggle('list-group-item')
+        liPrice.innerText = `Preço: ${price}`
+        listGroup.appendChild(liPrice)
+
+        const liType = document.createElement('li')
+        liType.classList.toggle('list-group-item')
+        liType.innerText = `Tipo: ${type}`
+        listGroup.appendChild(liType) 
+        
+        if (flavors.length > 0) {
+            const liFlavorHeader = document.createElement('li')
+            liFlavorHeader.classList.toggle('list-group-item')
+            liFlavorHeader.classList.toggle('list-group-flavor')
+            liFlavorHeader.innerText = 'Sabores'
+            listGroup.appendChild(liFlavorHeader)   
+        }
+
+        for (let flavorsIndex = 0; flavorsIndex < flavors.length; flavorsIndex += 1) {
+            const liFlavor = document.createElement('li')
+            liFlavor.classList.toggle('list-group-item')
+            liFlavor.classList.toggle('list-group-flavor')
+            liFlavor.innerText = flavors[flavorsIndex]
+            listGroup.appendChild(liFlavor)
+        }
+    }
+
+    
 }
+
+
