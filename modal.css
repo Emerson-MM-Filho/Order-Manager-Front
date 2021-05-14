@@ -10,8 +10,16 @@
     border-bottom: 1px solid #242625;
 }
 
-#newProductDiv {
-    margin-bottom: 50px;
+.modal-header .btn-close {
+    margin: -.5rem -.5rem -.5rem -.5rem;
+}
+
+.modal-header > :nth-child(1) {
+    order: 2;
+}
+
+.modal-header > :nth-child(2) {
+    order: 1;
 }
 
 #inputNameAndPriceProductDiv {
@@ -67,11 +75,12 @@
 }
 
 .buttonsProducts {
-    margin: 15px 0;
+    display: flex;
+    justify-content: flex-end;
 }
 
-.buttonsProducts button {
-    margin: 0 15px 0 0;
+.buttonsProducts > button:nth-child(1) {
+    margin-right: 15px;
 }
 
 #showProductDiv {

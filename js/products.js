@@ -20,11 +20,6 @@ const createModal = () => {
     modalHeader.classList.toggle('modal-header')
     modalContent.appendChild(modalHeader)
 
-    const modalTitle = document.createElement('h5')
-    modalTitle.classList.toggle('modal-title')
-    modalTitle.innerText = 'Produtos'
-    modalHeader.appendChild(modalTitle)
-
     const btnClose = document.createElement('button')
     btnClose.setAttribute('type', 'button')
     btnClose.classList.toggle('btn-close')
@@ -69,7 +64,7 @@ const showProductsModal = () => {
         if (modal.classList.contains('show')) {
             document.querySelector('#newProductDiv').classList.add('hidden')
             document.querySelector('#createProduct').classList.add('hidden')
-            document.querySelector('#newProductButton').innerText = 'Adicionar'
+            document.querySelector('#newProductButton').innerText = 'Adicionar Produto'
             const flavorDiv = document.querySelector('#newFlavorDiv')
             while (flavorDiv.firstChild) {
                 flavorDiv.removeChild(flavorDiv.firstChild)
@@ -113,23 +108,11 @@ const showNewProductButton = () => {
         document.querySelector('#productNameInput').value = ''
         document.querySelector('#productPriceInput').value = ''
 
-    })
-
-    const newProductButton = document.createElement('button')
-    newProductButton.innerText = 'Adcionar'
-    newProductButton.id = 'newProductButton'
-    newProductButton.classList.toggle('btn')
-    newProductButton.classList.toggle('btn-primary')
-    newProductButton.setAttribute('type', 'button')
-    buttonsDiv.appendChild(newProductButton)
-    
-    const divNewProduct = document.querySelector('#newProductDiv')
-
-    newProductButton.addEventListener('click', () => {
-        divNewProduct.classList.toggle('hidden')
-        saveProductButton.classList.toggle('hidden')
+        divNewProduct.classList.add('hidden')
+        saveProductButton.classList.add('hidden')
+        cancelProductButton.classList.add('hidden')
         if (divNewProduct.classList.contains('hidden')) {
-            newProductButton.innerText = 'Adicionar'
+            newProductButton.innerText = 'Adicionar Produto'
             document.querySelector('#productNameInput').value = ''
             document.querySelector('#productPriceInput').value = ''
 
@@ -137,8 +120,59 @@ const showNewProductButton = () => {
             while (flavorDiv.firstChild) {
                 flavorDiv.removeChild(flavorDiv.firstChild)
             }
-        } else {
-            newProductButton.innerText = 'Concluir'
+        }
+
+    })
+
+    const cancelProductButton = document.createElement('button')
+    cancelProductButton.id = 'cancelCreateProduct'
+    cancelProductButton.innerText = 'Cancelar'
+    cancelProductButton.classList.toggle('btn')
+    cancelProductButton.classList.toggle('btn-danger')
+    cancelProductButton.classList.toggle('hidden')
+    cancelProductButton.setAttribute('type', 'button')
+    buttonsDiv.appendChild(cancelProductButton)
+
+    cancelProductButton.addEventListener('click', () => {
+        divNewProduct.classList.add('hidden')
+        saveProductButton.classList.add('hidden')
+        cancelProductButton.classList.add('hidden')
+        if (divNewProduct.classList.contains('hidden')) {
+            newProductButton.innerText = 'Adicionar Produto'
+            document.querySelector('#productNameInput').value = ''
+            document.querySelector('#productPriceInput').value = ''
+
+            const flavorDiv = document.querySelector('#newFlavorDiv')
+            while (flavorDiv.firstChild) {
+                flavorDiv.removeChild(flavorDiv.firstChild)
+            }
+        }
+    })
+
+    const modalHeader = document.querySelector('.modal-header')
+
+    const newProductButton = document.createElement('button')
+    newProductButton.id = 'newProductButton'
+    newProductButton.classList.toggle('btn')
+    newProductButton.classList.toggle('btn-primary')
+    newProductButton.setAttribute('type', 'button')
+    modalHeader.appendChild(newProductButton)
+    
+    const divNewProduct = document.querySelector('#newProductDiv')
+
+    newProductButton.addEventListener('click', () => {
+        divNewProduct.classList.remove('hidden')
+        saveProductButton.classList.remove('hidden')
+        cancelProductButton.classList.remove('hidden')
+        if (divNewProduct.classList.contains('hidden')) {
+            newProductButton.innerText = 'Adicionar Produto'
+            document.querySelector('#productNameInput').value = ''
+            document.querySelector('#productPriceInput').value = ''
+
+            const flavorDiv = document.querySelector('#newFlavorDiv')
+            while (flavorDiv.firstChild) {
+                flavorDiv.removeChild(flavorDiv.firstChild)
+            }
         }
     })
 }
@@ -232,7 +266,7 @@ const newProductsOption = () => {
 
     // flavors
     const addFlavor = document.createElement('button')
-    addFlavor.innerText = 'Adcionar Sabor'
+    addFlavor.innerText = 'Adicionar Sabor'
     addFlavor.setAttribute('type', 'button')
     addFlavor.id = 'newFlavor'
     addFlavor.classList.toggle('btn')
@@ -367,6 +401,7 @@ const renderProductsSaveds = () => {
             cardHeader.classList.toggle('card-header')
             cardHeader.innerText = name
             productCard.appendChild(cardHeader)
+
             showEditProduct(generateSvgIcon(cardHeader))
     
             const listGroup = document.createElement('ul')
@@ -400,6 +435,7 @@ const renderProductsSaveds = () => {
 }
 
 const generateSvgIcon = (fatherElement) => {
+
     const iconSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
     const iconPath = document.createElementNS(
       'http://www.w3.org/2000/svg',
@@ -561,7 +597,7 @@ const createEditProductOptions = (name, price, type, flavors) => {
 
     // flavors
     const addFlavor = document.createElement('button')
-    addFlavor.innerText = 'Adcionar Sabor'
+    addFlavor.innerText = 'Adicionar Sabor'
     addFlavor.setAttribute('type', 'button')
     addFlavor.id = 'newFlavor'
     addFlavor.classList.toggle('btn')
