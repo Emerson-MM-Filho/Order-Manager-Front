@@ -617,9 +617,15 @@ const showEditProduct = (buttonClicked) => {
         const price = productsInLocal[productId].price
         const type = productsInLocal[productId].type
         const flavors = productsInLocal[productId].flavors
-
+        
         const editProductDiv = document.querySelector('#editProductDiv')
         editProductDiv.classList.remove('hidden')
+
+        const newProductButtonDiv = document.querySelector('.buttonsProducts')
+        newProductButtonDiv.classList.add('hidden')
+        
+        const newProduct = document.querySelector('.newProductDiv')
+        newProduct.classList.add('hidden')
 
         while (editProductDiv.firstChild) {
             editProductDiv.removeChild(editProductDiv.firstChild)
@@ -651,5 +657,8 @@ const buttonsEditProduct = (id) => {
             editProductDiv.removeChild(editProductDiv.firstChild)
         }
         editProductDiv.classList.toggle('hidden')
+        
+        const newProductButtonDiv = document.querySelector('.buttonsProducts')
+        newProductButtonDiv.classList.remove('hidden')
     })
 }
