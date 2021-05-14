@@ -72,15 +72,7 @@
     background-color: #57a8ff;
     border: 1px solid #3f7bbb;
     color: #212529;
-}
-
-.buttonsProducts {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.buttonsProducts button {
-    margin: 15px 15px 15px 0;
+    margin-bottom: 15px;
 }
 
 #showProductDiv {
@@ -131,23 +123,67 @@
     text-transform: capitalize;
 }
 
-.editProductButtons {
-    display: flex;
-    justify-content: flex-end;
-}
-.editProductButtons button {
-    margin: 15px 15px 15px 0;
-}
-
 .editProductDiv {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    background-color: #da8b8b;
+    border: 2px solid #9e6363;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 15px;
 }
 
+.editProductDiv h5 {
+    font-weight: 900;
+    padding: 12px;
+    text-align: center;
+    border-bottom: 2px solid #9e6363;
+}
+
+.editProductButtons button {
+    margin-left: 15px;
+}
+
+.editProductButtons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#saveEditProduct {
+    background-color: #7ABFB8;
+    border: 1px solid #5a8c87;
+    color: #212529;
+}
 
 .newProductDiv {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+}
+
+.newProductDiv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: #da8b8b;
+    border: 2px solid #9e6363;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.newProductDiv h5 {
+    font-weight: 900;
+    padding: 12px;
+    text-align: center;
+    border-bottom: 2px solid #9e6363;
+}
+
+.buttonsProducts {
+    display: flex;
+    justify-content: flex-end;
+}
+.buttonsProducts button {
+    margin-left: 15px;
 }

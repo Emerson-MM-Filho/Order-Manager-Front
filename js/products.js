@@ -78,6 +78,10 @@ const showProductsModal = () => {
 
 const newProductsOption = () => {
     const div = document.querySelector('.newProductDiv')
+    
+    const title = document.createElement('h5')
+    title.innerText = 'Novo Produto'
+    div.appendChild(title)
 
     const inputNameAndPriceDiv = document.createElement('div')
     inputNameAndPriceDiv.id = 'inputNameAndPriceProductDiv'
