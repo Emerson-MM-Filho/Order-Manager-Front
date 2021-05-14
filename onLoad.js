@@ -6,8 +6,8 @@ window.onload = () => {
   addOrder()
   renderOrdersSaveds()
   headerContent()
-  createPopUp()
+  createModal()
   createFooter()
-  showProductsPopUp()
+  showProductsModal()
   newProductsOption()
 }

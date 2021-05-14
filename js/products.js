@@ -1,10 +1,10 @@
-const createPopUp = () => {
+const createModal = () => {
     const body = document.querySelector('body')
     // create the popUp
     const modal = document.createElement('section')
     modal.classList.toggle('modal')
     modal.id = 'modalProducts'
-    modal.setAttribute('tabindex', '-1')
+    modal.setAttribute('tabindex', '998')
     body.appendChild(modal)
 
     const modalDialog = document.createElement('div')
@@ -13,6 +13,7 @@ const createPopUp = () => {
 
     const modalContent = document.createElement('div')
     modalContent.classList.toggle('modal-content')
+    modalContent.id = 'modalProductsContent'
     modalDialog.appendChild(modalContent)
 
     const modalHeader = document.createElement('div')
@@ -43,6 +44,12 @@ const createPopUp = () => {
 
     showNewProductButton()
 
+    const editProductDiv = document.createElement('div')
+    editProductDiv.id = 'editProductDiv'
+    editProductDiv.classList.toggle('editProductDiv')
+    editProductDiv.classList.toggle('hidden')
+    modalBody.appendChild(editProductDiv)
+
     const showProductDiv = document.createElement('div')
     showProductDiv.id = 'showProductDiv'
     showProductDiv.classList.toggle('showProductDiv')
@@ -50,13 +57,13 @@ const createPopUp = () => {
 
 }
 
-const showProductsPopUp = () => {
-    const myModal = new bootstrap.Modal(document.getElementById('modalProducts'))
+const showProductsModal = () => {
+    const productsModal = new bootstrap.Modal(document.getElementById('modalProducts'))
     
     const button = document.querySelector('#showProducts')
 
     button.addEventListener('click', () => {
-        myModal.show()
+        productsModal.show()
 
         const modal = document.querySelector('.modal')
         if (modal.classList.contains('show')) {
@@ -92,7 +99,11 @@ const showNewProductButton = () => {
     buttonsDiv.appendChild(saveProductButton)
 
     saveProductButton.addEventListener('click', () => {
-        saveNewProduct()
+        const name = document.querySelector('#productNameInput').value.toLowerCase()
+        const price = document.querySelector('#productPriceInput').value.toLowerCase()
+        const type = document.querySelector('.newProductDiv input[type="radio"]:checked').value.toLowerCase()
+        const flavors = document.querySelectorAll('.productFlavor')
+        saveProduct(name, price, type, flavors)
         renderProductsSaveds()
 
         const flavorDiv = document.querySelector('#newFlavorDiv')
@@ -188,6 +199,7 @@ const newProductsOption = () => {
     productUnitType.setAttribute('type', 'radio')
     productUnitType.setAttribute('name', 'productType')
     productUnitType.setAttribute('value', 'unit')
+    productUnitType.setAttribute('checked', 'checked')
     productUnitType.classList.toggle('form-check-input')
     productUnitType.id = 'productTypeUnit'
     divTypeUnit.appendChild(productUnitType)
@@ -235,13 +247,12 @@ const newProductsOption = () => {
 
     // add new flavor
     addFlavor.addEventListener('click', () => {
-        newProductFlavor()
+        newProductFlavor(divFlavor)
     })
 
 }
 
-const newProductFlavor = () => {
-    const div = document.querySelector('#newFlavorDiv')
+const newProductFlavor = (div, flavor) => {
 
     const newFlavorDiv = document.createElement('div')
     newFlavorDiv.classList.toggle('newFlavorOption')
@@ -252,6 +263,10 @@ const newProductFlavor = () => {
     newFlavorInput.classList.toggle('productFlavor')
     newFlavorInput.placeholder = 'Adcione um novo sabor'
     newFlavorDiv.appendChild(newFlavorInput)
+    
+    if (flavor !== undefined) {
+        newFlavorInput.value = flavor
+    }
 
     const btnClose = document.createElement('button')
     btnClose.setAttribute('type', 'button')
@@ -265,49 +280,59 @@ const newProductFlavor = () => {
 
 }
 
-const saveNewProduct = () => {
+const saveProduct = (name, price, type, flavors, id) => {
 
-    const productName = document.querySelector('#productNameInput').value.toLowerCase()
-    const productPrice = document.querySelector('#productPriceInput').value.toLowerCase()
-    const productType = document.querySelector('.newProductDiv input[type="radio"]:checked').value.toLowerCase()
-    const productFlavor = document.querySelectorAll('.productFlavor')
-    
     let productFlavorList = []
-    for (let index = 0; index < productFlavor.length; index += 1) {
-        if (productFlavor[index].value !== '') {
-            productFlavorList.push(productFlavor[index].value.toLowerCase())
+    for (let index = 0; index < flavors.length; index += 1) {
+        if (flavors[index].value !== '') {
+            productFlavorList.push(flavors[index].value.toLowerCase())
         }
     }
 
-    // create product id
-    let productId = ''
-    if (productType === 'unit') {
-        productId += `U_${productName.replace(' ', '')}`
-    } else {
-        productId += `K_${productName.replace(' ', '')}`
-    }
+    const productsStorage = JSON.parse(localStorage.getItem('products')) || []
 
-    if (productName !== '' && productPrice !== '') {
+    let productId;
+    if (name !== '' && price !== '') {
+        if (id === undefined) {
+            // create product id
+            if (productsStorage.length === 0) {
+                productId = 0
+            } else {
+                productId = productsStorage.length
+            }        
+            const product = {
+                name: name,
+                price: price,
+                type: type,
+                flavors: productFlavorList,
+                id: productId
+            }
+    
+            name.value = ''
+            price.value = ''
+    
         
-        const product = {
-            name: productName,
-            price: productPrice,
-            type: productType,
-            flavors: productFlavorList,
-            id: productId
-        }
-
-        productName.value = ''
-        productPrice.value = ''
-
-        const productsStorage = JSON.parse(localStorage.getItem('products')) || [];
-        productsStorage.push(product)
-        localStorage.setItem('products', JSON.stringify(productsStorage))
-
+            productsStorage.push(product)
+            localStorage.setItem('products', JSON.stringify(productsStorage))
+        } else {
+            const product = {
+                name: name,
+                price: price,
+                type: type,
+                flavors: productFlavorList,
+                id: id
+            }
+    
+            name.value = ''
+            price.value = ''
+    
+        
+            productsStorage[id] = product
+            localStorage.setItem('products', JSON.stringify(productsStorage))
+        } 
     } else {
         window.alert('[ERRO] Verifique se todos os campos estão preenchidos')
     }
-
 }
 
 const renderProductsSaveds = () => {
@@ -342,7 +367,7 @@ const renderProductsSaveds = () => {
             cardHeader.classList.toggle('card-header')
             cardHeader.innerText = name
             productCard.appendChild(cardHeader)
-            editProduct(generateSvgIcon(cardHeader))
+            showEditProduct(generateSvgIcon(cardHeader))
     
             const listGroup = document.createElement('ul')
             listGroup.classList.toggle('list-group')
@@ -409,6 +434,222 @@ const generateSvgIcon = (fatherElement) => {
     return fatherElement.appendChild(iconSvg)
 }
 
-const editProduct = (buttonClicked) => {
-    console.log(buttonClicked.parentNode.parentNode.id)
+const editProductFlavor = (div, flavor) => {
+
+    const newFlavorDiv = document.createElement('div')
+    newFlavorDiv.classList.toggle('newFlavorOption')
+    div.appendChild(newFlavorDiv)
+
+    const newFlavorInput = document.createElement('input')
+    newFlavorInput.classList.toggle('form-control')
+    newFlavorInput.classList.toggle('editproductFlavor')
+    newFlavorInput.placeholder = 'Adcione um novo sabor'
+    newFlavorDiv.appendChild(newFlavorInput)
+    
+    if (flavor !== undefined) {
+        newFlavorInput.value = flavor
+    }
+
+    const btnClose = document.createElement('button')
+    btnClose.setAttribute('type', 'button')
+    btnClose.classList.toggle('btn-close')
+    btnClose.setAttribute('aria-label', 'Close')
+    newFlavorDiv.appendChild(btnClose)
+
+    btnClose.addEventListener('click', (botaoClicado) => {
+        botaoClicado.target.parentNode.remove()
+    })
+
+}
+
+const createEditProductOptions = (name, price, type, flavors) => {
+    const editProductDiv = document.querySelector('#editProductDiv')
+
+    const title = document.createElement('h5')
+    title.innerText = 'Editar Produto'
+    editProductDiv.appendChild(title)
+    
+    const inputNameAndPriceDiv = document.createElement('div')
+    inputNameAndPriceDiv.id = 'inputNameAndPriceProductDiv'
+    editProductDiv.appendChild(inputNameAndPriceDiv)
+
+    // product name
+    const divName = document.createElement('div')
+    divName.classList.toggle('productInput')
+    inputNameAndPriceDiv.appendChild(divName)
+    
+    const productNameLabel = document.createElement('label')
+    productNameLabel.innerText = 'Nome'
+    productNameLabel.setAttribute('for', 'editproductNameInput')
+    productNameLabel.classList.toggle('form-label')
+    divName.appendChild(productNameLabel)
+
+    const productName = document.createElement('input')
+    productName.setAttribute('type', 'text')
+    productName.classList.toggle('form-control')
+    productName.id = 'editproductNameInput'
+    productName.value = name
+    divName.appendChild(productName)
+
+    // product price
+    const divPrice = document.createElement('div')
+    divPrice.classList.toggle('productInput')
+    inputNameAndPriceDiv.appendChild(divPrice)
+    
+    const productPriceLabel = document.createElement('label')
+    productPriceLabel.innerText = 'Preço'
+    productPriceLabel.setAttribute('for', 'editproductPriceInput')
+    productPriceLabel.classList.toggle('form-label')
+    divPrice.appendChild(productPriceLabel)
+
+    const productPrice = document.createElement('input')
+    productPrice.setAttribute('type', 'number')
+    productPrice.classList.toggle('form-control')
+    productPrice.id = 'editproductPriceInput'
+    productPrice.value = price
+    divPrice.appendChild(productPrice)
+
+    const typeProductDiv = document.createElement('div')
+    typeProductDiv.id = 'typeProductDiv'
+    editProductDiv.appendChild(typeProductDiv)
+
+    // product type unit
+    const divTypeUnit = document.createElement('div')
+    divTypeUnit.classList.toggle('productInput')
+    typeProductDiv.appendChild(divTypeUnit)
+    
+    const productUnitType = document.createElement('input')
+    productUnitType.setAttribute('type', 'radio')
+    productUnitType.setAttribute('name', 'productType')
+    productUnitType.setAttribute('value', 'unit')
+    productUnitType.classList.toggle('form-check-input')
+    productUnitType.id = 'editproductTypeUnit'
+    divTypeUnit.appendChild(productUnitType)
+
+    const productUnitLabel = document.createElement('label')
+    productUnitLabel.innerText = 'Unidade'
+    productUnitLabel.setAttribute('for', 'editproductTypeUnit')
+    productUnitLabel.classList.toggle('form-label')
+    divTypeUnit.appendChild(productUnitLabel)
+
+    if (type === 'unit') {
+        productUnitType.setAttribute('checked', 'checked')
+    }
+
+    // product type kilo
+    const divTypeKilo = document.createElement('div')
+    divTypeKilo.classList.toggle('productInput')
+    typeProductDiv.appendChild(divTypeKilo)
+
+    const productKiloType = document.createElement('input')
+    productKiloType.setAttribute('type', 'radio')
+    productKiloType.setAttribute('name', 'productType')
+    productKiloType.classList.toggle('form-check-input')
+    productKiloType.setAttribute('value', 'kilo')
+    productKiloType.id = 'editproductKiloType'
+    divTypeKilo.appendChild(productKiloType)
+
+    const productkiloLabel = document.createElement('label')
+    productkiloLabel.innerText = 'Quilo'
+    productkiloLabel.setAttribute('for', 'editproductKiloType')
+    productkiloLabel.classList.toggle('form-label')
+    divTypeKilo.appendChild(productkiloLabel)
+
+    if (type === 'kilo') {
+        productKiloType.setAttribute('checked', 'checked')
+    }
+
+    // flavors
+    const addFlavor = document.createElement('button')
+    addFlavor.innerText = 'Adcionar Sabor'
+    addFlavor.setAttribute('type', 'button')
+    addFlavor.id = 'newFlavor'
+    addFlavor.classList.toggle('btn')
+    addFlavor.classList.toggle('btn-secondary')
+    editProductDiv.appendChild(addFlavor)
+
+    const divFlavor = document.createElement('div')
+    divFlavor.id = 'newFlavorDiv'
+    divFlavor.classList.toggle('productInput')
+    editProductDiv.appendChild(divFlavor)
+
+    if (flavors.length > 0) {
+        for (let index = 0; index < flavors.length; index += 1) {
+            editProductFlavor(divFlavor, flavors[index])
+        }
+    }
+
+    // add new flavor
+    addFlavor.addEventListener('click', () => {
+        editProductFlavor(divFlavor)
+    })
+
+    const buttonsDiv = document.createElement('div')
+    buttonsDiv.classList.toString('editProductButtons')
+    editProductDiv.appendChild(buttonsDiv)
+
+    const saveButton = document.createElement('button')
+    saveButton.id = 'saveEditProduct'
+    saveButton.classList.toggle('saveEditProduct')
+    saveButton.classList.toggle('btn')
+    saveButton.classList.toggle('btn-success')
+    saveButton.innerText = 'Salvar'
+    editProductDiv.appendChild(saveButton)
+
+    const cancelButton = document.createElement('button')
+    cancelButton.id = 'cancelEditProduct'
+    cancelButton.classList.toggle('cancelEditProduct')
+    cancelButton.classList.toggle('btn')
+    cancelButton.classList.toggle('btn-danger')
+    cancelButton.innerText = 'Cancelar'
+    editProductDiv.appendChild(cancelButton)
+}
+
+const showEditProduct = (buttonClicked) => {  
+
+    buttonClicked.addEventListener('click', () => {
+
+        const productsInLocal = JSON.parse(localStorage.getItem('products'))  
+
+        const productId = buttonClicked.parentNode.parentNode.id
+    
+        const name = productsInLocal[productId].name
+        const price = productsInLocal[productId].price
+        const type = productsInLocal[productId].type
+        const flavors = productsInLocal[productId].flavors
+
+        const editProductDiv = document.querySelector('#editProductDiv')
+        editProductDiv.classList.remove('hidden')
+
+        while (editProductDiv.firstChild) {
+            editProductDiv.removeChild(editProductDiv.firstChild)
+        }
+        createEditProductOptions(name, price, type, flavors, productId)
+        buttonsEditProduct(productId)
+
+    })
+
+}
+
+const buttonsEditProduct = (id) => {
+    const saveButton = document.querySelector('#saveEditProduct')
+    const cancelButton = document.querySelector('#cancelEditProduct')
+    const editProductDiv = document.querySelector('#editProductDiv')
+
+    saveButton.addEventListener('click', () => {
+        const name = document.querySelector('#editproductNameInput').value.toLowerCase()
+        const price = document.querySelector('#editproductPriceInput').value.toLowerCase()
+        const type = document.querySelector('.editProductDiv input[type="radio"]:checked').value.toLowerCase()
+        const flavors = document.querySelectorAll('.editproductFlavor')
+        
+        saveProduct(name, price, type, flavors, id)
+        renderProductsSaveds()
+    })
+
+    cancelButton.addEventListener('click', () => {
+        while (editProductDiv.firstChild) {
+            editProductDiv.removeChild(editProductDiv.firstChild)
+        }
+        editProductDiv.classList.toggle('hidden')
+    })
 }
