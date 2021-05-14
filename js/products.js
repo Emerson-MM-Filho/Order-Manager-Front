@@ -37,8 +37,6 @@ const createModal = () => {
     newProductDiv.classList.toggle('hidden')
     modalBody.appendChild(newProductDiv)
 
-    showNewProductButton()
-
     const editProductDiv = document.createElement('div')
     editProductDiv.id = 'editProductDiv'
     editProductDiv.classList.toggle('editProductDiv')
@@ -62,9 +60,10 @@ const showProductsModal = () => {
 
         const modal = document.querySelector('.modal')
         if (modal.classList.contains('show')) {
+
             document.querySelector('#newProductDiv').classList.add('hidden')
-            document.querySelector('#createProduct').classList.add('hidden')
-            document.querySelector('#newProductButton').innerText = 'Adicionar Produto'
+            document.querySelector('#editProductDiv').classList.add('hidden')
+
             const flavorDiv = document.querySelector('#newFlavorDiv')
             while (flavorDiv.firstChild) {
                 flavorDiv.removeChild(flavorDiv.firstChild)
@@ -74,106 +73,6 @@ const showProductsModal = () => {
         }
 
         renderProductsSaveds()
-    })
-}
-
-const showNewProductButton = () => {
-    const popUpBody = document.querySelector('.modal-body')
-
-    const buttonsDiv = document.createElement('div')
-    buttonsDiv.classList.toggle('buttonsProducts')
-    popUpBody.appendChild(buttonsDiv)
-
-    const saveProductButton = document.createElement('button')
-    saveProductButton.id = 'createProduct'
-    saveProductButton.innerText = 'Criar Produto'
-    saveProductButton.classList.toggle('btn')
-    saveProductButton.classList.toggle('btn-success')
-    saveProductButton.classList.toggle('hidden')
-    saveProductButton.setAttribute('type', 'button')
-    buttonsDiv.appendChild(saveProductButton)
-
-    saveProductButton.addEventListener('click', () => {
-        const name = document.querySelector('#productNameInput').value.toLowerCase()
-        const price = document.querySelector('#productPriceInput').value.toLowerCase()
-        const type = document.querySelector('.newProductDiv input[type="radio"]:checked').value.toLowerCase()
-        const flavors = document.querySelectorAll('.productFlavor')
-        saveProduct(name, price, type, flavors)
-        renderProductsSaveds()
-
-        const flavorDiv = document.querySelector('#newFlavorDiv')
-        while (flavorDiv.firstChild) {
-            flavorDiv.removeChild(flavorDiv.firstChild)
-        }
-        document.querySelector('#productNameInput').value = ''
-        document.querySelector('#productPriceInput').value = ''
-
-        divNewProduct.classList.add('hidden')
-        saveProductButton.classList.add('hidden')
-        cancelProductButton.classList.add('hidden')
-        if (divNewProduct.classList.contains('hidden')) {
-            newProductButton.innerText = 'Adicionar Produto'
-            document.querySelector('#productNameInput').value = ''
-            document.querySelector('#productPriceInput').value = ''
-
-            const flavorDiv = document.querySelector('#newFlavorDiv')
-            while (flavorDiv.firstChild) {
-                flavorDiv.removeChild(flavorDiv.firstChild)
-            }
-        }
-
-    })
-
-    const cancelProductButton = document.createElement('button')
-    cancelProductButton.id = 'cancelCreateProduct'
-    cancelProductButton.innerText = 'Cancelar'
-    cancelProductButton.classList.toggle('btn')
-    cancelProductButton.classList.toggle('btn-danger')
-    cancelProductButton.classList.toggle('hidden')
-    cancelProductButton.setAttribute('type', 'button')
-    buttonsDiv.appendChild(cancelProductButton)
-
-    cancelProductButton.addEventListener('click', () => {
-        divNewProduct.classList.add('hidden')
-        saveProductButton.classList.add('hidden')
-        cancelProductButton.classList.add('hidden')
-        if (divNewProduct.classList.contains('hidden')) {
-            newProductButton.innerText = 'Adicionar Produto'
-            document.querySelector('#productNameInput').value = ''
-            document.querySelector('#productPriceInput').value = ''
-
-            const flavorDiv = document.querySelector('#newFlavorDiv')
-            while (flavorDiv.firstChild) {
-                flavorDiv.removeChild(flavorDiv.firstChild)
-            }
-        }
-    })
-
-    const modalHeader = document.querySelector('.modal-header')
-
-    const newProductButton = document.createElement('button')
-    newProductButton.id = 'newProductButton'
-    newProductButton.classList.toggle('btn')
-    newProductButton.classList.toggle('btn-primary')
-    newProductButton.setAttribute('type', 'button')
-    modalHeader.appendChild(newProductButton)
-    
-    const divNewProduct = document.querySelector('#newProductDiv')
-
-    newProductButton.addEventListener('click', () => {
-        divNewProduct.classList.remove('hidden')
-        saveProductButton.classList.remove('hidden')
-        cancelProductButton.classList.remove('hidden')
-        if (divNewProduct.classList.contains('hidden')) {
-            newProductButton.innerText = 'Adicionar Produto'
-            document.querySelector('#productNameInput').value = ''
-            document.querySelector('#productPriceInput').value = ''
-
-            const flavorDiv = document.querySelector('#newFlavorDiv')
-            while (flavorDiv.firstChild) {
-                flavorDiv.removeChild(flavorDiv.firstChild)
-            }
-        }
     })
 }
 
@@ -282,6 +181,91 @@ const newProductsOption = () => {
     // add new flavor
     addFlavor.addEventListener('click', () => {
         newProductFlavor(divFlavor)
+    })
+
+    // buttons
+    const buttonsDiv = document.createElement('div')
+    buttonsDiv.classList.toggle('buttonsProducts')
+    div.appendChild(buttonsDiv)
+
+    // save product button
+    const saveProductButton = document.createElement('button')
+    saveProductButton.id = 'createProduct'
+    saveProductButton.innerText = 'Criar Produto'
+    saveProductButton.classList.toggle('btn')
+    saveProductButton.classList.toggle('btn-success')
+    saveProductButton.setAttribute('type', 'button')
+    buttonsDiv.appendChild(saveProductButton)
+
+    // click on 'Criar Produto'
+    saveProductButton.addEventListener('click', () => {
+
+        const name = productName.value.toLowerCase()
+        const price = productPrice.value.toLowerCase()
+        const type = document.querySelector('.newProductDiv input[type="radio"]:checked').value.toLowerCase()
+        const flavors = document.querySelectorAll('.productFlavor')
+        saveProduct(name, price, type, flavors)
+        renderProductsSaveds()
+
+        productName.value = ''
+        productPrice.value = ''
+
+        divNewProduct.classList.add('hidden')
+
+        if (divNewProduct.classList.contains('hidden')) {
+            productName.value = ''
+            productPrice.value = ''
+
+            const flavorDiv = document.querySelector('#newFlavorDiv')
+            while (flavorDiv.firstChild) {
+                flavorDiv.removeChild(flavorDiv.firstChild)
+            }
+        }
+
+    })
+
+    // cancel new product button
+    const cancelProductButton = document.createElement('button')
+    cancelProductButton.id = 'cancelCreateProduct'
+    cancelProductButton.innerText = 'Cancelar'
+    cancelProductButton.classList.toggle('btn')
+    cancelProductButton.classList.toggle('btn-danger')
+    cancelProductButton.setAttribute('type', 'button')
+    buttonsDiv.appendChild(cancelProductButton)
+
+    cancelProductButton.addEventListener('click', () => {
+
+        divNewProduct.classList.add('hidden')
+
+        if (divNewProduct.classList.contains('hidden')) {
+            productName.value = ''
+            productPrice.value = ''
+
+            const flavorDiv = document.querySelector('#newFlavorDiv')
+            while (flavorDiv.firstChild) {
+                flavorDiv.removeChild(flavorDiv.firstChild)
+            }
+        }
+    })
+
+    // add product button
+    const modalHeader = document.querySelector('.modal-header')
+
+    const newProductButton = document.createElement('button')
+    newProductButton.id = 'newProductButton'
+    newProductButton.classList.toggle('btn')
+    newProductButton.classList.toggle('btn-primary')
+    newProductButton.setAttribute('type', 'button')
+    newProductButton.innerText = 'Novo Produto'
+    modalHeader.appendChild(newProductButton)
+    
+    const divNewProduct = document.querySelector('#newProductDiv')
+
+    newProductButton.addEventListener('click', () => {
+
+        document.querySelector('#editProductDiv').classList.add('hidden')
+        divNewProduct.classList.remove('hidden')
+
     })
 
 }
@@ -621,7 +605,7 @@ const createEditProductOptions = (name, price, type, flavors) => {
     })
 
     const buttonsDiv = document.createElement('div')
-    buttonsDiv.classList.toString('editProductButtons')
+    buttonsDiv.classList.toggle('editProductButtons')
     editProductDiv.appendChild(buttonsDiv)
 
     const saveButton = document.createElement('button')
@@ -630,7 +614,7 @@ const createEditProductOptions = (name, price, type, flavors) => {
     saveButton.classList.toggle('btn')
     saveButton.classList.toggle('btn-success')
     saveButton.innerText = 'Salvar'
-    editProductDiv.appendChild(saveButton)
+    buttonsDiv.appendChild(saveButton)
 
     const cancelButton = document.createElement('button')
     cancelButton.id = 'cancelEditProduct'
@@ -638,7 +622,7 @@ const createEditProductOptions = (name, price, type, flavors) => {
     cancelButton.classList.toggle('btn')
     cancelButton.classList.toggle('btn-danger')
     cancelButton.innerText = 'Cancelar'
-    editProductDiv.appendChild(cancelButton)
+    buttonsDiv.appendChild(cancelButton)
 }
 
 const showEditProduct = (buttonClicked) => {  
@@ -656,9 +640,6 @@ const showEditProduct = (buttonClicked) => {
         
         const editProductDiv = document.querySelector('#editProductDiv')
         editProductDiv.classList.remove('hidden')
-
-        const newProductButtonDiv = document.querySelector('.buttonsProducts')
-        newProductButtonDiv.classList.add('hidden')
         
         const newProduct = document.querySelector('.newProductDiv')
         newProduct.classList.add('hidden')

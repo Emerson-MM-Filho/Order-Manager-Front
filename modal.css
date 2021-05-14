@@ -79,8 +79,8 @@
     justify-content: flex-end;
 }
 
-.buttonsProducts > button:nth-child(1) {
-    margin-right: 15px;
+.buttonsProducts button {
+    margin: 15px 15px 15px 0;
 }
 
 #showProductDiv {
@@ -129,4 +129,25 @@
     padding: .1rem 1rem .1rem 1.5rem;
     border: none;
     text-transform: capitalize;
+}
+
+.editProductButtons {
+    display: flex;
+    justify-content: flex-end;
+}
+.editProductButtons button {
+    margin: 15px 15px 15px 0;
+}
+
+.editProductDiv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+
+.newProductDiv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
