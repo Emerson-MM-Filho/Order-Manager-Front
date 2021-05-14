@@ -612,13 +612,29 @@ const createEditProductOptions = (name, price, type, flavors) => {
     buttonsDiv.classList.toggle('editProductButtons')
     editProductDiv.appendChild(buttonsDiv)
 
+    const deleteDiv = document.createElement('div')
+    deleteDiv.classList.toggle('deleteDiv')
+    buttonsDiv.appendChild(deleteDiv)
+
+    const saveAndCancelDiv = document.createElement('div')
+    saveAndCancelDiv.classList.toggle('saveAndCancelDiv')
+    buttonsDiv.appendChild(saveAndCancelDiv)
+
+    const deleteButton = document.createElement('button')
+    deleteButton.id = 'deleteProduct'
+    deleteButton.classList.toggle('deleteProduct')
+    deleteButton.classList.toggle('btn')
+    deleteButton.classList.toggle('btn-danger')
+    deleteButton.innerText = 'Apagar'
+    deleteDiv.appendChild(deleteButton)
+
     const saveButton = document.createElement('button')
     saveButton.id = 'saveEditProduct'
     saveButton.classList.toggle('saveEditProduct')
     saveButton.classList.toggle('btn')
     saveButton.classList.toggle('btn-success')
     saveButton.innerText = 'Salvar'
-    buttonsDiv.appendChild(saveButton)
+    saveAndCancelDiv.appendChild(saveButton)
 
     const cancelButton = document.createElement('button')
     cancelButton.id = 'cancelEditProduct'
@@ -626,7 +642,7 @@ const createEditProductOptions = (name, price, type, flavors) => {
     cancelButton.classList.toggle('btn')
     cancelButton.classList.toggle('btn-danger')
     cancelButton.innerText = 'Cancelar'
-    buttonsDiv.appendChild(cancelButton)
+    saveAndCancelDiv.appendChild(cancelButton)
 }
 
 const showEditProduct = (buttonClicked) => {  
@@ -662,6 +678,7 @@ const buttonsEditProduct = (id) => {
     const saveButton = document.querySelector('#saveEditProduct')
     const cancelButton = document.querySelector('#cancelEditProduct')
     const editProductDiv = document.querySelector('#editProductDiv')
+    const deleteButton = document.querySelector('#deleteProduct')
 
     saveButton.addEventListener('click', () => {
         const name = document.querySelector('#editproductNameInput').value.toLowerCase()
@@ -681,5 +698,23 @@ const buttonsEditProduct = (id) => {
         
         const newProductButtonDiv = document.querySelector('.buttonsProducts')
         newProductButtonDiv.classList.remove('hidden')
+    })
+
+    deleteButton.addEventListener('click', () => {
+        const storage = JSON.parse(localStorage.getItem('products'))
+
+        storage.splice(id, 1)
+        
+        localStorage.setItem('products', JSON.stringify(storage))
+
+        while (editProductDiv.firstChild) {
+            editProductDiv.removeChild(editProductDiv.firstChild)
+        }
+        editProductDiv.classList.toggle('hidden')
+        
+        const newProductButtonDiv = document.querySelector('.buttonsProducts')
+        newProductButtonDiv.classList.remove('hidden')
+        
+        renderProductsSaveds()
     })
 }

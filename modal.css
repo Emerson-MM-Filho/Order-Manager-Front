@@ -141,13 +141,13 @@
     border-bottom: 2px solid #9e6363;
 }
 
-.editProductButtons button {
+.editProductButtons .saveAndCancelDiv button {
     margin-left: 15px;
 }
 
 .editProductButtons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 #saveEditProduct {
