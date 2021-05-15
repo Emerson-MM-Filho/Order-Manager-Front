@@ -316,18 +316,13 @@ const saveProduct = (name, price, type, flavors, id) => {
     let productId;
     if (name !== '' && price !== '') {
         if (id === undefined) {
-            // create product id
-            if (productsStorage.length === 0) {
-                productId = 0
-            } else {
-                productId = productsStorage.length
-            }        
+            
             const product = {
                 name: name,
                 price: price,
                 type: type,
                 flavors: productFlavorList,
-                id: productId
+                id: idGenerator(productsStorage.length)
             }
     
             name.value = ''
@@ -348,8 +343,9 @@ const saveProduct = (name, price, type, flavors, id) => {
             name.value = ''
             price.value = ''
     
-        
-            productsStorage[id] = product
+            const productIndex = productsStorage.findIndex((obj) => {return obj.id == id})
+
+            productsStorage[productIndex] = product
             localStorage.setItem('products', JSON.stringify(productsStorage))
         } 
     } else {
@@ -652,11 +648,13 @@ const showEditProduct = (buttonClicked) => {
         const productsInLocal = JSON.parse(localStorage.getItem('products'))  
 
         const productId = buttonClicked.parentNode.parentNode.id
-    
-        const name = productsInLocal[productId].name
-        const price = productsInLocal[productId].price
-        const type = productsInLocal[productId].type
-        const flavors = productsInLocal[productId].flavors
+
+        const productIndex = productsInLocal.findIndex((obj) => {return obj.id == productId})
+
+        const name = productsInLocal[productIndex].name
+        const price = productsInLocal[productIndex].price
+        const type = productsInLocal[productIndex].type
+        const flavors = productsInLocal[productIndex].flavors
         
         const editProductDiv = document.querySelector('#editProductDiv')
         editProductDiv.classList.remove('hidden')
@@ -688,6 +686,15 @@ const buttonsEditProduct = (id) => {
         
         saveProduct(name, price, type, flavors, id)
         renderProductsSaveds()
+
+        while (editProductDiv.firstChild) {
+            editProductDiv.removeChild(editProductDiv.firstChild)
+        }
+        editProductDiv.classList.toggle('hidden')
+        
+        const newProductButtonDiv = document.querySelector('.buttonsProducts')
+        newProductButtonDiv.classList.remove('hidden')
+
     })
 
     cancelButton.addEventListener('click', () => {
@@ -703,7 +710,9 @@ const buttonsEditProduct = (id) => {
     deleteButton.addEventListener('click', () => {
         const storage = JSON.parse(localStorage.getItem('products'))
 
-        storage.splice(id, 1)
+        const productIndex = storage.findIndex((obj) => {return obj.id == id})
+
+        storage.splice(productIndex, 1)
         
         localStorage.setItem('products', JSON.stringify(storage))
 
@@ -714,7 +723,19 @@ const buttonsEditProduct = (id) => {
         
         const newProductButtonDiv = document.querySelector('.buttonsProducts')
         newProductButtonDiv.classList.remove('hidden')
-        
+
         renderProductsSaveds()
     })
+}
+
+const idGenerator = (length) => {
+    const characters = 'abcdefghijklmnopqrstuvwxyz'
+    
+    let id = ''
+    for (let qtdLetter = 0; qtdLetter < length + 1; qtdLetter += 1) {
+        const index = Math.floor(Math.random()*characters.length)
+        const number = Math.floor(Math.random()*999999)
+        id += characters[index] + number
+    }
+    return id
 }
