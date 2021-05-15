@@ -1,52 +1,26 @@
 const createModal = () => {
     const body = document.querySelector('body')
-    // create the popUp
-    const modal = document.createElement('section')
-    modal.classList.toggle('modal')
-    modal.id = 'modalProducts'
-    modal.setAttribute('tabindex', '998')
-    body.appendChild(modal)
 
-    const modalDialog = document.createElement('div')
-    modalDialog.classList.toggle('modal-dialog')
-    modal.appendChild(modalDialog)
+    const modal = newSection(body, ['modal'], 'modalProducts')
+    modal.setAttribute('tabindex', '-1')
 
-    const modalContent = document.createElement('div')
-    modalContent.classList.toggle('modal-content')
-    modalContent.id = 'modalProductsContent'
-    modalDialog.appendChild(modalContent)
+    const modalDialog = newDiv(modal, ['modal-dialog', 'modal-dialog-centered'])
 
-    const modalHeader = document.createElement('div')
-    modalHeader.classList.toggle('modal-header')
-    modalContent.appendChild(modalHeader)
+    const modalContent = newDiv(modalDialog, ['modal-content'], 'modalProductsContent')
 
-    const btnClose = document.createElement('button')
-    btnClose.setAttribute('type', 'button')
-    btnClose.classList.toggle('btn-close')
+    const modalHeader = newDiv(modalContent, ['modal-header'])
+
+    const btnClose = newButton(modalHeader, ['btn-close'])
     btnClose.setAttribute('data-bs-dismiss', 'modal')
     btnClose.setAttribute('aria-label', 'Close')
-    modalHeader.appendChild(btnClose)
 
-    const modalBody = document.createElement('div')
-    modalBody.classList.toggle('modal-body')
-    modalContent.appendChild(modalBody)
+    const modalBody = newDiv(modalContent, ['modal-body'])
 
-    const newProductDiv = document.createElement('div')
-    newProductDiv.id = 'newProductDiv'
-    newProductDiv.classList.toggle('newProductDiv')
-    newProductDiv.classList.toggle('hidden')
-    modalBody.appendChild(newProductDiv)
+    newDiv(modalBody, ['newProductDiv', 'hidden'], 'newProductDiv')
 
-    const editProductDiv = document.createElement('div')
-    editProductDiv.id = 'editProductDiv'
-    editProductDiv.classList.toggle('editProductDiv')
-    editProductDiv.classList.toggle('hidden')
-    modalBody.appendChild(editProductDiv)
+    newDiv(modalBody, ['editProductDiv', 'hidden'], 'editProductDiv')
 
-    const showProductDiv = document.createElement('div')
-    showProductDiv.id = 'showProductDiv'
-    showProductDiv.classList.toggle('showProductDiv')
-    modalBody.appendChild(showProductDiv)
+    newDiv(modalBody, ['showProductDiv'], 'showProductDiv')
 
 }
 
