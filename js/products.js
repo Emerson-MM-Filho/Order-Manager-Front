@@ -206,24 +206,30 @@ const newProductsOption = () => {
 
         const name = productName.value.toLowerCase()
         const price = productPrice.value.toLowerCase()
-        const type = document.querySelector('.newProductDiv input[type="radio"]:checked').value.toLowerCase()
+        const type = document.querySelector('.newProductDiv input[type="radio"]:checked')
         const flavors = document.querySelectorAll('.productFlavor')
-        saveProduct(name, price, type, flavors)
-        renderProductsSaveds()
 
-        productName.value = ''
-        productPrice.value = ''
+        if (name !== '' && price !== '' && type.value.toLowerCase() !== null) {
 
-        divNewProduct.classList.add('hidden')
-
-        if (divNewProduct.classList.contains('hidden')) {
+            saveProduct(name, price, type.value.toLowerCase(), flavors)
+            renderProductsSaveds()
+    
             productName.value = ''
             productPrice.value = ''
-
-            const flavorDiv = document.querySelector('#newFlavorDiv')
-            while (flavorDiv.firstChild) {
-                flavorDiv.removeChild(flavorDiv.firstChild)
+    
+            divNewProduct.classList.add('hidden')
+    
+            if (divNewProduct.classList.contains('hidden')) {
+                productName.value = ''
+                productPrice.value = ''
+    
+                const flavorDiv = document.querySelector('#newFlavorDiv')
+                while (flavorDiv.firstChild) {
+                    flavorDiv.removeChild(flavorDiv.firstChild)
+                }
             }
+        } else {
+            window.alert('[ERRO] Preencha todos os campos')
         }
 
     })
