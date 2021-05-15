@@ -50,7 +50,7 @@ const showProductsModal = () => {
 const newProductsOption = () => {
     const div = document.querySelector('.newProductDiv')
 
-    newH(div, 5, 'Novo Produto')
+    newH(div, 'h5', 'Novo Produto')
 
     const inputNameAndPriceDiv = newDiv(div, [''], 'inputNameAndPriceProductDiv')
 
@@ -270,43 +270,27 @@ const renderProductsSaveds = () => {
                 type = 'Kg'
             }
     
-            const productCard = document.createElement('div')
-            productCard.classList.toggle('card')
-            productCard.id = id
-            productsDiv.appendChild(productCard)
-    
-            const cardHeader = document.createElement('div')
-            cardHeader.classList.toggle('card-header')
+
+            const productCard = newDiv(productsDiv, ['card'], id)
+            const cardHeader = newDiv(productCard, ['card-header'])
             cardHeader.innerText = name
-            productCard.appendChild(cardHeader)
+
 
             showEditProduct(generateSvgIcon(cardHeader))
     
-            const listGroup = document.createElement('ul')
-            listGroup.classList.toggle('list-group')
-            listGroup.classList.toggle('list-group-flush')
-            productCard.appendChild(listGroup)
-    
-            const liPrice = document.createElement('li')
-            liPrice.classList.toggle('list-group-item')
-            liPrice.innerText = `R$ ${parseFloat(price).toFixed(2)}/${type}`
-            listGroup.appendChild(liPrice)
+            const listGroup = newList('ul', productCard, ['list-group', 'list-group-flush'])
+
+
+            newListItem(listGroup, ['list-group-item'], `R$ ${parseFloat(price).toFixed(2)}/${type}`)
     
             
             if (flavors.length > 0) {
-                const liFlavorHeader = document.createElement('li')
-                liFlavorHeader.classList.toggle('list-group-item')
-                liFlavorHeader.classList.toggle('list-group-flavor-header')
-                liFlavorHeader.innerText = 'Sabores:'
-                listGroup.appendChild(liFlavorHeader)   
+                const liFlavorHeader = newListItem(listGroup, ['list-group-item', 'list-group-flavor-header'], 'Sabores: ')
             }
     
             for (let flavorsIndex = 0; flavorsIndex < flavors.length; flavorsIndex += 1) {
-                const liFlavor = document.createElement('li')
-                liFlavor.classList.toggle('list-group-item')
-                liFlavor.classList.toggle('list-group-flavor')
+                const liFlavor = newListItem(listGroup, ['list-group-item', 'list-group-flavor'], '')
                 liFlavor.innerHTML = `&#8729 ${flavors[flavorsIndex]}`
-                listGroup.appendChild(liFlavor)
             }
         }    
     }

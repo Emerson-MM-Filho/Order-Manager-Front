@@ -27,7 +27,7 @@ const newButton = (fatherElement, buttonClass, id, text) => {
     for (let index = 0; index < buttonClass.length; index += 1) {
         button.classList.add(buttonClass[index])
     }
-    
+
     if (id !== undefined) {
         button.id = id
     }
@@ -78,9 +78,34 @@ const newLabel = (fatherElement, labelClass, labelFor, text) => {
 }
 
 const newH = (fatherElement, type, text) => {
-    const hType = `h${type}`
-    const h = document.createElement(hType)
+    const h = document.createElement(type)
     h.innerText = text
 
     return fatherElement.appendChild(h)
+}
+
+const newList = (type, fatherElement, ulClass) => {
+    const list = document.createElement(type)
+    
+    for (let index = 0; index < ulClass.length; index += 1) {
+        if (ulClass[index] !== '') {
+            list.classList.add(ulClass[index])
+        }
+    }
+
+    return fatherElement.appendChild(list)
+}
+
+const newListItem = (fatherElement, liClass, text) => {
+    const listItem = document.createElement('li')
+    
+    for (let index = 0; index < liClass.length; index += 1) {
+        if (liClass[index] !== '') {
+            listItem.classList.add(liClass[index])
+        }
+    }
+
+    listItem.innerText = text
+
+    return fatherElement.appendChild(listItem)
 }
