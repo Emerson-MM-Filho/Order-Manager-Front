@@ -15,11 +15,8 @@ const createModal = () => {
     btnClose.setAttribute('aria-label', 'Close')
 
     const modalBody = newDiv(modalContent, ['modal-body'])
-
     newDiv(modalBody, ['newProductDiv', 'hidden'], 'newProductDiv')
-
     newDiv(modalBody, ['editProductDiv', 'hidden'], 'editProductDiv')
-
     newDiv(modalBody, ['showProductDiv'], 'showProductDiv')
 
 }
@@ -53,107 +50,42 @@ const showProductsModal = () => {
 const newProductsOption = () => {
     const div = document.querySelector('.newProductDiv')
     
-    const title = document.createElement('h5')
-    title.innerText = 'Novo Produto'
-    div.appendChild(title)
+    newH(div, 5, 'Novo Produto')
 
-    const inputNameAndPriceDiv = document.createElement('div')
-    inputNameAndPriceDiv.id = 'inputNameAndPriceProductDiv'
-    div.appendChild(inputNameAndPriceDiv)
+    const inputNameAndPriceDiv = newDiv(div, [''], 'inputNameAndPriceProductDiv')
+
 
     // product name
-    const divName = document.createElement('div')
-    divName.classList.toggle('productInput')
-    inputNameAndPriceDiv.appendChild(divName)
-    
-    const productNameLabel = document.createElement('label')
-    productNameLabel.innerText = 'Nome'
-    productNameLabel.setAttribute('for', 'productNameInput')
-    productNameLabel.classList.toggle('form-label')
-    divName.appendChild(productNameLabel)
+    const divName = newDiv(inputNameAndPriceDiv, ['productInput'])
+    newLabel(divName, ['form-label'], 'productNameInput', 'Nome')
+    const productName = newInput(divName, ['form-control'], 'productNameInput', 'text', 'Nome do Produto')
 
-    const productName = document.createElement('input')
-    productName.setAttribute('type', 'text')
-    productName.classList.toggle('form-control')
-    productName.id = 'productNameInput'
-    productName.placeholder = 'Nome do Produto'
-    divName.appendChild(productName)
 
     // product price
-    const divPrice = document.createElement('div')
-    divPrice.classList.toggle('productInput')
-    inputNameAndPriceDiv.appendChild(divPrice)
-    
-    const productPriceLabel = document.createElement('label')
-    productPriceLabel.innerText = 'Preço'
-    productPriceLabel.setAttribute('for', 'productPriceInput')
-    productPriceLabel.classList.toggle('form-label')
-    divPrice.appendChild(productPriceLabel)
+    const divPrice = newDiv(inputNameAndPriceDiv, ['productInput'])
+    newLabel(divPrice, ['form-label'], 'productPriceInput', 'Preço')
+    const productPrice = newInput(divPrice, ['form-control'], 'productPriceInput', 'number', 'Preço')
 
-    const productPrice = document.createElement('input')
-    productPrice.setAttribute('type', 'number')
-    productPrice.classList.toggle('form-control')
-    productPrice.id = 'productPriceInput'
-    productPrice.placeholder = 'Preço'
-    divPrice.appendChild(productPrice)
 
-    const typeProductDiv = document.createElement('div')
-    typeProductDiv.id = 'typeProductDiv'
-    div.appendChild(typeProductDiv)
+    // product type div
+    const typeProductDiv = newDiv(div, [''], 'typeProductDiv')
+
 
     // product type unit
-    const divTypeUnit = document.createElement('div')
-    divTypeUnit.classList.toggle('productInput')
-    typeProductDiv.appendChild(divTypeUnit)
-    
-    const productUnitType = document.createElement('input')
-    productUnitType.setAttribute('type', 'radio')
-    productUnitType.setAttribute('name', 'productType')
-    productUnitType.setAttribute('value', 'unit')
-    productUnitType.setAttribute('checked', 'checked')
-    productUnitType.classList.toggle('form-check-input')
-    productUnitType.id = 'productTypeUnit'
-    divTypeUnit.appendChild(productUnitType)
+    const divTypeUnit = newDiv(typeProductDiv, ['productInput'])
+    newInput(divTypeUnit, ['form-check-input'], 'productTypeUnit', [['type', 'radio'],['name', 'productType'], ['value', 'unit']])
+    newLabel(divTypeUnit, ['form-label'], 'productTypeUnit', 'Unidade')
 
-    const productUnitLabel = document.createElement('label')
-    productUnitLabel.innerText = 'Unidade'
-    productUnitLabel.setAttribute('for', 'productTypeUnit')
-    productUnitType.setAttribute('checked', 'checked')
-    productUnitLabel.classList.toggle('form-label')
-    divTypeUnit.appendChild(productUnitLabel)
 
     // product type kilo
-    const divTypeKilo = document.createElement('div')
-    divTypeKilo.classList.toggle('productInput')
-    typeProductDiv.appendChild(divTypeKilo)
+    const divTypeKilo = newDiv(typeProductDiv, ['productInput'])
+    newInput(divTypeKilo, ['form-check-input'], 'productKiloType', [['type', 'radio'],['name', 'productType'], ['value', 'kilo']])
+    newLabel(divTypeKilo, ['form-label'], 'productKiloType', 'Quilo')
 
-    const productKiloType = document.createElement('input')
-    productKiloType.setAttribute('type', 'radio')
-    productKiloType.setAttribute('name', 'productType')
-    productKiloType.classList.toggle('form-check-input')
-    productKiloType.setAttribute('value', 'kilo')
-    productKiloType.id = 'productKiloType'
-    divTypeKilo.appendChild(productKiloType)
-
-    const productkiloLabel = document.createElement('label')
-    productkiloLabel.innerText = 'Quilo'
-    productkiloLabel.setAttribute('for', 'productKiloType')
-    productkiloLabel.classList.toggle('form-label')
-    divTypeKilo.appendChild(productkiloLabel)
 
     // flavors
-    const addFlavor = document.createElement('button')
-    addFlavor.innerText = 'Adicionar Sabor'
-    addFlavor.setAttribute('type', 'button')
-    addFlavor.id = 'newFlavor'
-    addFlavor.classList.toggle('btn')
-    addFlavor.classList.toggle('btn-secondary')
-    div.appendChild(addFlavor)
-
-    const divFlavor = document.createElement('div')
-    divFlavor.id = 'newFlavorDiv'
-    divFlavor.classList.toggle('productInput')
-    div.appendChild(divFlavor)
+    const addFlavor = newButton(div, ['btn', 'btn-secondary'], 'newFlavor', 'Adicionar Sabor')
+    const divFlavor = newDiv(div, ['productInput'], 'newFlavorDiv')
 
 
     // add new flavor
@@ -161,19 +93,14 @@ const newProductsOption = () => {
         newProductFlavor(divFlavor)
     })
 
+
     // buttons
-    const buttonsDiv = document.createElement('div')
-    buttonsDiv.classList.toggle('buttonsProducts')
-    div.appendChild(buttonsDiv)
+    const buttonsDiv = newDiv(div, ['buttonsProducts'])
+
 
     // save product button
-    const saveProductButton = document.createElement('button')
-    saveProductButton.id = 'createProduct'
-    saveProductButton.innerText = 'Criar Produto'
-    saveProductButton.classList.toggle('btn')
-    saveProductButton.classList.toggle('btn-success')
-    saveProductButton.setAttribute('type', 'button')
-    buttonsDiv.appendChild(saveProductButton)
+    const saveProductButton = newButton(buttonsDiv, ['btn', 'btn-success'], 'createProduct', 'Criar Produto')
+
 
     // click on 'Criar Produto'
     saveProductButton.addEventListener('click', () => {
@@ -183,7 +110,7 @@ const newProductsOption = () => {
         const type = document.querySelector('.newProductDiv input[type="radio"]:checked')
         const flavors = document.querySelectorAll('.productFlavor')
 
-        if (name !== '' && price !== '' && type.value.toLowerCase() !== null) {
+        if (name !== '' && price !== '' && type !== null) {
 
             saveProduct(name, price, type.value.toLowerCase(), flavors)
             renderProductsSaveds()
@@ -208,14 +135,10 @@ const newProductsOption = () => {
 
     })
 
+
     // cancel new product button
-    const cancelProductButton = document.createElement('button')
-    cancelProductButton.id = 'cancelCreateProduct'
-    cancelProductButton.innerText = 'Cancelar'
-    cancelProductButton.classList.toggle('btn')
-    cancelProductButton.classList.toggle('btn-danger')
-    cancelProductButton.setAttribute('type', 'button')
-    buttonsDiv.appendChild(cancelProductButton)
+    const cancelProductButton = newButton(buttonsDiv, ['btn', 'btn-danger'], 'cancelCreateProduct', 'Cancelar')
+
 
     cancelProductButton.addEventListener('click', () => {
 
@@ -235,13 +158,9 @@ const newProductsOption = () => {
     // add product button
     const modalHeader = document.querySelector('.modal-header')
 
-    const newProductButton = document.createElement('button')
-    newProductButton.id = 'newProductButton'
-    newProductButton.classList.toggle('btn')
-    newProductButton.classList.toggle('btn-primary')
-    newProductButton.setAttribute('type', 'button')
-    newProductButton.innerText = 'Novo Produto'
-    modalHeader.appendChild(newProductButton)
+    
+    const newProductButton = newButton(modalHeader, ['btn', 'btn-primary'], 'newProductButton', 'Novo Produto')
+ 
     
     const divNewProduct = document.querySelector('#newProductDiv')
 
