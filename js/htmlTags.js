@@ -27,7 +27,10 @@ const newButton = (fatherElement, buttonClass, id, text) => {
     for (let index = 0; index < buttonClass.length; index += 1) {
         button.classList.add(buttonClass[index])
     }
-    button.id = id
+    
+    if (id !== undefined) {
+        button.id = id
+    }
 
     if (text !== undefined) {
         button.innerText = text
@@ -45,7 +48,9 @@ const newInput = (fatherElement, inputClass, id, type, inputPlaceholder) => {
         }
     }
 
-    input.id = id
+    if (id !== '') {
+        input.id = id
+    }
 
     for (let index = 0; index < type.length; index += 1) {
         input.setAttribute(type[index][0], type[index][1])

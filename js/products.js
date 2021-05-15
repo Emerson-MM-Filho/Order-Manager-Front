@@ -49,7 +49,7 @@ const showProductsModal = () => {
 
 const newProductsOption = () => {
     const div = document.querySelector('.newProductDiv')
-    
+
     newH(div, 5, 'Novo Produto')
 
     const inputNameAndPriceDiv = newDiv(div, [''], 'inputNameAndPriceProductDiv')
@@ -58,13 +58,13 @@ const newProductsOption = () => {
     // product name
     const divName = newDiv(inputNameAndPriceDiv, ['productInput'])
     newLabel(divName, ['form-label'], 'productNameInput', 'Nome')
-    const productName = newInput(divName, ['form-control'], 'productNameInput', 'text', 'Nome do Produto')
+    const productName = newInput(divName, ['form-control'], 'productNameInput', [['type', 'text']], 'Nome do Produto')
 
 
     // product price
     const divPrice = newDiv(inputNameAndPriceDiv, ['productInput'])
     newLabel(divPrice, ['form-label'], 'productPriceInput', 'Preço')
-    const productPrice = newInput(divPrice, ['form-control'], 'productPriceInput', 'number', 'Preço')
+    const productPrice = newInput(divPrice, ['form-control'], 'productPriceInput', [['type','number']], 'Preço')
 
 
     // product type div
@@ -175,25 +175,20 @@ const newProductsOption = () => {
 
 const newProductFlavor = (div, flavor) => {
 
-    const newFlavorDiv = document.createElement('div')
-    newFlavorDiv.classList.toggle('newFlavorOption')
-    div.appendChild(newFlavorDiv)
+    const newFlavorDiv = newDiv(div, ['newFlavorOption'])
 
-    const newFlavorInput = document.createElement('input')
-    newFlavorInput.classList.toggle('form-control')
-    newFlavorInput.classList.toggle('productFlavor')
-    newFlavorInput.placeholder = 'Adcione um novo sabor'
-    newFlavorDiv.appendChild(newFlavorInput)
+
+    const newFlavorInput = newInput(newFlavorDiv, ['form-control', 'productFlavor'], '', [['type', 'text']], 'Adcione um novo sabor')
+
     
     if (flavor !== undefined) {
         newFlavorInput.value = flavor
     }
 
-    const btnClose = document.createElement('button')
-    btnClose.setAttribute('type', 'button')
-    btnClose.classList.toggle('btn-close')
+
+    const btnClose = newButton(newFlavorDiv, ['btn', 'btn-close'])
     btnClose.setAttribute('aria-label', 'Close')
-    newFlavorDiv.appendChild(btnClose)
+
 
     btnClose.addEventListener('click', (botaoClicado) => {
         botaoClicado.target.parentNode.remove()
