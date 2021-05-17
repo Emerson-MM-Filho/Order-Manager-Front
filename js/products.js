@@ -359,113 +359,54 @@ const editProductFlavor = (div, flavor) => {
 const createEditProductOptions = (name, price, type, flavors) => {
     const editProductDiv = document.querySelector('#editProductDiv')
 
-    const title = document.createElement('h5')
-    title.innerText = 'Editar Produto'
-    editProductDiv.appendChild(title)
+    newH(editProductDiv, 'h5', 'Editar Produto')
     
-    const inputNameAndPriceDiv = document.createElement('div')
-    inputNameAndPriceDiv.id = 'inputNameAndPriceProductDiv'
-    editProductDiv.appendChild(inputNameAndPriceDiv)
+    const inputNameAndPriceDiv = newDiv(editProductDiv, '', 'inputNameAndPriceProductDiv')
 
     // product name
-    const divName = document.createElement('div')
-    divName.classList.toggle('productInput')
-    inputNameAndPriceDiv.appendChild(divName)
+    const divName = newDiv(inputNameAndPriceDiv, ['productInput'])
     
-    const productNameLabel = document.createElement('label')
-    productNameLabel.innerText = 'Nome'
-    productNameLabel.setAttribute('for', 'editproductNameInput')
-    productNameLabel.classList.toggle('form-label')
-    divName.appendChild(productNameLabel)
+    newLabel(divName, ['form-label'], 'editproductNameInput', 'Nome')
 
-    const productName = document.createElement('input')
-    productName.setAttribute('type', 'text')
-    productName.classList.toggle('form-control')
-    productName.id = 'editproductNameInput'
+    const productName = newInput(divName, ['form-control'], 'editproductNameInput', [['type', 'text']])
     productName.value = name
-    divName.appendChild(productName)
 
     // product price
-    const divPrice = document.createElement('div')
-    divPrice.classList.toggle('productInput')
-    inputNameAndPriceDiv.appendChild(divPrice)
+    const divPrice = newDiv(inputNameAndPriceDiv, ['productInput'])
     
-    const productPriceLabel = document.createElement('label')
-    productPriceLabel.innerText = 'Preço'
-    productPriceLabel.setAttribute('for', 'editproductPriceInput')
-    productPriceLabel.classList.toggle('form-label')
-    divPrice.appendChild(productPriceLabel)
+    newLabel(divPrice, ['form-label'], 'editproductPriceInput', 'Preço')
 
-    const productPrice = document.createElement('input')
-    productPrice.setAttribute('type', 'number')
-    productPrice.classList.toggle('form-control')
-    productPrice.id = 'editproductPriceInput'
+    const productPrice = newInput(divPrice, ['form-control'], 'editproductPriceInput', [['type', 'number']])
     productPrice.value = price
-    divPrice.appendChild(productPrice)
 
-    const typeProductDiv = document.createElement('div')
-    typeProductDiv.id = 'typeProductDiv'
-    editProductDiv.appendChild(typeProductDiv)
+    const typeProductDiv = newDiv(editProductDiv, '', 'typeProductDiv')
 
     // product type unit
-    const divTypeUnit = document.createElement('div')
-    divTypeUnit.classList.toggle('productInput')
-    typeProductDiv.appendChild(divTypeUnit)
+    const divTypeUnit = newDiv(typeProductDiv, ['productInput'])
     
-    const productUnitType = document.createElement('input')
-    productUnitType.setAttribute('type', 'radio')
-    productUnitType.setAttribute('name', 'productType')
-    productUnitType.setAttribute('value', 'unit')
-    productUnitType.classList.toggle('form-check-input')
-    productUnitType.id = 'editproductTypeUnit'
-    divTypeUnit.appendChild(productUnitType)
+    const productUnitType = newInput(divTypeUnit, ['form-check-input'], 'editproductTypeUnit', [['type', 'radio'], ['name', 'productType'], ['value', 'unit']])
 
-    const productUnitLabel = document.createElement('label')
-    productUnitLabel.innerText = 'Unidade'
-    productUnitLabel.setAttribute('for', 'editproductTypeUnit')
-    productUnitLabel.classList.toggle('form-label')
-    divTypeUnit.appendChild(productUnitLabel)
+    newLabel(divTypeUnit, ['form-label'], 'editproductTypeUnit', 'Unidade')
 
     if (type === 'unit') {
         productUnitType.setAttribute('checked', 'checked')
     }
 
     // product type kilo
-    const divTypeKilo = document.createElement('div')
-    divTypeKilo.classList.toggle('productInput')
-    typeProductDiv.appendChild(divTypeKilo)
+    const divTypeKilo = newDiv(typeProductDiv, ['productInput'])
 
-    const productKiloType = document.createElement('input')
-    productKiloType.setAttribute('type', 'radio')
-    productKiloType.setAttribute('name', 'productType')
-    productKiloType.classList.toggle('form-check-input')
-    productKiloType.setAttribute('value', 'kilo')
-    productKiloType.id = 'editproductKiloType'
-    divTypeKilo.appendChild(productKiloType)
+    const productKiloType = newInput(divTypeKilo, ['form-check-input'], 'editproductKiloType', [['type', 'radio'], ['name', 'productType'], ['value', 'kilo']])
 
-    const productkiloLabel = document.createElement('label')
-    productkiloLabel.innerText = 'Quilo'
-    productkiloLabel.setAttribute('for', 'editproductKiloType')
-    productkiloLabel.classList.toggle('form-label')
-    divTypeKilo.appendChild(productkiloLabel)
+    newLabel(divTypeKilo, ['form-label'], 'editproductKiloType', 'Quilo')
 
     if (type === 'kilo') {
         productKiloType.setAttribute('checked', 'checked')
     }
 
     // flavors
-    const addFlavor = document.createElement('button')
-    addFlavor.innerText = 'Adicionar Sabor'
-    addFlavor.setAttribute('type', 'button')
-    addFlavor.id = 'newFlavor'
-    addFlavor.classList.toggle('btn')
-    addFlavor.classList.toggle('btn-secondary')
-    editProductDiv.appendChild(addFlavor)
+    const addFlavor = newButton(editProductDiv, ['btn', 'btn-secondary'], 'newFlavor', 'Adicionar Sabor')
 
-    const divFlavor = document.createElement('div')
-    divFlavor.id = 'newFlavorDiv'
-    divFlavor.classList.toggle('productInput')
-    editProductDiv.appendChild(divFlavor)
+    const divFlavor = newDiv(editProductDiv, ['productInput'], 'newFlavorDiv')
 
     if (flavors.length > 0) {
         for (let index = 0; index < flavors.length; index += 1) {
@@ -478,41 +419,17 @@ const createEditProductOptions = (name, price, type, flavors) => {
         editProductFlavor(divFlavor)
     })
 
-    const buttonsDiv = document.createElement('div')
-    buttonsDiv.classList.toggle('editProductButtons')
-    editProductDiv.appendChild(buttonsDiv)
+    const buttonsDiv = newDiv(editProductDiv, ['editProductButtons'])
 
-    const deleteDiv = document.createElement('div')
-    deleteDiv.classList.toggle('deleteDiv')
-    buttonsDiv.appendChild(deleteDiv)
+    const deleteDiv = newDiv(buttonsDiv, ['deleteDiv'])
 
-    const saveAndCancelDiv = document.createElement('div')
-    saveAndCancelDiv.classList.toggle('saveAndCancelDiv')
-    buttonsDiv.appendChild(saveAndCancelDiv)
+    const saveAndCancelDiv = newDiv(buttonsDiv, ['saveAndCancelDiv'])
 
-    const deleteButton = document.createElement('button')
-    deleteButton.id = 'deleteProduct'
-    deleteButton.classList.toggle('deleteProduct')
-    deleteButton.classList.toggle('btn')
-    deleteButton.classList.toggle('btn-danger')
-    deleteButton.innerText = 'Apagar'
-    deleteDiv.appendChild(deleteButton)
+    newButton(deleteDiv, ['btn', 'btn-danger', 'deleteProduct'], 'deleteProduct', 'Apagar')
 
-    const saveButton = document.createElement('button')
-    saveButton.id = 'saveEditProduct'
-    saveButton.classList.toggle('saveEditProduct')
-    saveButton.classList.toggle('btn')
-    saveButton.classList.toggle('btn-success')
-    saveButton.innerText = 'Salvar'
-    saveAndCancelDiv.appendChild(saveButton)
+    newButton(saveAndCancelDiv, ['btn', 'btn-success', 'saveEditProduct'], 'saveEditProduct', 'Salvar')
 
-    const cancelButton = document.createElement('button')
-    cancelButton.id = 'cancelEditProduct'
-    cancelButton.classList.toggle('cancelEditProduct')
-    cancelButton.classList.toggle('btn')
-    cancelButton.classList.toggle('btn-danger')
-    cancelButton.innerText = 'Cancelar'
-    saveAndCancelDiv.appendChild(cancelButton)
+    newButton(saveAndCancelDiv, ['btn', 'btn-danger', 'cancelEditProduct'], 'cancelEditProduct', 'Cancelar')
 }
 
 const showEditProduct = (buttonClicked) => {  
