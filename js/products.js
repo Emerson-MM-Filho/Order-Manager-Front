@@ -334,25 +334,21 @@ const generateSvgIcon = (fatherElement) => {
 
 const editProductFlavor = (div, flavor) => {
 
-    const newFlavorDiv = document.createElement('div')
-    newFlavorDiv.classList.toggle('newFlavorOption')
-    div.appendChild(newFlavorDiv)
+    const newFlavorDiv = newDiv(div, ['newFlavorOption'])
 
-    const newFlavorInput = document.createElement('input')
-    newFlavorInput.classList.toggle('form-control')
-    newFlavorInput.classList.toggle('editproductFlavor')
-    newFlavorInput.placeholder = 'Adcione um novo sabor'
-    newFlavorDiv.appendChild(newFlavorInput)
+
+    const newFlavorInput = newInput(newFlavorDiv, ['form-control', 'editproductFlavor'], '', [['type', 'button']], 'Adcione um novo sabor')
+
+
     
     if (flavor !== undefined) {
         newFlavorInput.value = flavor
     }
 
-    const btnClose = document.createElement('button')
+    const btnClose = newButton(newFlavorDiv, ['btn', 'btn-close'])
     btnClose.setAttribute('type', 'button')
-    btnClose.classList.toggle('btn-close')
     btnClose.setAttribute('aria-label', 'Close')
-    newFlavorDiv.appendChild(btnClose)
+    
 
     btnClose.addEventListener('click', (botaoClicado) => {
         botaoClicado.target.parentNode.remove()
