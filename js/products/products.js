@@ -337,7 +337,7 @@ const editProductFlavor = (div, flavor) => {
     const newFlavorDiv = newDiv(div, ['newFlavorOption'])
 
 
-    const newFlavorInput = newInput(newFlavorDiv, ['form-control', 'editproductFlavor'], '', [['type', 'button']], 'Adcione um novo sabor')
+    const newFlavorInput = newInput(newFlavorDiv, ['form-control', 'editproductFlavor'], '', [['type', 'text']], 'Adcione um novo sabor')
 
 
     

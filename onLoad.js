@@ -1,7 +1,7 @@
 window.onload = () => {
   createHeader()
   createMainContent()
-  inputOrder()
+  createInputOrderOptions()
   orderList()
   addOrder()
   renderOrdersSaveds()
