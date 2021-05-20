@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+* {
+    --main-background: #E9F2F1;
+    --main-orderContainer: #f29b9b;
+    --main-orderContainer-hover: #7ABFB8;
+    --main-input: #F29B9B;
+    --main-input-hover: #7ABFB8;
+    --main-font: #242625;
+    --main-font-hover: #E9F2F1;
+
+    margin: 0;
+    padding: 0;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--main-font);
+    font-size: 18px;
+}
+
+*::placeholder {
+    color: var(--main-font);
+}
+
+body {
+    background-color: var(--main-background);
+}
+
+header {
+    height: 50px;
+}
+
+.inputOrderSection {
+    max-width: 1000px;
+    margin: 25px auto;
+    text-align: center;
+}
+
+.inputOrder {
+    background-color: var(--main-input);
+    border: none;
+    border-radius: 10px;
+    text-indent: 15px;
+    padding: 12px;
+    outline: none;
+    transition: .5s ease-in-out;
+    display: inline-block;
+    margin: 5px 10px;
+}
+
+.inputOrder:focus {
+    background-color: var(--main-input-hover);
+}
+
+.inputOrder:hover {
+    background-color: var(--main-input-hover);
+}
+
+#addClientOrder {
+    background-color: var(--main-input);
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    transition: .5s ease-in-out;
+    display: inline-block;
+    margin: 5px 10px;
+}
+
+#addClientOrder:hover {
+    background-color: var(--main-input-hover);
+}
+
+.orderList {
+    margin: 0 15px;
+}
+.orderContainer {
+    position: relative;
+    border-radius: 15px;
+    max-width: 750px;
+    margin: 15px auto;
+    background-color: var(--main-orderContainer);
+    transition: .5s ease-in-out;
+}
+
+.orderContainer:hover {
+    background-color: var(--main-orderContainer-hover)
+}
+
+.orderClientName {
+    padding: 1rem 2rem .25rem 2rem;
+    font-size: 1.5rem;
+    /* text-transform: capitalize; */
+    font-weight: 800;
+}
+
+.orderClientOrder {
+    padding: .25rem 2rem 1rem 2rem;
+    /* text-transform: capitalize; */
+}
+
+.closeOrderButton {
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    padding: 12px;
+    background-color: var(--main-input-hover);
+    border: none;
+    border-radius: 0 15px 15px 0;
+    transition: .5s ease-in-out;
+}
+
+.closeOrderButton:hover {
+    opacity: 100%;
+    background-color: #6ba8a2;
+}
+
+.hidden {
+    display: none;
+}
+
+.productsPopUp {
+    position: absolute;
+    z-index: 999;
+    width: 90%;
+    height: 90%;
+    transform: translateX(-50%) translateY(-50%);
+    left: 50%;
+    top: 50%;
+    background-color: var(--main-orderContainer);
+    border-radius: 15px;
+    padding: 15px;
+}
