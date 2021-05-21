@@ -5,8 +5,8 @@ import SideBarMenu from "./components/sideBarMenu";
 function App() {
   return (
     <main>
-      <aside>
-        <SideBarMenu></SideBarMenu>
+      <aside id="sideBarMenu">
+        <SideBarMenu />
       </aside>
     </main>
   )
