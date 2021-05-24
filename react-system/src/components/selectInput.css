@@ -1,0 +1,15 @@
+.inputText {
+    display: flex;
+    flex-direction: column;
+    font-size: .8rem;
+    margin-top: 15px;
+}
+
+.inputText select {
+    margin-top: 10px;
+    background-color: #F5F4F4;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    width: 400px;
+}
