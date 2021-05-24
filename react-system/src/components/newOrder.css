@@ -1,6 +1,5 @@
 #newOrderContainer {
     width: 100%;
-    height: 50%;
     padding: 35px;
     background-color: #fff;
     border-radius: 5px;
@@ -24,4 +23,26 @@
 .orderInputContainer {
     display: flex;
     justify-content: space-between;
+}
+
+#inlineContainer {
+    display: flex;
+}
+
+#sendDetails {
+    width: 400px;
+    margin-top: 15px;
+}
+
+#inlineInput {
+    display: flex;
+    justify-content: space-between;
+}
+
+#inlineInput .inputText {
+    width: 45%;
+}
+
+#inlineInput input {
+    width: 100%;
 }
