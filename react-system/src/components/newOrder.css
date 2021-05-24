@@ -1,6 +1,7 @@
 #newOrderContainer {
     width: 100%;
     padding: 35px;
+    margin-bottom: 25px;
     background-color: #fff;
     border-radius: 5px;
 }

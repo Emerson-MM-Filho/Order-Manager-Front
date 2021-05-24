@@ -14,7 +14,7 @@ const iconSize = '1.2rem'
 
 function sideBarMenu() {
   return (
-    <div>
+    <div id="sideBarContainer">
       <div id="logoArea">
         <img src={logo} alt="logo"/>
         <h1>Beatriz Dias Confeitaria</h1>

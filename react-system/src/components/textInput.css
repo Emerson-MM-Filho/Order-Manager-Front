@@ -12,6 +12,8 @@
     border-radius: 5px;
     padding: 15px;
     width: 400px;
+    font-size: .8rem;
+    color: #737B7D;
 }
 
 .inputText input::placeholder {
