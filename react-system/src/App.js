@@ -1,6 +1,7 @@
-import './App.css';
-import SideBarMenu from "./components/sideBarMenu";
-
+import './App.css'
+import SideBarMenu from './components/sideBarMenu'
+import SectionTitle from './components/sectionTitle'
+import NewOrder from './components/newOrder'
 
 function App() {
   return (
@@ -8,6 +9,12 @@ function App() {
       <aside id="sideBarMenu">
         <SideBarMenu />
       </aside>
+      <section id="contentSection">
+        <div id="contentContainer">
+          <SectionTitle title='Novo Produto'/>
+          <NewOrder/>
+        </div>
+      </section>
     </main>
   )
 }

@@ -47,6 +47,10 @@
   color: #61dafb;
 }
 
+main {
+  display: flex;
+}
+
 #sideBarMenu {
   width: 13%;
   height: 100vh;
@@ -55,6 +59,19 @@
   justify-content: start;
   flex-direction: column;
   border-right: 1px solid var(--white-gray);
+}
+
+#contentSection {
+  width: 100%;
+  height: 100vh;
+  background-color: #F5F4F4;
+}
+
+#contentContainer {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  padding: 15px;
 }
 
 @keyframes App-logo-spin {
