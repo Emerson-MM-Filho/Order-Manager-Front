@@ -11,7 +11,7 @@ function App() {
       </aside>
       <section id="contentSection">
         <div id="contentContainer">
-          <SectionTitle title='Novo Produto'/>
+          <SectionTitle title='Novo Pedido'/>
           <NewOrder/>
         </div>
       </section>

@@ -2,6 +2,7 @@ import './newOrder.css'
 import NewOrderButtons from './newOrderButtons'
 import OrderInputContainer from './orderInputContainer'
 import SendDetails from './sendDetails'
+import OrderDetails from './orderDetails'
 
 import { RiPrinterFill } from 'react-icons/ri'
 import { MdDelete } from 'react-icons/md'
@@ -20,10 +21,10 @@ function newOrder() {
         </div>
       </div>
       <OrderInputContainer/>
-      <SendDetails/>
-        <div id="orderDetails">
-
-        </div>
+      <div id="sideBySideContainer">
+        <SendDetails/>
+        <OrderDetails/>
+      </div>
     </div>
   )
 }

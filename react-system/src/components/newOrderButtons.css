@@ -2,7 +2,7 @@
     display: flex;
     color: #fff;
     padding: 8px;
-    background-color: #373F41;
+    background-color: var(--black);
     border: none;
     border-radius: 5px;
     transition: .5s ease-in-out;
@@ -10,9 +10,9 @@
 }
 
 .newOrderButton:hover {
-    background-color: #737B7D;
+    background-color: var(--gray);
 }
 
 .newOrderButtonIcon {
-    fill: #fff;
+    fill: var(--white);
 }
