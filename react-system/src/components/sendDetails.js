@@ -1,7 +1,9 @@
 import './sendDetails.css'
 
-import TextInput from "./textInput";
-import SelectInput from "./selectInput";
+import TextInput from './textInput'
+import SelectInput from './selectInput'
+import InputDate from './inputDate'
+import InputHour from './inputHour'
 
 function sendDetails() {
   const payment = ['Dinheiro', 'Cartão']
@@ -11,8 +13,8 @@ function sendDetails() {
       <div id="sendDetails">
         <h4>Pedido</h4>
         <div id="inlineInput">
-          <TextInput name="Data" placeholderInput="17/05/2021"/>
-          <TextInput name="Hora" placeholderInput="16:30"/>
+          <InputDate forLabel="orderInputDate"/>
+          <InputHour forLabel="orderInputHour"/>
         </div>
         <SelectInput name="Pagamento" allOptions={payment}/>
         <TextInput name="Receber" placeholderInput="R$ 50,00"/>
