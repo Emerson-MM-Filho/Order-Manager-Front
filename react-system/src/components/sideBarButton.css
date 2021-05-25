@@ -1,11 +1,11 @@
 .sideBarButton {
-    margin: 10px;
+    margin: 10px auto;
     display: flex;
     align-items: center;
     width: 90%;
     height: 40px;
     border: none;
-    background-color: var(--white);
+    background-color: transparent;
     border-radius: 5px;
     transition: background-color .75s ease-in-out;
 }

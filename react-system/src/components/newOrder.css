@@ -1,7 +1,6 @@
 #newOrderContainer {
     width: 100%;
     padding: 35px;
-    margin-bottom: 25px;
     background-color: #fff;
     border-radius: 5px;
 }
@@ -21,29 +20,3 @@
     align-items: center;
 }
 
-.orderInputContainer {
-    display: flex;
-    justify-content: space-between;
-}
-
-#inlineContainer {
-    display: flex;
-}
-
-#sendDetails {
-    width: 400px;
-    margin-top: 15px;
-}
-
-#inlineInput {
-    display: flex;
-    justify-content: space-between;
-}
-
-#inlineInput .inputText {
-    width: 45%;
-}
-
-#inlineInput input {
-    width: 100%;
-}
