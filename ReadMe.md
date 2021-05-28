@@ -1,3 +1,3 @@
+#Sistema de Pedidos
 
-Figma:
-https://www.figma.com/file/maWCp4iz0oXmRbEEp51Wv7/sistemaDePedidos?node-id=0%3A1
+Este projeto se trata de um sistema de controle de pedidos de uma confeitaria, com cadastro de pedidos, produtos, clientes, taxas de entregas e notificações. Este sistema foi desenvolvido utilizando tecnologias como React Js, JavaScript, Html e Css.
