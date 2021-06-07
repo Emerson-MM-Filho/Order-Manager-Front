@@ -1,7 +1,7 @@
 import './orderInputContainer.css'
 
-import TextInput from "./textInput";
-import SelectInput from "./selectInput";
+import TextInput from '../inputs/textInput'
+import SelectInput from '../inputs/selectInput'
 
 function orderInputContainer() {
 

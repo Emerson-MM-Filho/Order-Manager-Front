@@ -1,9 +1,9 @@
 import './sendDetails.css'
 
-import TextInput from './textInput'
-import SelectInput from './selectInput'
-import InputDate from './inputDate'
-import InputHour from './inputHour'
+import TextInput from '../inputs/textInput'
+import SelectInput from '../inputs/selectInput'
+import InputDate from '../inputs/inputDate'
+import InputHour from '../inputs/inputHour'
 
 function sendDetails() {
   const payment = ['Dinheiro', 'Cartão']
