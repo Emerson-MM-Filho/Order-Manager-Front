@@ -24,7 +24,7 @@ main {
   width: 13%;
   background-color: var(--white);
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   flex-direction: column;
   border-right: 1px solid var(--white-gray);
 }
@@ -36,7 +36,7 @@ main {
   background-color: #F5F4F4;
 }
 
-#contentContainer {
+.contentContainer {
   width: 90%;
   height: 90%;
   margin: auto;
