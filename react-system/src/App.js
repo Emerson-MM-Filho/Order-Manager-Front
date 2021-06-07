@@ -1,20 +1,18 @@
 import './App.css'
-import SideBarMenu from './components/sideBarMenu'
-import SectionTitle from './components/sectionTitle'
-import NewOrder from './components/newOrder'
+import SideBarMenu from './components/sideBar/sideBarMenu'
+import NewOrder from './components/newOrder/newOrder'
+import { useState } from "react"
 
 function App() {
+  const [sectionToShow, setSectionToShow] = useState('newOrder')
+  const renderSection = selectedSection => setSectionToShow(selectedSection)
+
   return (
     <main>
       <aside id="sideBarMenu">
-        <SideBarMenu />
+        <SideBarMenu selected={renderSection}/>
       </aside>
-      <section id="contentSection">
-        <div id="contentContainer">
-          <SectionTitle title='Novo Pedido'/>
-          <NewOrder/>
-        </div>
-      </section>
+      {sectionToShow === 'newOrder' && <NewOrder/>}
     </main>
   )
 }
