@@ -7,31 +7,26 @@
     border: none;
     background-color: transparent;
     border-radius: 5px;
-    transition: background-color .75s ease-in-out;
+    transition: .75s ease-in-out;
+
+
+    font-size: .9rem;
+    color: var(--black);
+    font-weight: 500;
 }
 
 .sideBarButton:hover {
     background-color: var(--black);
+    color: var(--white);
 }
 
 .sideBarButton svg {
     fill: var(--black);
-    margin: 0 10px;
+    margin-left: 10px;
+    margin-right: 20px;
     transition: fill .75s ease-in-out;
 }
 
 .sideBarButton:hover svg {
     fill: var(--white);
-}
-
-.sideBarButton p {
-    font-size: .9rem;
-    margin-left: 20px;
-    color: var(--black);
-    font-weight: 500;
-    transition: color .75s ease-in-out;
-}
-
-.sideBarButton:hover p {
-    color: var(--white);
 }
