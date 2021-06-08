@@ -64,12 +64,13 @@ function sideBarMenu({selected}) {
         <h1>Beatriz Dias Confeitaria</h1>
       </div>
       <div id="mainMenu">
-        {mainButtons.map(element =>
+        {mainButtons.map((element) =>
           <Button
             id={element.id}
             icon={element.icon}
             buttonName={element.buttonName}
-            value={element.value} 
+            value={element.value}
+            key={element.id}
             onClickButton={selectedSection}
           />
         )}
@@ -82,6 +83,7 @@ function sideBarMenu({selected}) {
             icon={element.icon}
             buttonName={element.buttonName}
             value={element.value}
+            key={element.id}
             onClickButton={selectedSection}
           />
         )}
