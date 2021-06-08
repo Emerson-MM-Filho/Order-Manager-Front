@@ -8,6 +8,7 @@ import AllOrders from "./components/allOrders/allOrders";
 import Alerts from "./components/alerts/alerts";
 
 import { useState } from "react"
+import MainSection from "./components/ui/mainSection";
 
 function App() {
   const [sectionToShow, setSectionToShow] = useState('newOrder')
@@ -18,16 +19,14 @@ function App() {
       <aside id="sideBarMenu">
         <SideBarMenu selected={renderSection}/>
       </aside>
-      <section className="contentSection">
-        <div className="contentContainer">
-          {sectionToShow === 'newOrder' && <NewOrder/>}
-          {sectionToShow === 'allOrder' && <AllOrders/>}
-          {sectionToShow === 'clients' && <Clients/>}
-          {sectionToShow === 'products' && <Products/>}
-          {sectionToShow === 'configs' && <Configs/>}
-          {sectionToShow === 'alerts' && <Alerts/>}
-        </div>
-      </section>
+      <MainSection>
+        {sectionToShow === 'newOrder' && <NewOrder/>}
+        {sectionToShow === 'allOrder' && <AllOrders/>}
+        {sectionToShow === 'clients' && <Clients/>}
+        {sectionToShow === 'products' && <Products/>}
+        {sectionToShow === 'configs' && <Configs/>}
+        {sectionToShow === 'alerts' && <Alerts/>}
+      </MainSection>
     </main>
   )
 }
