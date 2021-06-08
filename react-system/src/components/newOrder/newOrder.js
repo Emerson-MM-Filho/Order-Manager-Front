@@ -1,5 +1,5 @@
 import './newOrder.css'
-import NewOrderButtons from './newOrderButtons'
+import MainButton from '../ui/mainButton'
 import OrderInputContainer from './orderInputContainer'
 import SendDetails from './sendDetails'
 import OrderDetails from './orderDetails'
@@ -18,9 +18,9 @@ function newOrder() {
         <div id="newOrderHeader">
           <h4>Cliente / Entrega</h4>
           <div id="newOrderButtonsContainer">
-            <NewOrderButtons buttonName="Salvar"/>
-            <NewOrderButtons buttonName={<RiPrinterFill className="newOrderButtonIcon"/>}/>
-            <NewOrderButtons buttonName={<MdDelete className="newOrderButtonIcon"/>}/>
+            <MainButton buttonName="Salvar"/>
+            <MainButton buttonName={<RiPrinterFill className="newOrderButtonIcon"/>}/>
+            <MainButton buttonName={<MdDelete className="newOrderButtonIcon"/>}/>
           </div>
         </div>
         <OrderInputContainer/>
