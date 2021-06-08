@@ -14,10 +14,10 @@ function newOrder() {
   return (
     <div>
       <SectionTitle title='Novo Pedido'/>
-      <div id="newOrderContainer">
-        <div id="newOrderHeader">
+      <div id="internSection">
+        <div className="internSectionHeader">
           <h4>Cliente / Entrega</h4>
-          <div id="newOrderButtonsContainer">
+          <div className="newOrderButtonsContainer">
             <MainButton buttonName="Salvar"/>
             <MainButton buttonName={<RiPrinterFill className="newOrderButtonIcon"/>}/>
             <MainButton buttonName={<MdDelete className="newOrderButtonIcon"/>}/>

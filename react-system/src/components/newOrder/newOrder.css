@@ -1,21 +1,21 @@
-#newOrderContainer {
+.internSection {
     width: 100%;
     padding: 35px;
     background-color: var(--white);
     border-radius: 5px;
 }
 
-#newOrderContainer h4 {
+.internSection h4 {
     font-size: 1.5rem;
 }
 
-#newOrderHeader {
+.internSectionHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-#newOrderButtonsContainer {
+.newOrderButtonsContainer {
     display: flex;
     align-items: center;
 }
