@@ -1,0 +1,21 @@
+.internSection {
+    width: 100%;
+    padding: 35px;
+    background-color: var(--white);
+    border-radius: 5px;
+}
+
+.headerContainer h4 {
+    font-size: 1.5rem;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttonsContainer {
+    display: flex;
+    align-items: center;
+}
