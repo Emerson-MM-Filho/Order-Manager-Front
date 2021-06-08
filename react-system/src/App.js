@@ -18,12 +18,16 @@ function App() {
       <aside id="sideBarMenu">
         <SideBarMenu selected={renderSection}/>
       </aside>
-      {sectionToShow === 'newOrder' && <NewOrder/>}
-      {sectionToShow === 'allOrder' && <AllOrders/>}
-      {sectionToShow === 'clients' && <Clients/>}
-      {sectionToShow === 'products' && <Products/>}
-      {sectionToShow === 'configs' && <Configs/>}
-      {sectionToShow === 'alerts' && <Alerts/>}
+      <section className="contentSection">
+        <div className="contentContainer">
+          {sectionToShow === 'newOrder' && <NewOrder/>}
+          {sectionToShow === 'allOrder' && <AllOrders/>}
+          {sectionToShow === 'clients' && <Clients/>}
+          {sectionToShow === 'products' && <Products/>}
+          {sectionToShow === 'configs' && <Configs/>}
+          {sectionToShow === 'alerts' && <Alerts/>}
+        </div>
+      </section>
     </main>
   )
 }
