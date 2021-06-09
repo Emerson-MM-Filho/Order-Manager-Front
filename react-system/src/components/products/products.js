@@ -191,7 +191,7 @@ const Products = () => {
   return (
     <div>
       <ContentContainer sectionTitle="Produtos" contentTitle="Todos os Produtos">
-        {<MainButton buttonName='Salvar'/>}
+        {<MainButton buttonName='Adicionar'/>}
         {<MainButton buttonName={<RiPrinterFill className="newOrderButtonIcon"/>}/>}
       </ContentContainer>
       <div className='cardsContainer'>
