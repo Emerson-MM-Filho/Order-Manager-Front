@@ -14,9 +14,9 @@ function newOrder() {
   return (
     <div>
       <ContentContainer sectionTitle="Novo Pedido" contentTitle="Client / Entrega">
-        {<MainButton buttonName="Salvar"/>}
-        {<MainButton buttonName={<RiPrinterFill className="newOrderButtonIcon"/>}/>}
-        {<MainButton buttonName={<MdDelete className="newOrderButtonIcon"/>}/>}
+        {<MainButton buttonName="Salvar" buttonValue='saveNewOrder'/>}
+        {<MainButton buttonName={<RiPrinterFill className="newOrderButtonIcon"/>} buttonValue='printNewOrder'/>}
+        {<MainButton buttonName={<MdDelete className="newOrderButtonIcon"/>} buttonValue='clearFormNewOrder'/>}
       </ContentContainer>
       <OrderInputContainer/>
       <div id="sideBySideContainer">
