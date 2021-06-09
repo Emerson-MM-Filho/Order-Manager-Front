@@ -1,6 +1,7 @@
 .contentSection {
     width: 100%;
     min-height: 100vh;
+    height: 100%;
     display: flex;
     background-color: #F5F4F4;
 }
@@ -8,7 +9,7 @@
 .contentContainer {
     width: 90%;
     height: 90%;
-    margin: auto;
+    margin: 5% auto;
     background-color: var(--white);
     padding: 25px;
     border-radius: 10px;
