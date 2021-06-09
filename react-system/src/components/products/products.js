@@ -1,5 +1,3 @@
-import './products.css'
-
 import {useState} from "react";
 import AllProducts from "./allProducts";
 import NewProduct from "./newProduct";
