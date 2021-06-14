@@ -1,10 +1,12 @@
 import './productCard.css'
 
-const ProductCard = ({name, description, price, type}) => {
+const ProductCard = ({name, description, price, type, image}) => {
 
   return (
     <div className='productCard'>
-      <div className='productImage'/>
+      <div className='productImage'>
+        <img src={image} alt="Foto do produto"/>
+      </div>
       <div className='cardTextContainer'>
         <h1>{name}</h1>
         <p>{description}</p>
