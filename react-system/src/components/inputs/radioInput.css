@@ -33,11 +33,13 @@
 }
 
 .inputRadioLabel:hover .inputRadioStyle {
+    border: 2px solid var(--black);
     background-color: var(--white-gray);
 }
 
 .inputRadioLabel input:checked ~ .inputRadioStyle {
     background: none;
+    border: 2px solid var(--black);
 }
 
 .inputRadioStyle:after {
@@ -59,5 +61,5 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--white-gray);
+    background: var(--black);
 }
