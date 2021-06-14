@@ -5,189 +5,8 @@ import MainButton from "../ui/mainButton";
 import {RiPrinterFill} from "react-icons/ri";
 import ProductCard from "./productCard";
 
-const AllProducts = ({clicked}) => {
-  const products = [
-    {
-      name: 'bombom',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 8.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'torta',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 12.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'bombom',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 8.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'torta',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 12.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'bombom',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 8.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'torta',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 12.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'bombom',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 8.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'torta',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 12.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'bombom',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 8.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'torta',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 12.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'bombom',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 8.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'torta',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 12.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'bombom',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 8.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'torta',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 12.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'bombom',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 8.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'torta',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 12.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'bombom',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 8.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'torta',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 12.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'bombom',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 8.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-    {
-      name: 'torta',
-      type: 'unity',
-      description: 'Descrição do produto - Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      sale: 'prompt-delivery',
-      price: 12.00,
-      flavors: ['morango', 'brigadeiro'],
-      image: '../../images/logo.jpeg'
-    },
-  ]
+const AllProducts = ({clicked, allProducts}) => {
+  console.log(allProducts)
 
   const buttonClicked = element => clicked(element)
 
@@ -198,13 +17,14 @@ const AllProducts = ({clicked}) => {
         {<MainButton buttonName={<RiPrinterFill className="newOrderButtonIcon"/>} buttonValue='printListProduct' functionOnClick={buttonClicked}/>}
       </ContentContainer>
       <div className='cardsContainer'>
-        {products.map((current, index) => {
+        {allProducts.map((current, index) => {
           return (
             <ProductCard
-              name={current.name}
-              description={current.description}
-              price={current.price}
-              type={(current.type === 'unity') ? 'Uni.' : 'Kg'}
+              image={current.image}
+              name={current.productName}
+              description={current.productDescription}
+              price={current.flavors[0].price}
+              type={(current.productType === 'unity') ? 'Uni.' : 'Kg'}
               key={index}
             />
           )
