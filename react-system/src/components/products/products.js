@@ -11,7 +11,6 @@ const Products = () => {
 
   const newProduct = (event) => {
     setAllProducts([event, ...allProducts])
-    console.log([event, ...allProducts])
   }
 
   return (
