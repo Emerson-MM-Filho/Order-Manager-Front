@@ -10,7 +10,7 @@ import TextAreaInput from "../inputs/textAreaInput";
 import FlavorsTable from "./flavorsTable";
 import InputFile from "./inputFile";
 
-const NewProduct = ({clicked, newProduct}) => {
+const NewProduct = ({clicked}) => {
 
 
   const cancel = element => clicked(element)
@@ -77,9 +77,7 @@ const NewProduct = ({clicked, newProduct}) => {
 
             const getLocal = JSON.parse(localStorage.getItem('products')) || []
             const setLocal = JSON.stringify([obj, ...getLocal])
-            localStorage.setItem('products', setLocal)
-
-            return newProduct(obj)
+            return localStorage.setItem('products', setLocal)
           }
 
           return alert('[ERRO] O seu produto deve possuir uma imagem!')
