@@ -65,7 +65,7 @@ const NewProduct = ({clicked, newProduct}) => {
           }
 
           if (image !== '') {
-            return newProduct({
+            const obj = {
               id: creteId(),
               productName,
               productType,
@@ -73,7 +73,13 @@ const NewProduct = ({clicked, newProduct}) => {
               sellType,
               flavors,
               image,
-            })
+            }
+
+            const getLocal = JSON.parse(localStorage.getItem('products')) || []
+            const setLocal = JSON.stringify([obj, ...getLocal])
+            localStorage.setItem('products', setLocal)
+
+            return newProduct(obj)
           }
 
           return alert('[ERRO] O seu produto deve possuir uma imagem!')
