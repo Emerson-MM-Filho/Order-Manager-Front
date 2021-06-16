@@ -23,7 +23,7 @@ const AllProducts = ({clicked, allProducts}) => {
               image={current.image}
               name={current.productName}
               description={current.productDescription}
-              price={current.flavors[0].price}
+              price={parseFloat(current.flavors[0].price).toFixed(2)}
               type={(current.productType === 'unity') ? 'Uni.' : 'Kg'}
               key={index}
             />
