@@ -6,7 +6,6 @@ import {RiPrinterFill} from "react-icons/ri";
 import ProductCard from "./productCard";
 
 const AllProducts = ({clicked, allProducts}) => {
-  console.log(allProducts)
 
   const buttonClicked = element => clicked(element)
 

@@ -23,7 +23,6 @@ const FlavorsTable = ({inputFunction}) => {
 
   const exportFlavor = (flavors) => {
     if (typeof flavors !== 'undefined') {
-      console.log(flavors)
       return inputFunction(flavors)
     }
     inputFunction(allFlavors)
