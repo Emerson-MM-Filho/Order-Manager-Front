@@ -16,7 +16,8 @@ const AllProducts = ({clicked, allProducts}) => {
         {<MainButton buttonName={<RiPrinterFill className="newOrderButtonIcon"/>} buttonValue='printListProduct' functionOnClick={buttonClicked}/>}
       </ContentContainer>
       <div className='cardsContainer'>
-        {allProducts.map((current, index) => {
+        {allProducts.length !== 0 &&
+        allProducts.map((current, index) => {
           return (
             <ProductCard
               image={current.image}
@@ -27,7 +28,8 @@ const AllProducts = ({clicked, allProducts}) => {
               key={index}
             />
           )
-        })}
+        })
+        }
       </div>
     </div>
   )
