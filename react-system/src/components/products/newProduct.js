@@ -15,6 +15,18 @@ const NewProduct = ({clicked, newProduct}) => {
 
   const cancel = element => clicked(element)
 
+  const creteId = () => {
+    const characters = 'abcdefghijklmnopqrstuvwxyz'
+
+    let id = ''
+    for (let qtdLetter = 0; qtdLetter < 10 + 1; qtdLetter += 1) {
+      const index = Math.floor(Math.random()*characters.length)
+      const number = Math.floor(Math.random()*999999)
+      id += characters[index] + number
+    }
+    return id
+  }
+
   const sellAllOptions = [
     {
       name: 'Pronta entrega',
@@ -38,19 +50,42 @@ const NewProduct = ({clicked, newProduct}) => {
   const getProductType = (event) => setProductType(event)
   const getProductDescription = (event) => setProductDescription(event)
   const getSell = (event) => setSellType(event)
-  const getFlavor = (event) => setFlavors([event], ...flavors)
+  const getFlavor = (event) => setFlavors(event)
   const getImage = (event) => setImage(event)
 
   const createProduct = () => {
-    newProduct({
-      id: Math.random(),
-      productName,
-      productType,
-      productDescription,
-      sellType,
-      flavors,
-      image,
-    })
+    if (productName !== '' && productType !== '') {
+      if (productDescription !== '') {
+        if (flavors.length !== 0) {
+
+          const flavorsCheck = flavors.map((current) => current.name !== '' && current.price !== 0)
+
+          if (flavorsCheck[0] === false) {
+            return alert('[ERRO] Verifique se o seu sabor possui o nome e o preço!')
+          }
+
+          if (image !== '') {
+            return newProduct({
+              id: creteId(),
+              productName,
+              productType,
+              productDescription,
+              sellType,
+              flavors,
+              image,
+            })
+          }
+
+          return alert('[ERRO] O seu produto deve possuir uma imagem!')
+        }
+
+        return alert('[ERRO] Verifique se o seu produto possui ao menos um sabor!')
+      }
+
+      return alert('[ERRO] Verifique se o seu produto possui uma descrição!')
+    }
+
+   return  alert('[ERRO] Verifique se o seu produto possui um nome e um tipo!')
   }
 
   return (
