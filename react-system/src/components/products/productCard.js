@@ -1,9 +1,13 @@
 import './productCard.css'
 
-const ProductCard = ({name, description, price, type, image}) => {
+const ProductCard = ({id, name, description, price, type, image, clickFunction}) => {
+
+  const editProduct = event => {
+    clickFunction(event.currentTarget.value, id)
+  }
 
   return (
-    <div className='productCard'>
+    <div className='productCard' id={id}>
       <div className='productImage'>
         <img src={image} alt="Foto do produto"/>
       </div>
@@ -13,7 +17,7 @@ const ProductCard = ({name, description, price, type, image}) => {
         <h2>R$ {price} / {type}</h2>
       </div>
       <div>
-        <button className='productEditButton'>Editar</button>
+        <button className='productEditButton' value='editProduct' onClick={editProduct}>Editar</button>
       </div>
     </div>
   )

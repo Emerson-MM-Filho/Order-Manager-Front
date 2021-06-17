@@ -5,7 +5,12 @@ import MainButton from "../ui/mainButton";
 import {RiPrinterFill} from "react-icons/ri";
 import ProductCard from "./productCard";
 
-const AllProducts = ({clicked, allProducts}) => {
+const AllProducts = ({clicked, allProducts, productToEdit}) => {
+
+  const productClick = (value, id) => {
+    buttonClicked(value)
+    productToEdit(id)
+  }
 
   const buttonClicked = element => clicked(element)
 
@@ -20,12 +25,14 @@ const AllProducts = ({clicked, allProducts}) => {
         allProducts.map((current, index) => {
           return (
             <ProductCard
+              id={current.id}
               image={current.image}
               name={current.productName}
               description={current.productDescription}
               price={parseFloat(current.flavors[0].price).toFixed(2)}
               type={(current.productType === 'unity') ? 'Uni.' : 'Kg'}
               key={index}
+              clickFunction={productClick}
             />
           )
         })
