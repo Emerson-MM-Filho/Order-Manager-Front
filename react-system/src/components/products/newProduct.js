@@ -19,10 +19,12 @@ const NewProduct = ({clicked}) => {
     const characters = 'abcdefghijklmnopqrstuvwxyz'
 
     let id = ''
-    for (let qtdLetter = 0; qtdLetter < 10 + 1; qtdLetter += 1) {
+    for (let qtdLetter = 0; qtdLetter < 5 + 1; qtdLetter += 1) {
       const index = Math.floor(Math.random()*characters.length)
-      const number = Math.floor(Math.random()*999999)
-      id += characters[index] + number
+      const number1 = Math.floor(Math.random()*10)
+      const number2 = Math.floor(Math.random()*10)
+      const number3 = Math.floor(Math.random()*10)
+      id += characters[index] + '-' + number1 + number2 + number3
     }
     return id
   }
@@ -53,40 +55,53 @@ const NewProduct = ({clicked}) => {
   const getFlavor = (event) => setFlavors(event)
   const getImage = (event) => setImage(event)
 
+  const productObj = () => {
+    return {
+      id: creteId(),
+      productName,
+      productType,
+      productDescription,
+      sellType,
+      flavors,
+      image,
+    }
+  }
+
   const createProduct = () => {
     if (productName !== '' && productType !== '') {
-      if (productDescription !== '') {
-        if (flavors.length !== 0) {
 
-          const flavorsCheck = flavors.map((current) => current.name !== '' && current.price !== 0)
+      const getLocal = JSON.parse(localStorage.getItem('products')) || []
+      const findProductWithSameName = getLocal.some((current) => current.productName === productName)
 
-          if (flavorsCheck[0] === false) {
-            return alert('[ERRO] Verifique se o seu sabor possui o nome e o preço!')
-          }
+      if (findProductWithSameName === false || getLocal.length === 0) {
+        if (productDescription !== '') {
+          if (flavors.length !== 0) {
 
-          if (image !== '') {
-            const obj = {
-              id: creteId(),
-              productName,
-              productType,
-              productDescription,
-              sellType,
-              flavors,
-              image,
+            const flavorsCheck = flavors.map((current) => current.name !== '' && current.price !== 0)
+
+            if (flavorsCheck[0] === false) {
+              return alert('[ERRO] Verifique se o seu sabor possui o nome e o preço!')
             }
 
-            const getLocal = JSON.parse(localStorage.getItem('products')) || []
-            const setLocal = JSON.stringify([obj, ...getLocal])
-            return localStorage.setItem('products', setLocal)
+            if (image !== '') {
+
+              const setLocal = JSON.stringify([productObj(), ...getLocal])
+              localStorage.setItem('products', setLocal)
+
+              cancel('cancelAddProduct')
+              return alert('O seu produto foi criado com SUCESSO!')
+            }
+
+            return alert('[ERRO] O seu produto deve possuir uma imagem!')
           }
 
-          return alert('[ERRO] O seu produto deve possuir uma imagem!')
+          return alert('[ERRO] Verifique se o seu produto possui ao menos um sabor!')
         }
 
-        return alert('[ERRO] Verifique se o seu produto possui ao menos um sabor!')
+        return alert('[ERRO] Verifique se o seu produto possui uma descrição!')
       }
 
-      return alert('[ERRO] Verifique se o seu produto possui uma descrição!')
+      return alert('[ERRO] Já existe um produto com este nome!')
     }
 
    return  alert('[ERRO] Verifique se o seu produto possui um nome e um tipo!')
@@ -117,7 +132,7 @@ const NewProduct = ({clicked}) => {
               label='Quilo'
               id={'productTypeQuilo'}
               name={'productType'}
-              value={'quilo'}
+              value={'kilo'}
               inputFunction={getProductType}
             />
           </div>
