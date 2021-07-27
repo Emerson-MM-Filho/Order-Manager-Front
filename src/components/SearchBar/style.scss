@@ -1,0 +1,20 @@
+@import '../../App.scss';
+
+.search-bar{
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  input{
+    background-color: transparent;
+    border: 1px solid $white;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  svg{
+    position: absolute;
+    margin-left: 10px;
+    fill: $white;
+  }
+}
