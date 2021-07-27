@@ -1,0 +1,24 @@
+@import '../../App.scss';
+
+.profile-button{
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+
+  .profile-image{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 5px;
+    background-color: $semi-gray;
+  }
+
+  p{
+    margin-right: 5px;
+    color: $white;
+  }
+
+  svg{
+    fill: $white;
+  }
+}
