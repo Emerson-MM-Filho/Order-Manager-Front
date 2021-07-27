@@ -11,7 +11,7 @@ function SearchBar() {
   return (
     <div className='search-bar'>
       { searchIcon }
-      <input/>
+      <input type='text'/>
     </div>
   )
 }
