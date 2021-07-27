@@ -1,0 +1,21 @@
+@import '../../App.scss';
+
+.header-component{
+  position: fixed;
+  width: 100%;
+
+  .header-top-side{
+    background-color: $black;
+    padding: 15px 0 15px 0;
+    
+    p{
+      color: $white;
+    }
+  }
+
+  .header-bottom-side{
+    background-color: $white;
+    padding: 15px 0 15px 0;
+  }
+
+}
