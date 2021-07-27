@@ -1,9 +1,10 @@
 import React from 'react';
+import HeaderComponent from '../components/Header'
 
 function Home() {
   return (
     <div data-testid='homeComponent'>
-      <p> oi </p>
+      <HeaderComponent />
     </div>
   )
 }
