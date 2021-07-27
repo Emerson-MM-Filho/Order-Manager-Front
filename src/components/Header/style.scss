@@ -5,17 +5,24 @@
   width: 100%;
 
   .header-top-side{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 7% 15px 7%;
     background-color: $black;
-    padding: 15px 0 15px 0;
-    
-    p{
-      color: $white;
-    }
   }
 
   .header-bottom-side{
-    background-color: $white;
+    display: flex;
+    justify-content: flex-start;
+    padding: 15px 7% 15px 7%;
     padding: 15px 0 15px 0;
+    background-color: $white;
   }
 
+  .button-group{
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+  }
 }
