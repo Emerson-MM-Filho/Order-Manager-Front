@@ -2,12 +2,14 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom'
 import './App.scss'
 
-import Home from './pages/Home'
+import AllOrders from './pages/AllOrders'
+import NewProduct from './pages/NewOrder'
 
 function App() {
   return (
     <Switch>
-      <Route exact path='/' component={ Home } />
+      <Route exact path='/' component={ AllOrders } />
+      <Route exact path='/new-product' component={ NewProduct } />
     </Switch>
   )
 }
