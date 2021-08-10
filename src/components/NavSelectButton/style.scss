@@ -1,0 +1,19 @@
+.nav-select{
+  display: flex;
+  margin-right: 25px;
+  
+  .nav-select-icon{
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-select-text{
+    margin-left: 10px;
+  }
+  
+  .nav-select-arrow{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+}
