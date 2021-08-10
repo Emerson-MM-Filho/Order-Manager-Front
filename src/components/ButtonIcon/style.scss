@@ -1,6 +1,8 @@
 @import '../../App.scss';
 
-.button-with-icon{
+.button-icon{
+  display: flex;
+  align-items: center;
   background-color: transparent;
   border: none;
   fill: $white;
