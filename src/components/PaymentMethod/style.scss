@@ -1,0 +1,11 @@
+@import '../../App.scss';
+
+.payment-method{
+  display: flex;
+  align-items: center;
+  
+  svg{
+    fill: $black;
+    margin-right: 10px;
+  }
+}
