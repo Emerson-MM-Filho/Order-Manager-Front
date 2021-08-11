@@ -1,9 +1,9 @@
 import React from 'react'
 import './style.scss'
 
-function OrdersFilter({ children }) {
+function OrdersFilter({ addClass, children }) {
   return (
-    <div className='default-container'>
+    <div className={`default-container ${addClass}`}>
       { children }
     </div>
   )
