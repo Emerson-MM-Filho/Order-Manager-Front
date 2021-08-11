@@ -1,19 +1,16 @@
 .nav-select{
   display: flex;
-  margin-right: 25px;
+  margin-right: 15px;
+  cursor: pointer;
   
-  .nav-select-icon{
+  * {
     display: flex;
     align-items: center;
+    margin-right: 5px;
   }
-  
-  .nav-select-text{
-    margin-left: 10px;
+
+  p{
+    margin-right: 10px;
   }
-  
-  .nav-select-arrow{
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-  }
+
 }
