@@ -9,6 +9,11 @@ import NavSelectButton from '../NavSelectButton'
 import Logo from '../Logo'
 import { alertIcon, settingsIcon, ordersIcon, productIcon } from '../../icons';
 
+const productsLinks = [
+  {name: 'Todos os Pedidos', link: '/'},
+  {name: 'Novo Pedido', link: '/new-order'}
+]
+
 function HeaderComponent() {
   return (
     <header className='header-component'>
@@ -22,8 +27,8 @@ function HeaderComponent() {
         </div>
       </div>
       <div className='header-bottom-side'>
-        <NavSelectButton icon={ ordersIcon } text={'Pedidos'}/>
-        <NavSelectButton icon={ productIcon } text={'Produtos'}/>
+        <NavSelectButton icon={ ordersIcon } text={'Pedidos'} options={productsLinks}/>
+        <NavSelectButton icon={ productIcon } text={'Produtos'} options={productsLinks}/>
       </div>
     </header>
   )
