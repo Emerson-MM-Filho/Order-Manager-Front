@@ -7,17 +7,38 @@
 
   input{
     background-color: transparent;
-    color: $white;
-    border: 1px solid $white;
+    border: 1px solid;
     border-radius: 5px;
     padding: 5px;
     padding-left: 35px;
     outline:none;
+    
   }
 
-  svg{
+  span{
+    display: flex;
+    align-items: center;
     position: absolute;
     margin-left: 10px;
+  }
+
+  .white{
+    color: $white;
+    border-color: $white;
     fill: $white;
+  }
+  
+  .white::placeholder{
+    color: $white;
+  }
+
+  .gray{
+    color: $gray;
+    border-color: $gray;
+    fill: $gray;
+  }
+  
+  .gray::placeholder{
+    color: $gray;
   }
 }
