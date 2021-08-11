@@ -15,12 +15,15 @@ $font-semi-bold: 600;
 $font-medium: 500;
 $font-regular: 400;
 
+$border-radius: 5px;
+$speed: 500ms;
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-  font-weight: 500;
+  font-weight: $font-medium;
   color: $black;
   font-size: 14px;
 }

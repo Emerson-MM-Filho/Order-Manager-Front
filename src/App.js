@@ -3,13 +3,13 @@ import { Switch, Route } from 'react-router-dom'
 import './App.scss'
 
 import AllOrders from './pages/AllOrders/AllOrders.js'
-import NewProduct from './pages/NewOrder'
+import NewOrder from './pages/NewOrder'
 
 function App() {
   return (
     <Switch>
       <Route exact path='/' component={ AllOrders } />
-      <Route exact path='/new-product' component={ NewProduct } />
+      <Route exact path='/new-order' component={ NewOrder } />
     </Switch>
   )
 }
