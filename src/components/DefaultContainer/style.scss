@@ -1,0 +1,9 @@
+@import '../../App.scss';
+
+.default-container{
+  margin-top: 10px;
+  padding: 15px;
+  background-color: $white;
+  border: 1px solid $semi-gray;
+  border-radius: 5px;
+}
