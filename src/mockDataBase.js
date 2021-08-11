@@ -1,14 +1,14 @@
 export const mockOrders = [
   {
     id: 1,
-    createAt: 13072021,
+    createAt: '13/07/2021',
     note: 'Decorar o bolo com a cor azul',
     payment: {
       method: 'Cartão de Crédito',
       status: 'A Receber',
     },
     delivery: {
-      date: 10102021,
+      date: '10/10/2021',
       time: 1620,
       method: 'Delivery',
     },
@@ -72,14 +72,14 @@ export const mockOrders = [
   },
   {
     id: 2,
-    createAt: 14072021,
+    createAt: '14/07/2021',
     note: '',
     payment: {
       method: 'Pix',
       status: 'Pago',
     },
     delivery: {
-      date: 11102021,
+      date: '11/10/2021',
       time: 1000,
       method: 'Retirada no local',
     },
@@ -117,7 +117,7 @@ export const mockOrders = [
         description: 'Bala de coco coberta com açucar',
         tag: ['Bala'],
         code: '#PR345',
-        options: {
+        option: {
           id: 1,
           description: 'Côco',
           price: 2.50,
@@ -128,14 +128,14 @@ export const mockOrders = [
   },
   {
     id: 3,
-    createAt: 15072021,
+    createAt: '15/07/2021',
     note: 'Entregar para Isael Junior',
     payment: {
       method: 'Cartão de Crédito',
       status: 'A Receber',
     },
     delivery: {
-      date: 12102021,
+      date: '12/10/2021',
       time: 1730,
       method: 'Delivery',
     },
@@ -158,7 +158,7 @@ export const mockOrders = [
         description: 'Bala de coco coberta com açucar',
         tag: ['Bala'],
         code: '#PR345',
-        options: {
+        option: {
           id: 1,
           description: 'Côco',
           price: 2.50,
