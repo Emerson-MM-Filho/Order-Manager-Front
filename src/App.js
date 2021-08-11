@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom'
 import './App.scss'
 
-import AllOrders from './pages/AllOrders'
+import AllOrders from './pages/AllOrders/AllOrders.js'
 import NewProduct from './pages/NewOrder'
 
 function App() {
