@@ -1,0 +1,35 @@
+@import '../../App.scss';
+
+.all-orders{
+  width: 85%;
+  .all-orders-table-container-header{
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+  }
+  
+  .all-orders-table{
+    margin-top: 40px;
+  
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    thead{
+      background-color: $secondary-white;
+      
+      th{
+        padding: 15px 20px;
+        color: $gray;
+      }
+    }
+
+    tbody{
+      tr{
+        height: 50px;
+        border-bottom: 1px solid $secondary-white;
+      }
+    }
+  }
+}
