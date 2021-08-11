@@ -5,7 +5,7 @@ import DefaultContainer from '../DefaultContainer'
 
 function OrdersFilter() {
   return (
-    <DefaultContainer>
+    <DefaultContainer addClass='filter-order'>
       <div className='orders-filter-container'>
         <h2>Filtros</h2>
       </div>
