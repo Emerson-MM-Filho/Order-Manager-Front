@@ -1,0 +1,16 @@
+@import '../../App.scss';
+
+.default-button{
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  border: none;
+  border-radius: $border-radius;
+  background-color: $green;
+  color: $white;
+
+  svg{
+    fill: $white;
+    margin-right: 10px;
+  }
+}
