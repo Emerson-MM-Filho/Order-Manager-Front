@@ -7,18 +7,18 @@ import ProfileButton from '../ProfileButton'
 import NavSelectButton from '../NavSelectButton'
 
 import Logo from '../Logo'
-import { searcIcon,  alertIcon, ordersIcon, productIcon } from '../../icons';
+import { alertIcon, settingsIcon, ordersIcon, productIcon } from '../../icons';
 
 function HeaderComponent() {
   return (
     <header className='header-component'>
       <div className='header-top-side'>
         <Logo />
-        <SearchBar />
+        <SearchBar theme='white'/>
         <div className='button-group'>
           <ProfileButton />
           <ButtonIcon icon={ alertIcon }/>
-          <ButtonIcon icon={ searcIcon }/>
+          <ButtonIcon icon={ settingsIcon }/>
         </div>
       </div>
       <div className='header-bottom-side'>
