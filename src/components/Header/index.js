@@ -14,12 +14,12 @@ const productsLinks = [
   {name: 'Novo Pedido', link: '/new-order'}
 ]
 
-function HeaderComponent() {
+function Header() {
   return (
-    <header className='header-component'>
+    <header className='header-component' data-testid='header-component'>
       <div className='header-top-side'>
-        <Logo />
-        <SearchBar theme='white'/>
+        <Logo testId='logo'/>
+        <SearchBar theme='white' testId='search-bar'/>
         <div className='button-group'>
           <ProfileButton />
           <ButtonIcon icon={ alertIcon }/>
@@ -34,4 +34,4 @@ function HeaderComponent() {
   )
 }
 
-export default HeaderComponent
+export default Header
