@@ -1,0 +1,54 @@
+@import '../../App.scss';
+
+.all-orders-table-row{
+  height: 50px;
+  border-bottom: 1px solid $secondary-white;
+
+  td {
+    color: $gray;
+    padding: 15px 10px;
+
+    .component-color{
+      color: $gray;
+      
+      svg{
+        fill: $gray;
+      }
+    }
+  }
+
+  td:nth-child(1){
+    text-align: center;
+  }
+
+  .client-name{
+    color: $black;
+    font-weight:  $font-bold;
+  }
+  
+  .actions {
+    button{
+      background-color: transparent;
+      border: none;
+      margin-right: 10px;
+    }
+  
+    .show-more-icon{
+      svg{
+        fill: $blue;
+      }
+    }
+  
+    .edit-icon{
+      svg{
+        fill: $green;
+      }
+    }
+  
+    .trash-icon{
+      svg{
+        fill: $red;
+      }
+    }
+  }
+}
