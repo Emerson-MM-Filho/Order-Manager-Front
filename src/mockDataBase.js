@@ -1,10 +1,10 @@
 export const mockOrders = [
   {
-    id: 1,
+    id: '#SK2546',
     createAt: '13/07/2021',
     note: 'Decorar o bolo com a cor azul',
     payment: {
-      method: 'Cartão de Crédito',
+      method: 'Cartão',
       status: 'A Receber',
     },
     delivery: {
@@ -71,11 +71,11 @@ export const mockOrders = [
     ],
   },
   {
-    id: 2,
+    id: '#SK2547',
     createAt: '14/07/2021',
     note: '',
     payment: {
-      method: 'Pix',
+      method: 'Dinheiro',
       status: 'Pago',
     },
     delivery: {
@@ -127,11 +127,11 @@ export const mockOrders = [
     ],
   },
   {
-    id: 3,
+    id: '#SK2548',
     createAt: '15/07/2021',
     note: 'Entregar para Isael Junior',
     payment: {
-      method: 'Cartão de Crédito',
+      method: 'Cartão',
       status: 'A Receber',
     },
     delivery: {
