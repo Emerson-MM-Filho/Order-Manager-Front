@@ -4,7 +4,7 @@ import './style.scss'
 
 function ProfileButton() {
   return (
-    <div className='profile-button'>
+    <div className='profile-button' data-testid='profile-button'>
       {/* <img
         src='#'
         alt='User Profile'
