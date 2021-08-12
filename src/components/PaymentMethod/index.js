@@ -3,10 +3,10 @@ import './style.scss'
 
 import { creditCardIcon, coinIcon } from '../../icons';
 
-function PaymentMethod({type}) {
+function PaymentMethod({type, addClass}) {
   return (
-    <div className='payment-method'>
-      {type === 'Cartão de Crédito' ? creditCardIcon : coinIcon}
+    <div className={`payment-method ${addClass}`}>
+      {type === 'Cartão' ? creditCardIcon : coinIcon}
       {type}
     </div>
   )
