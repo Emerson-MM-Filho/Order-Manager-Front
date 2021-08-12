@@ -20,15 +20,46 @@
       background-color: $secondary-white;
       
       th{
-        padding: 15px 20px;
+        padding: 15px 10px;
         color: $gray;
+        text-align: left;
       }
-    }
 
-    tbody{
-      tr{
-        height: 50px;
-        border-bottom: 1px solid $secondary-white;
+      th:nth-child(1){
+        text-align: center;
+        width: 8%;
+      }
+
+      th:nth-child(2){
+        width: 10%;
+      }
+
+      th:nth-child(3){
+        width: 15%;
+      }
+
+      th:nth-child(4){
+        width:10%;
+      }
+
+      th:nth-child(5){
+        width: 10%;
+      }
+
+      th:nth-child(6){
+        width: 15%;
+      }
+
+      th:nth-child(7){
+        width: 12%;
+      }
+
+      th:nth-child(8){
+        width: 13%;
+      }
+
+      th:nth-child(9){
+        width: auto;
       }
     }
   }
