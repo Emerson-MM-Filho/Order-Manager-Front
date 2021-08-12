@@ -8,18 +8,19 @@ Esta aplicação auxiliará a organizar os pedidos de sua loja, cadastrando todo
 
 ## :hammer_and_wrench: Features 
 
--   [x] Adção e edição de Produtos
--   [x] Adção e edição de Pedidos
--   [x] Filtragem de Pedidos
+- Adção e edição de Produtos
+- Adção e edição de Pedidos
+- Filtragem de Pedidos
 
 
 ## ✨ Tecnologias
 
--   [x] React Js
--   [x] Hooks
--   [x] Router Dom
--   [x] Testing Library
--   [x] SASS
+- React Js
+- Redux
+- Hooks
+- Router Dom
+- Testing Library
+- SASS
 
 ## 🔖 Layout
 
