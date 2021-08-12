@@ -8,7 +8,7 @@ function NavSelectButton({ icon, text, options }) {
 
   return (
     <nav>
-      <div className="nav-select" onClick={() => setOpen(!open)}>
+      <div className="nav-select" data-testid='nav-dropdown-button' onClick={() => setOpen(!open)}>
         <span className="nav-select-icon">{ icon }</span>
         <p className="nav-select-text">{ text }</p>
         <span className="nav-select-arrow">{ selectArrowIcon }</span>
