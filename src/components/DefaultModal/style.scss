@@ -1,0 +1,22 @@
+@import '../../App.scss';
+
+.modal-cover-container{
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: $black-50;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal-content-container{
+    width: 50%;
+    height: 50%;
+    background-color:  $secondary-white;
+    border: 1px solid $semi-gray;
+    border-radius: $border-radius;
+  }
+}
