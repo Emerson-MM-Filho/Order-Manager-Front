@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { showOrderDetailModalAction } from '../../redux/actions/allOrders'
 import './style.scss'
 
 import PaymentMethod from '../PaymentMethod'
@@ -16,7 +18,7 @@ const total = (products) => {
   }, 0).toFixed(2).replace('.', ',')
 }
 
-function TableDataRow({data}) {
+function TableDataRow({data, showOrderDetailModal}) {
   return(
     <tr className="all-orders-table-row">
       <td><input type='checkbox' /></td>
@@ -28,7 +30,7 @@ function TableDataRow({data}) {
       <td><PaymentStatus status={data.payment.status}/></td>
       <td><DeliveryType type={data.delivery.method} addClass='component-color'/></td>
       <td className='actions'>
-        <button className='show-more-icon'>{eyeIcon}</button>
+        <button className='show-more-icon' onClick={() => { showOrderDetailModal(true) }}>{eyeIcon}</button>
         <button className='edit-icon'>{editIcon}</button>
         <button className='trash-icon'>{trashIcon}</button>
       </td>
@@ -36,4 +38,8 @@ function TableDataRow({data}) {
   )
 }
 
-export default TableDataRow
+const mapDispatchToProps = (dispatch) =>({
+  showOrderDetailModal: (params) => dispatch(showOrderDetailModalAction(params))
+})
+
+export default connect(null, mapDispatchToProps)(TableDataRow)
