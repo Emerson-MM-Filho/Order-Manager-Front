@@ -1,0 +1,14 @@
+@import '../../App.scss';
+
+.table-data-row-order-details{
+  .highlight{
+    font-weight: $font-medium;
+    font-size: 14px;
+  }
+
+  .normal{
+    font-weight: $font-medium;
+    font-size: 14px;
+    color: $gray;
+  }
+}
