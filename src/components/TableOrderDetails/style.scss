@@ -1,0 +1,22 @@
+@import '../../App.scss';
+
+.order-detail-products-table{
+  border-collapse: collapse;
+  width: 100%;
+  
+  thead {
+    background-color: $secondary-white;
+
+    th{
+      padding: 15px 10px;
+    }
+  }
+
+  tfoot{
+    td{
+      font-size: 14px;
+      color: $gray;
+      text-align: right;
+    }
+  }
+}
