@@ -10,7 +10,7 @@ import { eyeIcon, editIcon, trashIcon } from '../../icons'
 
 const total = (products) => {
   return products.reduce((acc, current) => {
-    if(current.type === 'wheight') {
+    if(current.type === 'Wheight') {
       return acc + ((current.quantity / 1000) * current.option.price)
     }
     return acc + (current.quantity * current.option.price)
@@ -19,7 +19,7 @@ const total = (products) => {
 
 
 function TableDataRow({data}) {
-  const { setModal } = useContext(AllOrdersContext)
+  const { setModal, setOrder } = useContext(AllOrdersContext)
   return(
     <tr className="all-orders-table-row">
       <td><input type='checkbox' /></td>
@@ -31,7 +31,10 @@ function TableDataRow({data}) {
       <td><PaymentStatus status={data.payment.status}/></td>
       <td><DeliveryType type={data.delivery.method} addClass='component-color'/></td>
       <td className='actions'>
-        <button className='show-more-icon' onClick={() => setModal(true) }>{eyeIcon}</button>
+        <button className='show-more-icon' onClick={() => {
+          setModal(true)
+          setOrder(data)
+        } }>{eyeIcon}</button>
         <button className='edit-icon'>{editIcon}</button>
         <button className='trash-icon'>{trashIcon}</button>
       </td>
