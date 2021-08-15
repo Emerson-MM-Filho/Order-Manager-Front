@@ -27,13 +27,13 @@ export const mockOrders = [
         id: 1,
         name: 'Torta',
         quantity: 2000,
-        type: 'wheight',
+        type: 'Wheight',
         description: 'Torta com massa crocante decorada de acordo com a opção de sabor.',
         tag: ['torta'],
         code: '#PR256',
         option: {
           id: 1,
-          description: 'Chocotorta Argentina',
+          optionName: 'Chocotorta Argentina',
           price: 60,
           image: 'https://www.comidaereceitas.com.br/wp-content/uploads/2017/01/chocotorta.jpg'
         },
@@ -48,7 +48,7 @@ export const mockOrders = [
         code: '#PR345',
         option: {
           id: 1,
-          description: 'Morango',
+          optionName: 'Morango',
           price: 8,
           image: 'https://p7m4z9n9.stackpathcdn.com/wp-content/uploads/2020/04/receita_bombomdemorango.jpg'
         },
@@ -63,7 +63,7 @@ export const mockOrders = [
         code: '#PR345',
         option: {
           id: 1,
-          description: 'Côco',
+          optionName: 'Côco',
           price: 2.50,
           image: 'https://comidinhasdochef.com/wp-content/uploads/2018/05/Bala-Baiana-de-Coco.jpg'
         },
@@ -104,7 +104,7 @@ export const mockOrders = [
         code: '#PR345',
         option: {
           id: 1,
-          description: 'Morango',
+          optionName: 'Morango',
           price: 8,
           image: 'https://p7m4z9n9.stackpathcdn.com/wp-content/uploads/2020/04/receita_bombomdemorango.jpg'
         },
@@ -119,7 +119,7 @@ export const mockOrders = [
         code: '#PR345',
         option: {
           id: 1,
-          description: 'Côco',
+          optionName: 'Côco',
           price: 2.50,
           image: 'https://comidinhasdochef.com/wp-content/uploads/2018/05/Bala-Baiana-de-Coco.jpg'
         },
@@ -160,7 +160,7 @@ export const mockOrders = [
         code: '#PR345',
         option: {
           id: 1,
-          description: 'Côco',
+          optionName: 'Côco',
           price: 2.50,
           image: 'https://comidinhasdochef.com/wp-content/uploads/2018/05/Bala-Baiana-de-Coco.jpg'
         },
@@ -173,20 +173,20 @@ export const mockProducts = [
   {
     id: 1,
     name: 'Torta',
-    type: 'wheight',
+    type: 'Wheight',
     description: 'Torta com massa crocante decorada de acordo com a opção de sabor.',
     tag: ['torta'],
     code: '#PR256',
     options: [
       {
         id: 1,
-        description: 'Chocotorta Argentina',
+        optionName: 'Chocotorta Argentina',
         price: 60,
         image: 'https://www.comidaereceitas.com.br/wp-content/uploads/2017/01/chocotorta.jpg'
       },
       {
         id: 2,
-        description: 'Morango',
+        optionName: 'Morango',
         price: 80,
         image: 'https://www.comidaereceitas.com.br/wp-content/uploads/2017/01/chocotorta.jpg'
       },
@@ -195,20 +195,20 @@ export const mockProducts = [
   {
     id: 2,
     name: 'Bolo',
-    type: 'wheight',
+    type: 'Wheight',
     description: 'Bolo redondo',
     tag: ['Bolo'],
     code: '#PR275',
     options: [
       {
         id: 1,
-        description: 'Morango',
+        optionName: 'Morango',
         price: 80,
         image: 'https://www.comidaereceitas.com.br/wp-content/uploads/2017/01/chocotorta.jpg'
       },
       {
         id: 2,
-        description: 'Abacaxi',
+        optionName: 'Abacaxi',
         price: 60,
         image: 'https://www.comidaereceitas.com.br/wp-content/uploads/2017/01/chocotorta.jpg'
       },
