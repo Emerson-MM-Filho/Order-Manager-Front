@@ -1,16 +1,17 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useContext } from 'react'
 import './style.scss'
 
+import AllOrdersContext from '../../context/allOrders/allOrdersContext'
 import Header from '../../components/Header'
 import OrdersFilter from '../../components/OrdersFilter'
 import AllOrdersTable from '../../components/AllOrdersTable'
 import OrderDetail from '../../components/OrderDetail'
 
-function allOrders({showOrderDetail}) {
+function AllOrders() {
+  const { modal } = useContext(AllOrdersContext)
   return (
     <div data-testid='all-orders-page'>
-          {showOrderDetail &&<OrderDetail />}
+      {modal && <OrderDetail />}
       <Header />
       <div className='all-orders-container'>
         <h1>Pedidos</h1>
@@ -23,8 +24,4 @@ function allOrders({showOrderDetail}) {
   )
 }
 
-const mapStateToProps = (store) => ({
-  showOrderDetail: store.allOrders.showOrderDetailModal
-})
-
-export default connect(mapStateToProps, null)(allOrders)
+export default AllOrders

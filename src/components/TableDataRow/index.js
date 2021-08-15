@@ -1,8 +1,7 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { showOrderDetailModalAction } from '../../redux/actions/allOrders'
+import React, { useContext } from 'react'
 import './style.scss'
 
+import AllOrdersContext from '../../context/allOrders/allOrdersContext'
 import PaymentMethod from '../PaymentMethod'
 import PaymentStatus from '../PaymentStatus'
 import DeliveryType from '../DeliveryType'
@@ -18,7 +17,9 @@ const total = (products) => {
   }, 0).toFixed(2).replace('.', ',')
 }
 
-function TableDataRow({data, showModal}) {
+
+function TableDataRow({data}) {
+  const { setModal } = useContext(AllOrdersContext)
   return(
     <tr className="all-orders-table-row">
       <td><input type='checkbox' /></td>
@@ -30,7 +31,7 @@ function TableDataRow({data, showModal}) {
       <td><PaymentStatus status={data.payment.status}/></td>
       <td><DeliveryType type={data.delivery.method} addClass='component-color'/></td>
       <td className='actions'>
-        <button className='show-more-icon' onClick={() => { showModal(true) }}>{eyeIcon}</button>
+        <button className='show-more-icon' onClick={() => setModal(true) }>{eyeIcon}</button>
         <button className='edit-icon'>{editIcon}</button>
         <button className='trash-icon'>{trashIcon}</button>
       </td>
@@ -38,8 +39,4 @@ function TableDataRow({data, showModal}) {
   )
 }
 
-const mapDispatchToProps = (dispatch) =>({
-  showModal: (params) => dispatch(showOrderDetailModalAction(params))
-})
-
-export default connect(null, mapDispatchToProps)(TableDataRow)
+export default TableDataRow

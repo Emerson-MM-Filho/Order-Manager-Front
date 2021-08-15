@@ -1,24 +1,21 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useContext } from 'react'
 import './style.scss'
 
-import { showOrderDetailModalAction } from '../../redux/actions/allOrders'
+import AllOrdersContext from '../../context/allOrders/allOrdersContext'
 import DefaultModal from '../DefaultModal'; 
 import { closeIcon } from '../../icons'
 
-function OrderDetail({closeModal}) {
+function OrderDetail() {
+  const { setModal } = useContext(AllOrdersContext)
+
   return (
     <DefaultModal>
       <div className='order-detail'>
         <h2>Detalhes do Pedido</h2>
-        <button type='button' onClick={() => closeModal(false)}>{closeIcon}</button>
+        <button type='button' onClick={() => setModal(false)}>{closeIcon}</button>
       </div>
     </DefaultModal>
   )
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  closeModal: (param) => dispatch(showOrderDetailModalAction(param))
-})
-
-export default connect(null, mapDispatchToProps)(OrderDetail);
+export default OrderDetail
