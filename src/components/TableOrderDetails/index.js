@@ -2,7 +2,7 @@ import React from 'react'
 import './style.scss'
 
 import TableDataRowOrderDetails from '../TableDataRowOrderDetails'
-import DefaultContainer from '../DefaultContainer'
+
 
 const total = (products) => {
   return products.reduce((acc, current) => {
@@ -15,27 +15,25 @@ const total = (products) => {
 
 function TableOrderDetails({products}) {
   return (
-    <DefaultContainer>
-      <table className='order-detail-products-table'>
-        <thead>
-          <tr>
-            <th>Produto</th>
-            <th>Descrição</th>
-            <th>Opção</th>
-            <th>Quantidade</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map(product => <TableDataRowOrderDetails data={product} key={product.id} />)}
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan='5'>{`Total: ${total(products)}`}</td>
-          </tr>
-        </tfoot>
-      </table>
-    </DefaultContainer>
+    <table className='order-detail-products-table'>
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Descrição</th>
+          <th>Opção</th>
+          <th>Quantidade</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {products.map(product => <TableDataRowOrderDetails data={product} key={product.id} />)}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colSpan='5'>{`Total: ${total(products)}`}</td>
+        </tr>
+      </tfoot>
+    </table>
   )
 }
 
