@@ -1,24 +1,39 @@
 @import '../../App.scss';
+.order-detail-container {
 
-.order-detail {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 25px;
-  border-bottom: 1px solid $gray;
-
-  h2{
-    font-size: 15px;
-    font-weight: $font-bold;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    padding: 25px;
+    border-bottom: 1px solid $gray;
+  
+    h2{
+      font-size: 15px;
+      font-weight: $font-bold;
+    }
+  
+    svg{
+      fill: $black;
+    }
+  
+    button{
+      background-color: transparent;
+      border: none;
+    }
   }
 
-  svg{
-    fill: $black;
+  .order-id{
+    p{
+      font-weight: $font-semi-bold;
+      color: $gray;
+    }
+
+    span{
+      font-weight: $font-semi-bold;
+      color: $blue;
+    }
   }
 
-  button{
-    background-color: transparent;
-    border: none;
-  }
 }
