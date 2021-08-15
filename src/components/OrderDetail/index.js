@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import './style.scss'
 
+import DefaultContainer from '../DefaultContainer'
 import TableOrderDetails from '../TableOrderDetails'
 import AllOrdersContext from '../../context/allOrders/allOrdersContext'
 import DefaultModal from '../DefaultModal'; 
@@ -20,7 +21,9 @@ function OrderDetail() {
         <div className='order-id'>
           <p>ID Pedido: <span>{order.id}</span></p>
         </div>
-        <TableOrderDetails products={order.products} />
+        <DefaultContainer addClass='products-table'>
+          <TableOrderDetails products={order.products} />
+        </DefaultContainer>
       </div>
     </DefaultModal>
   )
