@@ -1,0 +1,33 @@
+@import '../../App.scss';
+
+.delivery-info{
+  .infos{
+    margin-top: 10px;
+
+    p{
+      display: flex;
+      flex-direction: column;
+      span{
+        margin: 0 0 15px 10px;
+        color: $gray;
+      }
+    }
+
+    .inline-info{
+      display: flex;
+      
+      p{
+        width: 50%;
+      }
+
+    }
+    
+    .icon-color{
+      color: $gray;
+  
+      svg{
+        fill: $gray;
+      }
+    }
+  }
+}
