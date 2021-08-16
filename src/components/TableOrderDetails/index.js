@@ -31,7 +31,7 @@ function TableOrderDetails({products}) {
       <tfoot>
         <tr>
           <td colSpan='4'>Total:</td>
-          <td>{total(products)}</td>
+          <td>{`R$ ${total(products)}`}</td>
         </tr>
       </tfoot>
     </table>
