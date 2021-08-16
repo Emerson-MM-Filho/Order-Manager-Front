@@ -1,5 +1,10 @@
 @import '../../App.scss';
 
+
+.order-complete{
+  background-color: $semi-gray;
+}
+
 .all-orders-table-row{
   height: 50px;
   border-bottom: 1px solid $secondary-white;
