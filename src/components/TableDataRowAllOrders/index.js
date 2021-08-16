@@ -17,8 +17,7 @@ const total = (products) => {
   }, 0).toFixed(2).replace('.', ',')
 }
 
-
-function TableDataRow({data}) {
+function TableDataRowAllOrders({data}) {
   const { setModal, setOrder } = useContext(AllOrdersContext)
   return(
     <tr className="all-orders-table-row">
@@ -42,4 +41,4 @@ function TableDataRow({data}) {
   )
 }
 
-export default TableDataRow
+export default TableDataRowAllOrders

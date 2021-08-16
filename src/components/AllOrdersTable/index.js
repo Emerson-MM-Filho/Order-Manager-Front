@@ -5,7 +5,7 @@ import { plusIcon } from '../../icons'
 import DefaultContainer from '../DefaultContainer'
 import SearchBar from '../SearchBar'
 import DefaultButton from '../DefaultButton'
-import TableDataRow from '../TableDataRow'
+import TableDataRowAllOrders from '../TableDataRowAllOrders'
 
 import { mockOrders } from '../../mockDataBase'
 
@@ -33,7 +33,7 @@ function AllOrdersTable() {
               </tr>
             </thead>
             <tbody>
-              {mockOrders.map((current) => <TableDataRow data={current} key={current.id}/>)}
+              {mockOrders.map((current) => <TableDataRowAllOrders data={current} key={current.id}/>)}
             </tbody>
           </table>
         </div>
