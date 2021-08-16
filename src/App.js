@@ -11,8 +11,8 @@ function App() {
     <Switch>
       <Provider>
         <Route exact path='/' component={ AllOrders } />
+        <Route exact path='/new-order' component={ NewOrder } />
       </Provider>
-      <Route exact path='/new-order' component={ NewOrder } />
     </Switch>
   )
 }
