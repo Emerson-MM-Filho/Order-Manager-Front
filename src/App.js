@@ -4,7 +4,7 @@ import './App.scss'
 
 import Provider from './context/allOrders/allOrdersProvider'
 import AllOrders from './pages/AllOrders/AllOrders.js'
-import NewOrder from './pages/NewOrder'
+import NewOrder from './pages/NewOrder/NewOrder'
 
 function App() {
   return (
