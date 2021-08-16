@@ -6,6 +6,7 @@ import TableOrderDetails from '../TableOrderDetails'
 import AllOrdersContext from '../../context/allOrders/allOrdersContext'
 import DefaultModal from '../DefaultModal'; 
 import { closeIcon } from '../../icons'
+import DeliveryInfos from '../DeliveryInfos'
 
 
 function OrderDetail() {
@@ -18,12 +19,15 @@ function OrderDetail() {
           <h2>Detalhes do Pedido</h2>
           <button type='button' onClick={() => setModal(false)}>{closeIcon}</button>
         </div>
+        <div className='order-id'>
+          <p>ID Pedido: <span>{order.id}</span></p>
+        </div>
         <div className='order-detail-content'>
-          <div className='order-id'>
-            <p>ID Pedido: <span>{order.id}</span></p>
-          </div>
           <DefaultContainer addClass='products-table'>
             <TableOrderDetails products={order.products} />
+          </DefaultContainer>
+          <DefaultContainer addClass='delivery-details'>
+            <DeliveryInfos order={order} />
           </DefaultContainer>
         </div>
       </div>

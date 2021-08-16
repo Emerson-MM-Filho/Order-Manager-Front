@@ -1,12 +1,13 @@
 @import '../../App.scss';
 .order-detail-container {
+  height: 100%;
 
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  
-    padding: 25px;
+    height: 10%;
+    padding: 0 25px;
     border-bottom: 1px solid $gray;
   
     h2{
@@ -25,6 +26,11 @@
   }
 
   .order-id{
+    display: flex;
+    align-items: center;
+    height: 5%;
+    padding: 0 25px;
+
     p{
       font-weight: $font-semi-bold;
       color: $gray;
@@ -37,11 +43,24 @@
   }
 
   .order-detail-content{
-    padding: 25px;
+    height: calc(85% - 25px);
+    margin: 25px;
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    overflow-y: scroll;
   }
 
   .products-table{
+    height: fit-content;
     width: calc(75% - 15px);
+    margin: 0;
+  }
+
+  .delivery-details{
+    height: fit-content;
+    margin: 0;
+    width: 25%;
   }
 
 }
