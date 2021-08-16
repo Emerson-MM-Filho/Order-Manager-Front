@@ -13,7 +13,7 @@ function OrderDetail() {
   const { order, setModal } = useContext(AllOrdersContext)
   
   return (
-    <DefaultModal closeModal={() => setModal(false)}>
+    <DefaultModal>
       <div className='order-detail-container'>
         <div className='header'>
           <h2>Detalhes do Pedido</h2>
