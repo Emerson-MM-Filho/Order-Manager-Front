@@ -30,7 +30,8 @@ function TableOrderDetails({products}) {
       </tbody>
       <tfoot>
         <tr>
-          <td colSpan='5'>{`Total: ${total(products)}`}</td>
+          <td colSpan='4'>Total:</td>
+          <td>{total(products)}</td>
         </tr>
       </tfoot>
     </table>

@@ -18,12 +18,14 @@ function OrderDetail() {
           <h2>Detalhes do Pedido</h2>
           <button type='button' onClick={() => setModal(false)}>{closeIcon}</button>
         </div>
-        <div className='order-id'>
-          <p>ID Pedido: <span>{order.id}</span></p>
+        <div className='order-detail-content'>
+          <div className='order-id'>
+            <p>ID Pedido: <span>{order.id}</span></p>
+          </div>
+          <DefaultContainer addClass='products-table'>
+            <TableOrderDetails products={order.products} />
+          </DefaultContainer>
         </div>
-        <DefaultContainer addClass='products-table'>
-          <TableOrderDetails products={order.products} />
-        </DefaultContainer>
       </div>
     </DefaultModal>
   )
