@@ -6,8 +6,8 @@ import { truckIcon, storeIcon } from '../../icons';
 function DeliveryType({type, addClass}) {
   return (
     <div className={`delivery-type ${addClass}`}>
-      {type === 'Delivery' ? truckIcon : storeIcon}
-      {type}
+      {type === 'dispatch' ? truckIcon : storeIcon}
+      {type  === 'dispatch' ? 'Entrega' : 'Retirada no Local'}
     </div>
   )
 }
