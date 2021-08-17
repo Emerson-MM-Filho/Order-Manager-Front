@@ -68,141 +68,6 @@ export const mockOrders = [
           image: 'https://comidinhasdochef.com/wp-content/uploads/2018/05/Bala-Baiana-de-Coco.jpg'
         },
       },
-      {
-        id: 1,
-        name: 'Torta',
-        quantity: 2000,
-        type: 'Wheight',
-        description: 'Torta com massa crocante decorada de acordo com a opção de sabor.',
-        tag: ['torta'],
-        code: '#PR256',
-        option: {
-          id: 1,
-          optionName: 'Chocotorta Argentina',
-          price: 60,
-          image: 'https://www.comidaereceitas.com.br/wp-content/uploads/2017/01/chocotorta.jpg'
-        },
-      },
-      {
-        id: 2,
-        name: 'Bombom',
-        quantity: 5,
-        type: 'Unity',
-        description: 'Bombom decorado com fios de chocolate',
-        tag: ['bombom'],
-        code: '#PR345',
-        option: {
-          id: 1,
-          optionName: 'Morango',
-          price: 8,
-          image: 'https://p7m4z9n9.stackpathcdn.com/wp-content/uploads/2020/04/receita_bombomdemorango.jpg'
-        },
-      },
-      {
-        id: 3,
-        name: 'Bala Baiana',
-        quantity: 15,
-        type: 'Unity',
-        description: 'Bala de coco coberta com açucar',
-        tag: ['Bala'],
-        code: '#PR345',
-        option: {
-          id: 1,
-          optionName: 'Côco',
-          price: 2.50,
-          image: 'https://comidinhasdochef.com/wp-content/uploads/2018/05/Bala-Baiana-de-Coco.jpg'
-        },
-      },
-      {
-        id: 1,
-        name: 'Torta',
-        quantity: 2000,
-        type: 'Wheight',
-        description: 'Torta com massa crocante decorada de acordo com a opção de sabor.',
-        tag: ['torta'],
-        code: '#PR256',
-        option: {
-          id: 1,
-          optionName: 'Chocotorta Argentina',
-          price: 60,
-          image: 'https://www.comidaereceitas.com.br/wp-content/uploads/2017/01/chocotorta.jpg'
-        },
-      },
-      {
-        id: 2,
-        name: 'Bombom',
-        quantity: 5,
-        type: 'Unity',
-        description: 'Bombom decorado com fios de chocolate',
-        tag: ['bombom'],
-        code: '#PR345',
-        option: {
-          id: 1,
-          optionName: 'Morango',
-          price: 8,
-          image: 'https://p7m4z9n9.stackpathcdn.com/wp-content/uploads/2020/04/receita_bombomdemorango.jpg'
-        },
-      },
-      {
-        id: 3,
-        name: 'Bala Baiana',
-        quantity: 15,
-        type: 'Unity',
-        description: 'Bala de coco coberta com açucar',
-        tag: ['Bala'],
-        code: '#PR345',
-        option: {
-          id: 1,
-          optionName: 'Côco',
-          price: 2.50,
-          image: 'https://comidinhasdochef.com/wp-content/uploads/2018/05/Bala-Baiana-de-Coco.jpg'
-        },
-      },
-      {
-        id: 1,
-        name: 'Torta',
-        quantity: 2000,
-        type: 'Wheight',
-        description: 'Torta com massa crocante decorada de acordo com a opção de sabor.',
-        tag: ['torta'],
-        code: '#PR256',
-        option: {
-          id: 1,
-          optionName: 'Chocotorta Argentina',
-          price: 60,
-          image: 'https://www.comidaereceitas.com.br/wp-content/uploads/2017/01/chocotorta.jpg'
-        },
-      },
-      {
-        id: 2,
-        name: 'Bombom',
-        quantity: 5,
-        type: 'Unity',
-        description: 'Bombom decorado com fios de chocolate',
-        tag: ['bombom'],
-        code: '#PR345',
-        option: {
-          id: 1,
-          optionName: 'Morango',
-          price: 8,
-          image: 'https://p7m4z9n9.stackpathcdn.com/wp-content/uploads/2020/04/receita_bombomdemorango.jpg'
-        },
-      },
-      {
-        id: 3,
-        name: 'Bala Baiana',
-        quantity: 15,
-        type: 'Unity',
-        description: 'Bala de coco coberta com açucar',
-        tag: ['Bala'],
-        code: '#PR345',
-        option: {
-          id: 1,
-          optionName: 'Côco',
-          price: 2.50,
-          image: 'https://comidinhasdochef.com/wp-content/uploads/2018/05/Bala-Baiana-de-Coco.jpg'
-        },
-      },
     ],
   },
   {
@@ -350,3 +215,7 @@ export const mockProducts = [
     ],
   },
 ]
+
+export const addOrder = order => {
+  mockOrders.push(order)
+}
