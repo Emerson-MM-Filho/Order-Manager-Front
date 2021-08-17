@@ -10,7 +10,7 @@ export const mockOrders = [
     delivery: {
       date: '10/10/2021',
       time: '16:20',
-      method: 'Delivery',
+      method: 'dispatch',
     },
     client: {
       name: 'Emerson Filho',
@@ -81,7 +81,7 @@ export const mockOrders = [
     delivery: {
       date: '11/10/2021',
       time: '10:00',
-      method: 'Retirada no local',
+      method: 'pickUp',
     },
     client: {
       name: 'Luana Escarponeza',
@@ -137,7 +137,7 @@ export const mockOrders = [
     delivery: {
       date: '12/10/2021',
       time: '17:30',
-      method: 'Delivery',
+      method: 'dispatch',
     },
     client: {
       name: 'Beatriz Dias',
