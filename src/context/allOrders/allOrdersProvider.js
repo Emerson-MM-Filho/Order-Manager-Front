@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import AllOrdersContext from './allOrdersContext'
 
-function Provider({children}) {
+function AllOrdersProvider({children}) {
   const [modal, setModal] = useState(false)
   const [order, setOrder] = useState({})
 
@@ -19,4 +19,4 @@ function Provider({children}) {
   )
 }
 
-export default Provider
+export default AllOrdersProvider
