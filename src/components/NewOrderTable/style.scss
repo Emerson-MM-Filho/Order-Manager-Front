@@ -1,0 +1,28 @@
+@import '../../App.scss';
+
+.new-order-table{
+  width: 60%;
+  
+  .new-order-products-table{
+        
+    border-collapse: collapse;
+    width: 100%;
+    
+    thead {
+      background-color: $secondary-white;
+  
+      th{
+        padding: 15px 10px;
+        text-align: left;
+      }
+  
+      th:nth-child(1) {
+        text-align: center;
+      }
+      
+      th:nth-child(5) {
+        text-align: center;
+      }
+    }
+  }
+}
