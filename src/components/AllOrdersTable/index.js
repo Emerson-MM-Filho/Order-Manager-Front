@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './style.scss'
 
 import { useHistory } from 'react-router-dom'
@@ -7,14 +7,18 @@ import DefaultContainer from '../DefaultContainer'
 import SearchBar from '../SearchBar'
 import DefaultButton from '../DefaultButton'
 import TableDataRowAllOrders from '../TableDataRowAllOrders'
+import AllOrdersContext from '../../context/allOrders/allOrdersContext'
+import OrderDetail from '../OrderDetail'
 
 import { mockOrders } from '../../mockDataBase'
 
 function AllOrdersTable() {
+  const { modal } = useContext(AllOrdersContext)
   const history = useHistory()
 
   return (
     <DefaultContainer addClass='all-orders'>
+      {modal && <OrderDetail />}
       <div className='all-orders-table-container'>
         <div className='all-orders-table-container-header'>
           <SearchBar theme='gray'/>
