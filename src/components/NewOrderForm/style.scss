@@ -1,4 +1,25 @@
 .new-order-form{
-  width: calc(40% - 15px);
+  width: calc(30% - 15px);
   margin-left: 15px;
+
+  .inline-label{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+
+    input[type="checkbox"] {
+      margin: 0;
+      margin-right: 15px;
+    }
+  }
+
+  .inline-input{
+    display: flex;
+    justify-content: space-between;
+
+    .inline{
+      width: calc(50% - 7.5px)
+    }
+  }
 }
