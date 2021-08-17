@@ -3,17 +3,16 @@ import './style.scss'
 
 import TableDataRowOrderDetails from '../TableDataRowOrderDetails'
 
-
-const total = (products) => {
-  return products.reduce((acc, current) => {
-    if(current.type === 'Wheight') {
-      return acc + ((current.quantity / 1000) * current.option.price)
-    }
-    return acc + (current.quantity * current.option.price)
-  }, 0).toFixed(2).replace('.', ',')
-}
-
 function TableOrderDetails({products}) {
+  const total = (products) => {
+    return products.reduce((acc, current) => {
+      if(current.type === 'Wheight') {
+        return acc + ((current.quantity / 1000) * current.option.price)
+      }
+      return acc + (current.quantity * current.option.price)
+    }, 0).toFixed(2).replace('.', ',')
+  }
+
   return (
     <table className='order-detail-products-table'>
       <thead>
