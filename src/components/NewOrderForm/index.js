@@ -59,6 +59,11 @@ function NewOrderForm() {
         <LabelWithInput type='text' label='Nome' text='Insira o Nome'/>
         <LabelWithInput type='text' label='Telefone' text='Insira o Telefone'/>
         <LabelWithSelect options={paymentsMethods} text='Método de Pagamento' />
+        <LabelWithInput
+          type='checkbox'
+          label='Este pedido está pago?'
+          addClass='inline-label'
+        />
         <LabelWithSelect
           options={deliveryMethods}
           text='Método de Entrega'
