@@ -188,7 +188,7 @@ export const mockProducts = [
         id: 2,
         optionName: 'Morango',
         price: 80,
-        image: 'https://www.comidaereceitas.com.br/wp-content/uploads/2017/01/chocotorta.jpg'
+        image: 'https://static.clubedaanamariabraga.com.br/wp-content/uploads/2019/03/torta-morango-confeitaria2-scaled.jpg'
       },
     ],
   },
@@ -210,7 +210,7 @@ export const mockProducts = [
         id: 2,
         optionName: 'Abacaxi',
         price: 60,
-        image: 'https://www.comidaereceitas.com.br/wp-content/uploads/2017/01/chocotorta.jpg'
+        image: 'https://www.receitasagora.com.br/wp-content/uploads/2020/08/receita-de-bolo-de-abacaxi-e1596638401347.jpg'
       },
     ],
   },
