@@ -1,0 +1,36 @@
+@import '../../App.scss';
+
+.new-order-products-modal{
+  
+  .products-modal-container {
+    height: 100%;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 10%;
+      padding: 0 25px;
+      border-bottom: 1px solid $gray;
+
+      svg {
+        fill: $gray;
+      }
+
+      button {
+        background-color: transparent;
+        border: none;
+      }
+    }
+
+    .table-content-container{
+      height: calc(90% - 50px);
+      margin: 25px;
+      overflow-y: scroll;
+
+      table{
+        width: 100%;
+      }
+    }    
+  }
+}
