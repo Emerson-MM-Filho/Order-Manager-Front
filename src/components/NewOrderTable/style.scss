@@ -2,6 +2,12 @@
 
 .new-order-table{
   width: 70%;
+
+  .add-product-button{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+  }
   
   .new-order-products-table{
         
