@@ -22,6 +22,10 @@ Esta aplicação auxiliará a organizar os pedidos de sua loja, cadastrando todo
 - Testing Library
 - SASS
 
+## Planejamento / Desenvolvimento
+
+O planejamento e desenvolvimento deste projeto está disponível no [Notion](https://foamy-bear-4ed.notion.site/Order-System-3801c5db5dbd4d73b550d90f7832a08d)
+
 ## 🔖 Layout
 
 Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/file/maWCp4iz0oXmRbEEp51Wv7/sistemaDePedidos?node-id=0%3A1).
