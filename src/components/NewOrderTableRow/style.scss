@@ -1,0 +1,20 @@
+@import '../../App.scss';
+
+.new-order-product-row{
+  td {
+    .product-option{
+      display: flex;
+      flex-direction: column;
+
+      .option-selected{
+        font-weight: $font-regular;
+        color: $gray;
+
+        span{
+          margin-left: 5px;
+          font-weight: $font-regular;
+        }
+      }
+    }    
+  }
+}
