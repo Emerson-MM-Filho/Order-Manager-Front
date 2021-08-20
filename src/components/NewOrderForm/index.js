@@ -91,6 +91,7 @@ function NewOrderForm() {
             <LabelWithInput type='time' label='Hora de Entrega' text='Hora de Entrega' addClass='inline'/>
           </div>
         )}
+        <LabelWithInput type='text' label='Anotação' text='Insira uma anotação ao pedido'/>
       </div>
     </DefaultContainer>
   )
