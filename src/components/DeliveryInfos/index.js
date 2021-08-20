@@ -36,38 +36,38 @@ function DeliveryInfos({order}) {
           </span>
         </p>
         <div className='inline-info'>
-          <p>
+          <p className='inline-content'>
             Data:
             <span>
               {delivery.date}
             </span>
           </p>
-          <p>
+          <p className='inline-content'>
             Hora:
             <span>
               {delivery.time}
             </span>
           </p>
         </div>
-        <p>
+        <div>
           Entrega:
           <span>
             <DeliveryType type={delivery.method} addClass='icon-color'/>
           </span>
-        </p>
+        </div>
         <div className='inline-info'>
-          <p>
+          <div className='inline-content'>
             Pagamento:
             <span>
               <PaymentMethod type={payment.method} addClass='icon-color'/>
             </span>
-          </p>
-          <p>
+          </div>
+          <div className='inline-content'>
             Status:
             <span>
               <PaymentStatus status={payment.status}/>
             </span>
-          </p>
+          </div>
         </div>
         <p>
           Nota:
