@@ -1,0 +1,45 @@
+@import '../../App.scss';
+
+.input-number-component{
+  display: flex;
+  flex-direction: row;
+  height: 35px;
+
+  input[type="number"] {
+    background-color: $white;
+    border: 1px solid $secondary-white;
+    border-radius: 5px 0 0 5px;
+  }
+
+  .increment-buttons{
+    display: flex;
+    flex-direction: column;
+
+    button{
+      width: 25px;
+      height: 50%;
+      background-color: $blue;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      svg{
+        fill: $white;
+      }
+    }
+    
+    button:nth-child(1) {
+      border-radius: 0 5px 0 0;
+      svg{
+        width: 8px;
+        height: 8px;
+      }
+    }
+    
+    button:nth-child(2) {
+      border-top: 1px solid $black-25;
+      border-radius: 0 0 5px 0;
+    }
+  }
+}
