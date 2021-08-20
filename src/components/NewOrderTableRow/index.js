@@ -1,18 +1,30 @@
 import React from 'react'
+import './style.scss'
 
-function NewOrderTableRow({products}) {
+import SquareImage from '../SquareImage'
+import InputNumber from '../InputNumber'
+
+function NewOrderTableRow({product}) {
   return (
-    <tbody>
-      {products.map((current) => (
-        <tr key={current.option.id}>
-          <td>{current.name}</td>
-          <td>{current.description}</td>
-          <td>{current.option.price}</td>
-          <td><input type='number'/></td>
-          <td>{current.option.price}</td>
-        </tr>
-      ))}
-    </tbody>
+    <tr key={product.options.id} className='new-order-product-row'>
+      <td><SquareImage image={product.options.image} /></td>
+      <td>
+        <div className='product-option'>
+          <p>
+            {product.name}
+          </p>
+          <p className='option-selected'>
+            Opção:
+            <span>
+              {product.options.optionName}
+            </span>
+          </p>
+        </div>
+      </td>
+      <td>R$ {product.options.price.toFixed(2).replace('.',',')}</td>
+      <td><InputNumber/></td>
+      <td>R$ {product.options.price.toFixed(2).replace('.',',')}</td>
+    </tr>
   )
 }
 
