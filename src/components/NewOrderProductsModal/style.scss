@@ -1,7 +1,10 @@
 @import '../../App.scss';
 
-.new-order-products-modal{
-  
+#products-modal{
+  width: 40%;
+}
+
+.new-order-products-modal{ 
   .products-modal-container {
     height: 100%;
 
@@ -24,13 +27,38 @@
     }
 
     .table-content-container{
-      height: calc(90% - 50px);
+      height: calc(81% - 50px);
       margin: 25px;
       overflow-y: scroll;
 
       table{
+        border-collapse: collapse;
         width: 100%;
       }
-    }    
+
+      thead{
+        tr{
+          th{
+            padding: 10px;
+            text-align: center;
+          }
+
+          th:nth-child(2) {
+            text-align: left;
+          }
+
+          th:nth-child(3) {
+            text-align: left;
+          }
+        }
+      }
+    }
+
+    .button-container{
+      display: flex;
+      justify-content: flex-end;
+      margin-right: 25px;
+      height: calc(9% - 25px);
+    }
   }
 }
