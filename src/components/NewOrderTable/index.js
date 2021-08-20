@@ -28,7 +28,9 @@ function NewOrderTable() {
             <th>Total</th>
           </tr>
         </thead>
-        <NewOrderTableRow products={products}/>
+        <tbody>
+          {products.map((current) => <NewOrderTableRow product={current} key={current.options.id}/>)}
+        </tbody>
       </table>
     </DefaultContainer>
   )
