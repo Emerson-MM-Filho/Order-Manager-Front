@@ -46,7 +46,7 @@ function NewOrderProductsModal() {
               </tr>
             </thead>
             <tbody>
-              {mockProducts.map((current) => <NewOrderAddProductTableRow product={current} handleClick={savePreviousProducts}/>)}
+              {mockProducts.map((current) => <NewOrderAddProductTableRow product={current} handleClick={savePreviousProducts} key={current.id}/>)}
             </tbody>
           </table>
         </DefaultContainer>
