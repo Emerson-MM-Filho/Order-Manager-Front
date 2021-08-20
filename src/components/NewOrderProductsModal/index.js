@@ -1,18 +1,33 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import './style.scss'
 
 import NewOrderContext from '../../context/newOrder/newOrderContext'
 import SearchBar from '../SearchBar'
 import DefaultModal from '../DefaultModal'
 import DefaultContainer from '../DefaultContainer'
+import DefaultButton from '../DefaultButton'
 import NewOrderAddProductTableRow from '../NewOrderAddProductTableRow'
-import { closeIcon } from '../../icons'
+import { closeIcon, plusIcon } from '../../icons'
 import { mockProducts } from '../../mockDataBase'
 
 function NewOrderProductsModal() {
-  const { setModal } = useContext(NewOrderContext)
+  const [previousProducts, setPreviousProducts] = useState([])
+  const { setModal, setProducts } = useContext(NewOrderContext)
+
+  const addProducts = () => {
+    setProducts(previousProducts)
+    setModal(false)
+  }
+
+  const savePreviousProducts = (product) => {
+    setPreviousProducts([
+      ...previousProducts,
+      product
+    ])
+  }
+
   return (
-    <DefaultModal addClass='new-order-products-modal'>
+    <DefaultModal id='products-modal' addClass='new-order-products-modal'>
       <div className='products-modal-container'>
         <div className='header'>
           <h2>Produtos</h2>
@@ -23,17 +38,21 @@ function NewOrderProductsModal() {
           <table>
             <thead>
               <tr>
-                <td>Produto</td>
-                <td>Opção</td>
-                <td>Descrição</td>
-                <td>Preço</td>
+                <th>Imagem</th>
+                <th>Produto</th>
+                <th>Opção</th>
+                <th>Preço</th>
+                <th>Adicionar</th>
               </tr>
             </thead>
             <tbody>
-              {mockProducts.map((current) => <NewOrderAddProductTableRow product={current} />)}
+              {mockProducts.map((current) => <NewOrderAddProductTableRow product={current} handleClick={savePreviousProducts}/>)}
             </tbody>
           </table>
         </DefaultContainer>
+        <div className='button-container'>
+          <DefaultButton icon={plusIcon} text='Adicionar' handleClick={addProducts}/>
+        </div>
       </div>
     </DefaultModal>
   )
