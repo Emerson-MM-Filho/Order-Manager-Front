@@ -9,13 +9,13 @@ Order Manager is a project to help companies to have more control about yours or
 The project began with the difficulty of an MEI (Individual Microentrepreneur) and even a small company, [which account for more than 56.7% of the total business in operation in Brazil](https://www.gov.br/pt-br/noticias/trabalho-e-previdencia/2021/03/cresceu-o-numero-de-microempreendedores-individuais-em-2020#:~:text=O%20n%C3%BAmero%20de%20Microempreendedores%20Individuais%20(MEI)%20cresceu%20no%20pa%C3%ADs%20ao,rela%C3%A7%C3%A3o%20ao%20ano%20de%202019.), in managing all their orders, products and customers.
 
 
-## Features V.1.0
+## Features v.1.0
 
 - Adding and Editing Products
 - Adding and Editing Orders
 
 
-## Technologies V.1.0
+## Technologies v.1.0
 
 - React Js
 - Redux
