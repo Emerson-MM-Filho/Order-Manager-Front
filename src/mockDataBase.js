@@ -179,13 +179,13 @@ export const mockProducts = [
     code: '#PR256',
     options: [
       {
-        id: 1,
+        id: 2,
         optionName: 'Chocotorta Argentina',
         price: 60,
         image: 'https://www.comidaereceitas.com.br/wp-content/uploads/2017/01/chocotorta.jpg'
       },
       {
-        id: 2,
+        id: 3,
         optionName: 'Morango',
         price: 80,
         image: 'https://static.clubedaanamariabraga.com.br/wp-content/uploads/2019/03/torta-morango-confeitaria2-scaled.jpg'
@@ -193,7 +193,7 @@ export const mockProducts = [
     ],
   },
   {
-    id: 2,
+    id: 4,
     name: 'Bolo',
     type: 'Wheight',
     description: 'Bolo redondo',
@@ -201,13 +201,13 @@ export const mockProducts = [
     code: '#PR275',
     options: [
       {
-        id: 1,
+        id: 5,
         optionName: 'Morango',
         price: 80,
         image: 'https://www.comidaereceitas.com.br/wp-content/uploads/2017/01/chocotorta.jpg'
       },
       {
-        id: 2,
+        id: 6,
         optionName: 'Abacaxi',
         price: 60,
         image: 'https://www.receitasagora.com.br/wp-content/uploads/2020/08/receita-de-bolo-de-abacaxi-e1596638401347.jpg'
