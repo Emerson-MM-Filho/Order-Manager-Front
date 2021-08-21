@@ -2,7 +2,7 @@
  <img src=".github/allOrders.png"/>
 </p>
 
-## Projeto
+## Project
 
 Order Manager is a project to help companies to have more control about yours orders, products and consumers.
 <br>
