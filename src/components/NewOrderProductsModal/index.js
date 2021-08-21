@@ -20,6 +20,12 @@ function NewOrderProductsModal() {
   }
 
   const savePreviousProducts = (product) => {
+    const alredyExists = previousProducts.find(current => current.id === product.id)
+    if (alredyExists) {
+      return setPreviousProducts(
+        previousProducts.filter(current => current.id !== product.id)
+      )
+    }
     setPreviousProducts([
       ...previousProducts,
       product
