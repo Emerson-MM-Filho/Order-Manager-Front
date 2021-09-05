@@ -12,10 +12,18 @@ import { mockProducts } from '../../mockDataBase'
 
 function NewOrderProductsModal() {
   const [previousProducts, setPreviousProducts] = useState([])
-  const { setModal, setProducts } = useContext(NewOrderContext)
+  const { setModal, products, setProducts } = useContext(NewOrderContext)
 
+  
   const addProducts = () => {
-    setProducts(previousProducts)
+    const compareProducts = (productA, productB) => productA.id === productB.id && productA.options.id === productB.options.id
+    let newProducts = [...products]
+    previousProducts.forEach(newProduct => {
+      const alreadyExists = products.find(product => compareProducts(product, newProduct))
+      if(!alreadyExists) return newProducts.push({...newProduct, quantity: 1})
+      newProducts = newProducts.map(product => compareProducts(product, newProduct) ? {...product, quantity: product.quantity + 1} : product )
+    })
+    setProducts(newProducts)
     setModal(false)
   }
 
@@ -28,7 +36,7 @@ function NewOrderProductsModal() {
     }
     setPreviousProducts([
       ...previousProducts,
-      product
+      product,
     ])
   }
 
