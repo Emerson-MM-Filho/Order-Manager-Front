@@ -5,6 +5,7 @@ import NewOrderProvider from '../../context/newOrder/newOrderProvider'
 import Header from '../../components/Header'
 import NewOrderTable from '../../components/NewOrderTable'
 import NewOrderForm from '../../components/NewOrderForm'
+import ContentPageTitle from '../../components/ContentPageTitle'
 
 function NewOrder() {
   return (
@@ -12,7 +13,7 @@ function NewOrder() {
       <div data-testid='new-order-page'>
         <Header />
         <div className='new-order-container'>
-          <h1>Novo Pedido</h1>
+          <ContentPageTitle title='Novo Pedido'/>
           <div className='new-order-page-content'>
             <NewOrderTable />
             <NewOrderForm />
