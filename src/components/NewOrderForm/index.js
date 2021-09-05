@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import './style.scss'
 
 import newOrderContext from '../../context/newOrder/newOrderContext'
@@ -7,7 +7,8 @@ import LabelWithInput from '../LabelWithInput'
 import LabelWithSelect from '../LabelWithSelect'
 
 function NewOrderForm() {
-  const {showAddress, setShowAddress, setDeliveryMethod, showDateTime, setShowDateTime} = useContext(newOrderContext)
+  const [paymentStatus, setPaymentStatus] = useState(false)
+  const {showAddress, setShowAddress, setDeliveryMethod, showDateTime, setShowDateTime, setClientForm, clientForm} = useContext(newOrderContext)
 
   const showAddressForm = ({target}) => {
     if(target.value === 'dispatch') {
@@ -52,31 +53,51 @@ function NewOrderForm() {
     },
   ]
 
+  const handleChange = ({ target: { value, name } }) => {
+    setClientForm({
+      ...clientForm,
+      [name]: value,
+    })
+  }
+
+  const handleClick = ({ target: { name } }) => {
+    setPaymentStatus(!paymentStatus)
+    setClientForm({
+      ...clientForm,
+      [name]: !paymentStatus,
+    })
+  }
+
   return (
     <DefaultContainer addClass='new-order-form'>
       <h2>Detalhes da Entrega</h2>
       <div>
-        <LabelWithInput type='text' label='Nome' text='Insira o Nome'/>
-        <LabelWithInput type='text' label='Telefone' text='Insira o Telefone'/>
-        <LabelWithSelect options={paymentsMethods} text='Método de Pagamento' />
+        <LabelWithInput type='text' label='Nome' text='Insira o Nome' name='clientName' onChange={(event) => handleChange(event)}/>
+        <LabelWithInput type='text' label='Telefone' text='Insira o Telefone' name='clientPhone' onChange={(event) => handleChange(event)}/>
+        <LabelWithSelect options={paymentsMethods} text='Método de Pagamento' name='paymentMethod' onChange={(event) => handleChange(event)}/>
         <LabelWithInput
           type='checkbox'
           label='Este pedido está pago?'
           addClass='inline-label'
+          name='paymentStatus'
+          value={paymentStatus}
+          onChange={handleClick}
         />
         <LabelWithSelect
           options={deliveryMethods}
           text='Método de Entrega'
+          name='deliveryMethod'
           onClick={(event) => showAddressForm(event)}
+          onChange={(event) => handleChange(event)}
         />
         {showAddress && (
           <div>
-            <LabelWithInput type='text' label='Endereço' text='Insira o Endereço de Entrega'/>
+            <LabelWithInput type='text' label='Endereço' text='Insira o Endereço de Entrega' name='addressStreet' onChange={(event) => handleChange(event)}/>
             <div className='inline-input'>
-              <LabelWithInput type='number' label='Número' text='Insira o Número' addClass='inline'/>
-              <LabelWithInput type='text' label='Bairro' text='Insira o Bairro' addClass='inline'/>
+              <LabelWithInput type='number' label='Número' text='Insira o Número' addClass='inline' name='addressNumber' onChange={(event) => handleChange(event)}/>
+              <LabelWithInput type='text' label='Bairro' text='Insira o Bairro' addClass='inline' name='addressDistrict' onChange={(event) => handleChange(event)}/>
             </div>
-            <LabelWithInput type='text' label='Complemento' text='Insira o Complemento'/>
+            <LabelWithInput type='text' label='Complemento' text='Insira o Complemento' name='addressComplement' onChange={(event) => handleChange(event)}/>
           </div>
         )}
         <LabelWithInput
@@ -87,11 +108,11 @@ function NewOrderForm() {
         />
         {showDateTime && (
           <div className='inline-input'>
-            <LabelWithInput type='date' label='Data de Entrega' text='Data de Entrega' addClass='inline'/>
-            <LabelWithInput type='time' label='Hora de Entrega' text='Hora de Entrega' addClass='inline'/>
+            <LabelWithInput type='date' label='Data de Entrega' text='Data de Entrega' addClass='inline' name='deliveryDate' onChange={(event) => handleChange(event)}/>
+            <LabelWithInput type='time' label='Hora de Entrega' text='Hora de Entrega' addClass='inline' name='deliveryTime' onChange={(event) => handleChange(event)}/>
           </div>
         )}
-        <LabelWithInput type='text' label='Anotação' text='Insira uma anotação ao pedido'/>
+        <LabelWithInput type='text' label='Anotação' text='Insira uma anotação ao pedido' name='note' onChange={(event) => handleChange(event)}/>
       </div>
     </DefaultContainer>
   )
