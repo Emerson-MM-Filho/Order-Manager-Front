@@ -10,7 +10,12 @@ import NewOrderProductsModal from '../NewOrderProductsModal'
 import { plusIcon } from '../../icons'
 
 function NewOrderTable() {
-  const { products, modal, setModal } = useContext(NewOrderContext)
+  const { products, modal, setModal, setProducts } = useContext(NewOrderContext)
+
+  const handleDelete = (product) => {
+    const removedProduct = products.filter(current => current !== product)
+    setProducts(removedProduct)
+  }
 
   return (
     <DefaultContainer addClass='new-order-table'>
@@ -26,10 +31,11 @@ function NewOrderTable() {
             <th>Preço</th>
             <th>Quantidade</th>
             <th>Total</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          {products.map((current) => <NewOrderTableRow product={current} key={current.options.id}/>)}
+          {products.map((current) => <NewOrderTableRow product={current} key={current.options.id} handleDelete={handleDelete}/>)}
         </tbody>
       </table>
     </DefaultContainer>
