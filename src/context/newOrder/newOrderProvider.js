@@ -7,6 +7,7 @@ function NewOrderProvider({children}) {
   const [showDateTime, setShowDateTime] = useState(false)
   const [products, setProducts] = useState([])
   const [modal, setModal] = useState(false)
+  const [clientForm, setClientForm] = useState({})
 
   const contextValue = {
     showAddress,
@@ -19,6 +20,8 @@ function NewOrderProvider({children}) {
     setProducts,
     modal, 
     setModal,
+    clientForm,
+    setClientForm,
   }
   
   return(
