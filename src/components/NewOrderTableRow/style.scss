@@ -15,6 +15,9 @@
           font-weight: $font-regular;
         }
       }
-    }    
+    }
+    svg {
+      fill: $red;
+    }   
   }
 }
