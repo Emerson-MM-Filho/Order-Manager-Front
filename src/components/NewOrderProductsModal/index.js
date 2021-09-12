@@ -20,7 +20,9 @@ function NewOrderProductsModal() {
     let newProducts = [...products]
     previousProducts.forEach(newProduct => {
       const alreadyExists = products.find(product => compareProducts(product, newProduct))
+      
       if(!alreadyExists) return newProducts.push({...newProduct, quantity: 1})
+
       newProducts = newProducts.map(product => compareProducts(product, newProduct) ? {...product, quantity: product.quantity + 1} : product )
     })
     setProducts(newProducts)
