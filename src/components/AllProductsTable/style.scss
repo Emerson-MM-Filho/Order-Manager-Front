@@ -1,0 +1,63 @@
+@import '../../App.scss';
+
+.all-products{
+  width: 85%;
+  .all-products-table-container-header{
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+  }
+  
+  .all-products-table{
+    margin-top: 40px;
+  
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    thead{
+      background-color: $secondary-white;
+      
+      th{
+        padding: 15px 10px;
+        color: $gray;
+        text-align: left;
+      }
+
+      th:nth-child(1){
+        text-align: center;
+        width: 8%;
+      }
+
+      th:nth-child(2){
+        width: 12%;
+      }
+
+      th:nth-child(3){
+        width: 20%;
+      }
+
+      th:nth-child(4){
+        width:10%;
+      }
+
+      th:nth-child(5){
+        width: 12%;
+      }
+
+      th:nth-child(6){
+        width: 20%;
+      }
+
+      th:nth-child(7){
+        width: 8%;
+      }
+
+      th:nth-child(8){
+        width: auto;
+        text-align: center;
+      }
+    }
+  }
+}
