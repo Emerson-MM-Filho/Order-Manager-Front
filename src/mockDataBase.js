@@ -1,6 +1,6 @@
 export const mockOrders = [
   {
-    id: '#SK2546',
+    id: 'SK2546',
     createAt: '13/07/2021',
     note: 'Decorar o bolo com a cor azul',
     payment: {
@@ -30,7 +30,7 @@ export const mockOrders = [
         type: 'Wheight',
         description: 'Torta com massa crocante decorada de acordo com a opção de sabor.',
         tag: ['torta'],
-        code: '#PR256',
+        code: 'PR256',
         option: {
           id: 1,
           optionName: 'Chocotorta Argentina',
@@ -45,7 +45,7 @@ export const mockOrders = [
         type: 'Unity',
         description: 'Bombom decorado com fios de chocolate',
         tag: ['bombom'],
-        code: '#PR345',
+        code: 'PR345',
         option: {
           id: 1,
           optionName: 'Morango',
@@ -60,7 +60,7 @@ export const mockOrders = [
         type: 'Unity',
         description: 'Bala de coco coberta com açucar',
         tag: ['Bala'],
-        code: '#PR345',
+        code: 'PR345',
         option: {
           id: 1,
           optionName: 'Côco',
@@ -71,7 +71,7 @@ export const mockOrders = [
     ],
   },
   {
-    id: '#SK2547',
+    id: 'SK2547',
     createAt: '14/07/2021',
     note: '',
     payment: {
@@ -101,7 +101,7 @@ export const mockOrders = [
         type: 'Unity',
         description: 'Bombom decorado com fios de chocolate',
         tag: ['bombom'],
-        code: '#PR345',
+        code: 'PR345',
         option: {
           id: 1,
           optionName: 'Morango',
@@ -116,7 +116,7 @@ export const mockOrders = [
         type: 'Unity',
         description: 'Bala de coco coberta com açucar',
         tag: ['Bala'],
-        code: '#PR345',
+        code: 'PR345',
         option: {
           id: 1,
           optionName: 'Côco',
@@ -127,7 +127,7 @@ export const mockOrders = [
     ],
   },
   {
-    id: '#SK2548',
+    id: 'SK2548',
     createAt: '15/07/2021',
     note: 'Entregar para Isael Junior',
     payment: {
@@ -157,7 +157,7 @@ export const mockOrders = [
         type: 'Unity',
         description: 'Bala de coco coberta com açucar',
         tag: ['Bala'],
-        code: '#PR345',
+        code: 'PR345',
         option: {
           id: 1,
           optionName: 'Côco',
@@ -176,7 +176,7 @@ export const mockProducts = [
     type: 'Wheight',
     description: 'Torta com massa crocante decorada de acordo com a opção de sabor.',
     tag: ['torta'],
-    code: '#PR256',
+    code: 'PR256',
     options: [
       {
         id: 2,
@@ -198,7 +198,7 @@ export const mockProducts = [
     type: 'Wheight',
     description: 'Bolo redondo',
     tag: ['Bolo'],
-    code: '#PR275',
+    code: 'PR275',
     options: [
       {
         id: 5,
