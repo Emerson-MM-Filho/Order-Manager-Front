@@ -1,0 +1,17 @@
+@import '../../App.scss';
+
+.all-products-container{
+  padding: 0 7%;
+  margin-top: 145px;
+
+  h1{
+    font-weight: $font-semi-bold;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+
+  .all-products-page-content{
+    display: flex;
+    
+  }
+}
