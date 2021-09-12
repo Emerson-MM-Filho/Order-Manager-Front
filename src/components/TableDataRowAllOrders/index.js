@@ -1,16 +1,20 @@
 import React, { useContext, useState } from 'react'
+import { useHistory } from 'react-router'
 import './style.scss'
 
 import AllOrdersContext from '../../context/allOrders/allOrdersContext'
 import PaymentMethod from '../PaymentMethod'
 import PaymentStatus from '../PaymentStatus'
 import DeliveryType from '../DeliveryType'
+import ButtonIcon from '../ButtonIcon'
 
 import { eyeIcon, editIcon, trashIcon } from '../../icons'
 
 
 function TableDataRowAllOrders({data}) {
   const [complete, setComplete] = useState(false)
+
+  const history = useHistory()
 
   const total = (products) => {
     return products.reduce((acc, current) => {
@@ -34,12 +38,20 @@ function TableDataRowAllOrders({data}) {
       <td><PaymentStatus status={data.payment.status}/></td>
       <td><DeliveryType type={data.delivery.method} addClass='component-color'/></td>
       <td className='actions'>
-        <button className='show-more-icon' onClick={() => {
-          setModal(true)
-          setOrder(data)
-        } }>{eyeIcon}</button>
-        <button className='edit-icon'>{editIcon}</button>
-        <button className='trash-icon'>{trashIcon}</button>
+        <ButtonIcon
+          className='show-more-icon'
+          onClick={() => {
+            setModal(true)
+            setOrder(data)
+          } }
+          icon={eyeIcon}
+        />
+        <ButtonIcon
+          className='edit-icon'
+          icon={editIcon}
+          onClick={() => history.push(`/order-edit/${data.id}`)}
+        />
+        <ButtonIcon className='trash-icon' icon={trashIcon} />
       </td>
     </tr>
   )
