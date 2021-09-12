@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import NewOrderContext from './newOrderContext'
 
 function NewOrderProvider({children}) {
@@ -8,6 +8,8 @@ function NewOrderProvider({children}) {
   const [products, setProducts] = useState([])
   const [modal, setModal] = useState(false)
   const [clientForm, setClientForm] = useState({})
+
+  useEffect(() => modal === true ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'unset' , [modal])
 
   const contextValue = {
     showAddress,
