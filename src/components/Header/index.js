@@ -9,9 +9,14 @@ import NavSelectButton from '../NavSelectButton'
 import Logo from '../Logo'
 import { alertIcon, settingsIcon, ordersIcon, productIcon } from '../../icons';
 
-const productsLinks = [
+const ordersLinks = [
   {name: 'Todos os Pedidos', link: '/'},
   {name: 'Novo Pedido', link: '/new-order'}
+]
+
+const productsLinks = [
+  {name: 'Todos os Produtos', link: '/products'},
+  {name: 'Novo Produto', link: '/new-product'}
 ]
 
 function Header() {
@@ -27,7 +32,7 @@ function Header() {
         </div>
       </div>
       <div className='header-bottom-side'>
-        <NavSelectButton icon={ ordersIcon } text={'Pedidos'} options={productsLinks}/>
+        <NavSelectButton icon={ ordersIcon } text={'Pedidos'} options={ordersLinks}/>
         <NavSelectButton icon={ productIcon } text={'Produtos'} options={productsLinks}/>
       </div>
     </header>
