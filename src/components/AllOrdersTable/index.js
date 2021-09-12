@@ -10,10 +10,8 @@ import TableDataRowAllOrders from '../TableDataRowAllOrders'
 import AllOrdersContext from '../../context/allOrders/allOrdersContext'
 import OrderDetail from '../OrderDetail'
 
-import { mockOrders } from '../../mockDataBase'
-
 function AllOrdersTable() {
-  const { modal } = useContext(AllOrdersContext)
+  const { modal, allOrders } = useContext(AllOrdersContext)
   const history = useHistory()
 
   return (
@@ -40,7 +38,7 @@ function AllOrdersTable() {
               </tr>
             </thead>
             <tbody>
-              {mockOrders.map((current) => <TableDataRowAllOrders data={current} key={current.id}/>)}
+              {allOrders.map((current) => <TableDataRowAllOrders data={current} key={current.id}/>)}
             </tbody>
           </table>
         </div>
