@@ -7,6 +7,7 @@ import DefaultContainer from '../DefaultContainer'
 import SearchBar from '../SearchBar'
 import DefaultButton from '../DefaultButton'
 import AllProductsContext from '../../context/allProducts/allProductsContext'
+import TableDataRowAllProducts from '../TableDataRowAllProducts'
 
 function AllProductsTable() {
   const { products } = useContext(AllProductsContext)
@@ -34,7 +35,7 @@ function AllProductsTable() {
               </tr>
             </thead>
             <tbody>
-              {/* {products.map((current) => <TableDataRowAllOrders data={current} key={current.id}/>)} */}
+              {products.map((current) => <TableDataRowAllProducts data={current} key={current.id}/>)}
             </tbody>
           </table>
         </div>
