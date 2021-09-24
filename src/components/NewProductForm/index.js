@@ -25,7 +25,7 @@ function NewProductForm() {
     },
   ]
   return (
-    <DefaultContainer>
+    <DefaultContainer addClass='small-container'>
       <div className='new-product-form-container'>
         <h2>Detalhes do Produto</h2>
         <LabelWithInput type='text' label='Nome' text='Nome do Produto'/>
