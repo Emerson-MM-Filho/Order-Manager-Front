@@ -1,0 +1,26 @@
+@import '../../App.scss';
+
+.new-product-form-container {
+  h2 {
+    font-size: 16px;
+  }
+
+  .type-label {
+    font-size: 16px;
+
+    .type-container {
+      display: flex;
+    
+      .radio-button {
+        flex-direction: row;
+        align-content: center;
+        font-weight: $font-medium;
+        color: $gray;
+        
+        input {
+          margin: auto 50px auto 10px;
+        }
+      }
+    }
+  }
+}
