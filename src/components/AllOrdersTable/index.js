@@ -1,18 +1,14 @@
 import React, { useContext } from 'react'
 import './style.scss'
 
-import { useHistory } from 'react-router-dom'
-import { plusIcon } from '../../icons'
 import DefaultContainer from '../DefaultContainer'
 import SearchBar from '../SearchBar'
-import DefaultButton from '../DefaultButton'
 import TableDataRowAllOrders from '../TableDataRowAllOrders'
 import AllOrdersContext from '../../context/allOrders/allOrdersContext'
 import OrderDetail from '../OrderDetail'
 
 function AllOrdersTable() {
   const { modal, allOrders } = useContext(AllOrdersContext)
-  const history = useHistory()
 
   return (
     <DefaultContainer addClass='all-orders'>
@@ -20,7 +16,6 @@ function AllOrdersTable() {
       <div className='all-orders-table-container'>
         <div className='all-orders-table-container-header'>
           <SearchBar theme='gray'/>
-          <DefaultButton icon={plusIcon} text='Novo Pedido' handleClick={() => history.push('/new-order')}/>
         </div>
         <div className='all-orders-table'>
           <table>
