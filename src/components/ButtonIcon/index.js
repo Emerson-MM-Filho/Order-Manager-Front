@@ -2,9 +2,9 @@ import React from 'react'
 
 import './style.scss'
 
-function ButtonIcon({icon, ...rest}) {
+function ButtonIcon({icon, color, ...rest}) {
   return (
-    <button className='button-icon' {...rest}>
+    <button className={`button-icon ${color}`} {...rest}>
       {icon}
     </button>
   )
