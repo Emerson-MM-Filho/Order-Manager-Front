@@ -37,8 +37,7 @@ function NewProductForm() {
           </div>
         </label>
         <LabelWithInput type='text' label='Descrição' text='Descrição do Produto'/>
-        <LabelWithSelect text='Código' options={categories}/>
-        <LabelWithInput type='text' label='Código' text='Código do Produto'/>
+        <LabelWithSelect text='Categoria' options={categories}/>
       </div>
     </DefaultContainer>
   )
