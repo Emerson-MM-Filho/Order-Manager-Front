@@ -8,8 +8,7 @@ function TableDataRowOrderDetails({data}) {
 
   const optionType = type === 'Wheight' ? 'Kg' : 'Uni.'
   const optionPrice = `R$ ${price.toFixed(2).replace('.', ',')} / ${optionType}`
-  const optionQuantity = type === 'Wheight' ? quantity/1000 : quantity
-  const optionTotalPrice = `R$ ${(optionQuantity*price).toFixed(2).replace('.', ',')}`
+  const optionTotalPrice = `R$ ${(quantity*price).toFixed(2).replace('.', ',')}`
 
   return(
     <tr className='table-data-row-order-details'>
@@ -24,7 +23,7 @@ function TableDataRowOrderDetails({data}) {
         {optionName}
       </td>
       <td className='normal'>
-        {type === 'Wheight' ? `${optionQuantity.toFixed(3).replace('.', ',')} Kg` : `${optionQuantity} Uni.`}
+        {type === 'Wheight' ? `${quantity.toFixed(3).replace('.', ',')} Kg` : `${quantity} Uni.`}
       </td>
       <td className='normal'>
         {optionTotalPrice}
