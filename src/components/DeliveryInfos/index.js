@@ -5,6 +5,8 @@ import PaymentMethod from '../PaymentMethod'
 import DeliveryType from '../DeliveryType'
 import PaymentStatus from '../PaymentStatus'
 
+import { DateTransform } from '../../helpers/dateTransform'
+
 function DeliveryInfos({order}) {
   const { client, payment, delivery, note } = order
   return(
@@ -39,7 +41,7 @@ function DeliveryInfos({order}) {
           <p className='inline-content'>
             Data:
             <span>
-              {delivery.date}
+              {DateTransform(delivery.date)}
             </span>
           </p>
           <p className='inline-content'>
