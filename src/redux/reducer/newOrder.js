@@ -1,4 +1,4 @@
-import { RECIEVE_ORDER_FORM_INPUT } from '../actions'
+import { RECIEVE_ORDER_FORM_INPUT, ADD_PRODUCTS, CREATE_ORDER} from '../actions'
 
 const INITIAL_STATE = {
   paymentMethod: 'creditCard',
@@ -13,6 +13,38 @@ export const newOrder = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         [action.name]: action.value,
+      }
+
+    case ADD_PRODUCTS:
+      return {
+        ...state,
+        products: action.products,
+      }
+
+    case CREATE_ORDER:
+      const { notes, clientName, clientPhone, addressStreet, addressNumber, addressDistrict, addressComplement, paymentMethod, paymentStatus, deliveryMethod, deliveryDate, deliveryTime, products } = action.inputs
+      return {
+        notes, 
+        payment: {
+          method: paymentMethod,
+          status: paymentStatus,
+        },
+        delivery: {
+          date: deliveryDate,
+          time: deliveryTime,
+          method: deliveryMethod,
+        },
+        client: {
+          name: clientName,
+          phone: clientPhone,
+          address: {
+            street: addressStreet,
+            number: addressNumber,
+            district: addressDistrict,
+            complement: addressComplement,
+          },
+        },
+        products,
       }
 
     default:
