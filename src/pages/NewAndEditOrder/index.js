@@ -24,8 +24,7 @@ function NewAndEditOrder() {
             title='Novo Pedido'
             buttonText='Salvar Pedido'
             handleClick={() => {
-              dispatch(createOrderAction(state))
-              history.push('/')
+              dispatch(createOrderAction(state, history))
             }}
           />
           <div className='new-order-page-content'>
