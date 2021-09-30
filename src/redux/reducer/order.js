@@ -56,6 +56,7 @@ export const order = (state = INITIAL_STATE, action) => {
       }
 
       if (haveDeliveryTime) newOrder.delivery = {
+        ...newOrder.delivery,
         date: deliveryDate,
         time: deliveryTime,
       }
