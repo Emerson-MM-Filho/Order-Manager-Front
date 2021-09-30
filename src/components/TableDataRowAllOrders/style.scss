@@ -25,6 +25,14 @@
   td:nth-child(1){
     text-align: center;
   }
+  
+  td:nth-child(2){
+    text-transform: capitalize;
+  }
+
+  td:nth-child(8){
+    text-align: center;
+  }
 
   .client-name{
     color: $black;
@@ -32,11 +40,9 @@
   }
   
   .actions {
-    button{
-      background-color: transparent;
-      border: none;
-      margin-right: 10px;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   
     .show-more-icon{
       svg{
