@@ -23,7 +23,7 @@ function TableDataRowOrderDetails({data}) {
         {optionName}
       </td>
       <td className='normal'>
-        {type === 'Wheight' ? `${quantity.toFixed(3).replace('.', ',')} Kg` : `${quantity} Uni.`}
+        {type === 'Wheight' ? `${quantity} Kg` : `${quantity} Uni.`}
       </td>
       <td className='normal'>
         {optionTotalPrice}
