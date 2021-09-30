@@ -11,7 +11,8 @@ export const addProductsAction = (products) => ({
   products,
 })
 
-export const createOrderAction = (inputs) => ({
+export const createOrderAction = (inputs, history) => ({
   type: CREATE_ORDER,
   inputs,
+  history,
 })
