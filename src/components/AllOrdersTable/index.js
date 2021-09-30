@@ -22,7 +22,6 @@ function AllOrdersTable() {
             <thead>
               <tr>
                 <th>Concluir</th>
-                <th>Cód. Pedido</th>
                 <th>Cliente</th>
                 <th>Data</th>
                 <th>Total</th>
