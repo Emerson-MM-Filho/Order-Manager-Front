@@ -39,7 +39,7 @@ function NewOrderTable() {
           </tr>
         </thead>
         <tbody>
-          {products.map((current) => <NewOrderTableRow product={current} key={current.options.id} handleDelete={handleDelete}/>)}
+          {products.map((current) => <NewOrderTableRow product={current} key={current.option.id} handleDelete={handleDelete}/>)}
         </tbody>
       </table>
     </DefaultContainer>
