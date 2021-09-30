@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
+import { useDispatch } from 'react-redux'
 import './style.scss'
-
+import { addProductsAction } from '../../redux/actions/newOrder'
 import ButtonIcon from '../ButtonIcon'
 import SquareImage from '../SquareImage'
 import InputNumber from '../InputNumber'
@@ -9,6 +10,7 @@ import { trashIcon } from '../../icons'
 import newOrderContext from '../../context/newOrder/newOrderContext'
 
 function NewOrderTableRow({product, handleDelete}) {
+  const dispatch = useDispatch()
   const { setProducts, products } = useContext(newOrderContext)
 
   const handleClick = () => {
@@ -26,6 +28,7 @@ function NewOrderTableRow({product, handleDelete}) {
       return newProducts.push(current)
     })
     setProducts(newProducts)
+    dispatch(addProductsAction(newProducts))
   }
    return (
     <tr key={product.option.id} className='new-order-product-row'>
