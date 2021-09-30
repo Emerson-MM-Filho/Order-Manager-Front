@@ -18,7 +18,7 @@ function NewOrderProductsModal() {
 
   
   const addProducts = () => {
-    const compareProducts = (productA, productB) => productA.id === productB.id && productA.options.id === productB.options.id
+    const compareProducts = (productA, productB) => productA.id === productB.id && productA.option.id === productB.option.id
     let newProducts = [...products]
     previousProducts.forEach(newProduct => {
       const alreadyExists = products.find(product => compareProducts(product, newProduct))
