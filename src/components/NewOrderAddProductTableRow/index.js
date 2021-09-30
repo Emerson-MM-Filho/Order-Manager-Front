@@ -17,7 +17,7 @@ function NewOrderAddProductTableRow({product, handleClick}) {
     setSelected(!selected)
     handleClick({
       ...product,
-      options: productOption,
+      option: productOption,
     })
   }
 
