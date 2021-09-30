@@ -12,12 +12,13 @@ import LabelWithSelect from '../LabelWithSelect'
 function NewOrderForm() {
   const dispatch = useDispatch()
 
-  const {setDeliveryMethod, showDateTime, setShowDateTime, currentDate, currentHour, deliveryMethods, paymentsMethods} = useContext(newOrderContext)
+  const {setDeliveryMethod, showDateTime, setShowDateTime, currentDate, currentTime, deliveryMethods, paymentsMethods} = useContext(newOrderContext)
   
   const [shippingDate, setShippingDate] = useState(currentDate)
-  const [shippingHour, setShippingHour] = useState(currentHour)
+  const [shippingHour, setShippingHour] = useState(currentTime)
   const [showAddress, setShowAddress] = useState(true)
   const [paymentStatus, setPaymentStatus] = useState(false)
+  const [haveDeliveryTime, setHaveDeliveryTime] = useState(false)
 
   const showAddressForm = ({target}) => {
     if(target.value === 'dispatch') {
@@ -32,9 +33,14 @@ function NewOrderForm() {
     dispatch(recieveOrderFormInputAction(name, value))
   }
 
-  const handleClick = ({ target: { name } }) => {
+  const handlePaymentStatus = ({ target: { name } }) => {
     setPaymentStatus(!paymentStatus)
     dispatch(recieveOrderFormInputAction(name, !paymentStatus))
+  }
+
+  const handleDeliveryTime = ({ target: { name } }) => {
+    setHaveDeliveryTime(!haveDeliveryTime)
+    dispatch(recieveOrderFormInputAction(name, !haveDeliveryTime))
   }
 
   return (
@@ -67,7 +73,7 @@ function NewOrderForm() {
           addClass='inline-label'
           name='paymentStatus'
           value={paymentStatus}
-          onChange={handleClick}
+          onChange={(event => handlePaymentStatus(event))}
         />
         <LabelWithSelect
           options={deliveryMethods}
@@ -116,7 +122,12 @@ function NewOrderForm() {
           type='checkbox'
           label='Este pedido é uma encomenda?'
           addClass='inline-label'
-          onClick={() => setShowDateTime(!showDateTime)}
+          name='haveDeliveryTime'
+          value={haveDeliveryTime}
+          onClick={(event) => {
+            handleDeliveryTime(event)
+            setShowDateTime(!haveDeliveryTime)
+          }}
         />
         {showDateTime && (
           <div className='inline-input'>
