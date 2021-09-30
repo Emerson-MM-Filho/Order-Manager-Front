@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid'
 import { RECIEVE_ORDER_FORM_INPUT, ADD_PRODUCTS, CREATE_ORDER} from '../actions'
 
 const INITIAL_STATE = {
@@ -24,6 +25,7 @@ export const order = (state = INITIAL_STATE, action) => {
     case CREATE_ORDER:
       const { note, clientName, clientPhone, addressStreet, addressNumber, addressDistrict, addressComplement, paymentMethod, paymentStatus, deliveryMethod, deliveryDate, deliveryTime, products } = action.inputs
       const newOrder = {
+        id: uuidv4(),
         note,
         payment: {
           method: paymentMethod,
@@ -47,7 +49,7 @@ export const order = (state = INITIAL_STATE, action) => {
         products,
       }
       const currentOrders = JSON.parse(localStorage.getItem('allOrders')) || []
-      localStorage.setItem('allOrders', [...currentOrders, JSON.stringify(newOrder)])
+      localStorage.setItem('allOrders', JSON.stringify([...currentOrders, newOrder]))
       return INITIAL_STATE
 
     default:
