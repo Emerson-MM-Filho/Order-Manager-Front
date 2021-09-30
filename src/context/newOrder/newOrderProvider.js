@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import NewOrderContext from './newOrderContext'
 
+import { currentDate, currentTime } from '../../helpers/currentDateTime'
+
 function NewOrderProvider({children}) {
   const [deliveryMethod, setDeliveryMethod] = useState('dispatch')
   const [showDateTime, setShowDateTime] = useState(false)
   const [products, setProducts] = useState([])
   const [modal, setModal] = useState(false)
   const [clientForm, setClientForm] = useState({})
-
-  const newDate = new Date()
-  const day = newDate.getDate()
-  const month = newDate.getMonth()+1
-  const year = newDate.getFullYear()
-  const hour = newDate.getHours()
-  const minutes = newDate.getMinutes()
-
-  const currentDate = `${year}-${month < 10 ? `0${month}` : month}-${day}`
-  const currentHour = `${hour}:${minutes}`
 
   const deliveryMethods = [
     {
@@ -62,7 +54,7 @@ function NewOrderProvider({children}) {
     clientForm,
     setClientForm,
     currentDate,
-    currentHour,
+    currentTime,
     deliveryMethods,
     paymentsMethods,
   }
