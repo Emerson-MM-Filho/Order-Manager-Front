@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import './style.scss'
 
@@ -11,6 +12,7 @@ import NewOrderForm from '../../components/NewOrderForm'
 import ContentPageTitle from '../../components/ContentPageTitle'
 
 function NewAndEditOrder() {
+  const history = useHistory()
   const dispatch = useDispatch()
   const state = useSelector(state => state.order)
   return (
@@ -21,7 +23,10 @@ function NewAndEditOrder() {
           <ContentPageTitle
             title='Novo Pedido'
             buttonText='Salvar Pedido'
-            handleClick={() => dispatch(createOrderAction(state))}
+            handleClick={() => {
+              dispatch(createOrderAction(state))
+              history.push('/')
+            }}
           />
           <div className='new-order-page-content'>
             <NewOrderTable />
