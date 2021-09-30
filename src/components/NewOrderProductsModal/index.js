@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react'
+import { useDispatch } from 'react-redux'
 import './style.scss'
 
+import { addProductsAction } from '../../redux/actions/newOrder'
 import NewOrderContext from '../../context/newOrder/newOrderContext'
 import SearchBar from '../SearchBar'
 import DefaultModal from '../DefaultModal'
@@ -9,8 +11,8 @@ import DefaultButton from '../DefaultButton'
 import NewOrderAddProductTableRow from '../NewOrderAddProductTableRow'
 import { closeIcon, plusIcon } from '../../icons'
 import { mockProducts } from '../../mockDataBase'
-
 function NewOrderProductsModal() {
+  const dispatch = useDispatch()
   const [previousProducts, setPreviousProducts] = useState([])
   const { setModal, products, setProducts } = useContext(NewOrderContext)
 
@@ -25,6 +27,7 @@ function NewOrderProductsModal() {
 
       newProducts = newProducts.map(product => compareProducts(product, newProduct) ? {...product, quantity: product.quantity + 1} : product )
     })
+    dispatch(addProductsAction(newProducts))
     setProducts(newProducts)
     setModal(false)
   }
