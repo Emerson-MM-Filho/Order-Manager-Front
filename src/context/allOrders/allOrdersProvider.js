@@ -3,7 +3,7 @@ import AllOrdersContext from './allOrdersContext'
 
 function AllOrdersProvider({children}) {
 
-  const allSavedsOrders = [JSON.parse(localStorage.getItem('allOrders'))] || []
+  const allSavedsOrders = JSON.parse(localStorage.getItem('allOrders')) || []
   const [modal, setModal] = useState(false)
   const [order, setOrder] = useState({})
   const [allOrders, setAllOrders] = useState(allSavedsOrders)
