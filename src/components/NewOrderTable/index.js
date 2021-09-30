@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
+import { useDispatch } from 'react-redux'
 import './style.scss'
 
+import { addProductsAction } from '../../redux/actions/newOrder'
 import NewOrderContext from '../../context/newOrder/newOrderContext'
 import DefaultContainer from '../DefaultContainer'
 import NewOrderTableRow from '../NewOrderTableRow'
@@ -10,10 +12,12 @@ import NewOrderProductsModal from '../NewOrderProductsModal'
 import { plusIcon } from '../../icons'
 
 function NewOrderTable() {
-  const { products, modal, setModal, setProducts } = useContext(NewOrderContext)
-
+    const dispatch = useDispatch()
+    const { products, modal, setModal, setProducts } = useContext(NewOrderContext)
+    
   const handleDelete = (product) => {
     const removedProduct = products.filter(current => current !== product)
+    dispatch(addProductsAction(removedProduct))
     setProducts(removedProduct)
   }
 
