@@ -23,7 +23,7 @@ export const order = (state = INITIAL_STATE, action) => {
 
     case CREATE_ORDER:
       const { note, clientName, clientPhone, addressStreet, addressNumber, addressDistrict, addressComplement, paymentMethod, paymentStatus, deliveryMethod, deliveryDate, deliveryTime, products } = action.inputs
-      return {
+      const newOrder = {
         note,
         payment: {
           method: paymentMethod,
@@ -46,6 +46,9 @@ export const order = (state = INITIAL_STATE, action) => {
         },
         products,
       }
+      const currentOrders = JSON.parse(localStorage.getItem('allOrders')) || []
+      localStorage.setItem('allOrders', [...currentOrders, JSON.stringify(newOrder)])
+      return INITIAL_STATE
 
     default:
       return state
