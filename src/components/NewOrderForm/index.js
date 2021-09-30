@@ -7,7 +7,20 @@ import LabelWithInput from '../LabelWithInput'
 import LabelWithSelect from '../LabelWithSelect'
 
 function NewOrderForm() {
+  const newDate = new Date()
+
+  const day = newDate.getDate()
+  const month = newDate.getMonth()+1
+  const year = newDate.getFullYear()
+  const hour = newDate.getHours()
+  const minutes = newDate.getMinutes()
+
+  const currentDate = `${year}-${month < 10 ? `0${month}` : month}-${day}`
+  const currentHour = `${hour}:${minutes}`
+
   const [paymentStatus, setPaymentStatus] = useState(false)
+  const [shippingDate, setShippingDate] = useState(currentDate)
+  const [shippingHour, setShippingHour] = useState(currentHour)
   const {showAddress, setShowAddress, setDeliveryMethod, showDateTime, setShowDateTime, setClientForm, clientForm} = useContext(newOrderContext)
 
   const showAddressForm = ({target}) => {
@@ -108,8 +121,31 @@ function NewOrderForm() {
         />
         {showDateTime && (
           <div className='inline-input'>
-            <LabelWithInput type='date' label='Data de Entrega' text='Data de Entrega' addClass='inline' name='deliveryDate' onChange={(event) => handleChange(event)}/>
-            <LabelWithInput type='time' label='Hora de Entrega' text='Hora de Entrega' addClass='inline' name='deliveryTime' onChange={(event) => handleChange(event)}/>
+            <LabelWithInput
+              type='date'
+              label='Data de Entrega'
+              text='Data de Entrega'
+              addClass='inline'
+              name='deliveryDate'
+              min={currentDate}
+              value={shippingDate}
+              onChange={(event) => {
+                handleChange(event)
+                setShippingDate(event.target.value)
+              }}
+            />
+            <LabelWithInput
+              type='time'
+              label='Hora de Entrega'
+              text='Hora de Entrega'
+              addClass='inline'
+              name='deliveryTime'
+              value={shippingHour}
+              onChange={(event) => {
+                handleChange(event)
+                setShippingHour(event.target.value)
+              }}
+            />
           </div>
         )}
         <LabelWithInput type='text' label='Anotação' text='Insira uma anotação ao pedido' name='note' onChange={(event) => handleChange(event)}/>
