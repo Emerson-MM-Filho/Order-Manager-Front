@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react'
 import { useDispatch } from 'react-redux'
 import './style.scss'
 
+import { recieveOrderFormInputAction } from '../../redux/actions/newOrder'
+
 import newOrderContext from '../../context/newOrder/newOrderContext'
 import DefaultContainer from '../DefaultContainer'
 import LabelWithInput from '../LabelWithInput'
@@ -27,24 +29,12 @@ function NewOrderForm() {
   }
 
   const handleChange = ({ target: { value, name } }) => {
-    dispatch(
-      {
-        type: 'RECIEVE_ORDER_FORM_INPUT',
-        name,
-        value
-      }
-    )
+    dispatch(recieveOrderFormInputAction(name, value))
   }
 
   const handleClick = ({ target: { name } }) => {
     setPaymentStatus(!paymentStatus)
-    dispatch(
-      {
-        type: 'RECIEVE_ORDER_FORM_INPUT',
-        name,
-        value: !paymentStatus
-      }
-    )
+    dispatch(recieveOrderFormInputAction(name, !paymentStatus))
   }
 
   return (
