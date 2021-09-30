@@ -23,7 +23,7 @@ function AllOrdersTable() {
               <tr>
                 <th>Concluir</th>
                 <th>Cliente</th>
-                <th>Data</th>
+                <th>Criado em</th>
                 <th>Total</th>
                 <th>Método Pagamento</th>
                 <th>Status Pagamento</th>
