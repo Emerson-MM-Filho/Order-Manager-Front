@@ -15,10 +15,14 @@ function NewOrderAddProductTableRow({product, handleClick}) {
 
   const addProduct = (product) => {
     setSelected(!selected)
-    handleClick({
+
+    const productToAdd = {
       ...product,
       option: productOption,
-    })
+    }
+    delete productToAdd.options
+
+    handleClick(productToAdd)
   }
 
   return (
