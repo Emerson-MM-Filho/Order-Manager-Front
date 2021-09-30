@@ -32,26 +32,29 @@ function TableDataRowAllOrders({data}) {
     <tr className={`all-orders-table-row ${complete && 'order-complete'}`}>
       <td><input type='checkbox' onClick={() => setComplete(!complete)}/></td>
       <td className='client-name'>{data.client.name}</td>
-      <td>{DateTransform(data.delivery.date)}</td>
+      <td>{DateTransform(data.createdAt.split(' ')[0])}</td>
       <td>R$ {total(data.products)}</td>
       <td><PaymentMethod type={data.payment.method} addClass='component-color'/></td>
       <td><PaymentStatus status={data.payment.status}/></td>
       <td><DeliveryType type={data.delivery.method} addClass='component-color'/></td>
       <td className='actions'>
         <ButtonIcon
-          className='show-more-icon'
+          color='blue'
+          icon={eyeIcon}
           onClick={() => {
             setModal(true)
             setOrder(data)
           } }
-          icon={eyeIcon}
         />
         <ButtonIcon
-          className='edit-icon'
           icon={editIcon}
+          color='green'
           onClick={() => history.push(`/order-edit/${data.id}`)}
         />
-        <ButtonIcon className='trash-icon' icon={trashIcon} />
+        <ButtonIcon
+          color='red'
+          icon={trashIcon}
+        />
       </td>
     </tr>
   )
