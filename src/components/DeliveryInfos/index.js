@@ -25,32 +25,43 @@ function DeliveryInfos({order}) {
             {client.phone}
           </span>
         </p>
-        <p>
-          Endereço:
-          <span>
-            {`${client.address.street}, ${client.address.number} / ${client.address.district}`}
-          </span>
-        </p>
-        <p>
-          Complemento:
-          <span>
-            {client.address.complement}
-          </span>
-        </p>
-        <div className='inline-info'>
-          <p className='inline-content'>
-            Data:
-            <span>
-              {DateTransform(delivery.date)}
-            </span>
-          </p>
-          <p className='inline-content'>
-            Hora:
-            <span>
-              {delivery.time}
-            </span>
-          </p>
-        </div>
+        {
+          delivery.method === 'dispatch' &&
+          <>
+            <p>
+              Endereço:
+              <span>
+                {`${client.address.street}, ${client.address.number} / ${client.address.district}`}
+              </span>
+            </p>
+            <p>
+              Complemento:
+              <span>
+                {client.address.complement}
+              </span>
+            </p>
+          </>
+        }
+        {
+          delivery.haveDeliveryTime &&
+          <>
+            <p>Encomenda para:</p>
+            <div className='inline-info'>
+              <p className='inline-content'>
+                Data:
+                <span>
+                  {DateTransform(delivery.date)}
+                </span>
+              </p>
+              <p className='inline-content'>
+                Hora:
+                <span>
+                  {delivery.time}
+                </span>
+              </p>
+            </div>
+          </>
+        }
         <div>
           Entrega:
           <span>
