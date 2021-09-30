@@ -1,8 +1,6 @@
 import { combineReducers } from "redux";
-import { allOrders } from './allOrders'
-import { newOrder } from './newOrder'
+import { order } from './order'
 
 export const reducer = combineReducers({
-  allOrders,
-  newOrder,
+  order,
 })

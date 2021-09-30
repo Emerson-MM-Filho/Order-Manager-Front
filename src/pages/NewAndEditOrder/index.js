@@ -12,7 +12,7 @@ import ContentPageTitle from '../../components/ContentPageTitle'
 
 function NewAndEditOrder() {
   const dispatch = useDispatch()
-  const state = useSelector(state => state.newOrder)
+  const state = useSelector(state => state.order)
   return (
     <NewOrderProvider>
       <div data-testid='new-order-page'>

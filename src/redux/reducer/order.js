@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 }
 
 
-export const newOrder = (state = INITIAL_STATE, action) => {
+export const order = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case RECIEVE_ORDER_FORM_INPUT:
       return {
@@ -22,9 +22,9 @@ export const newOrder = (state = INITIAL_STATE, action) => {
       }
 
     case CREATE_ORDER:
-      const { notes, clientName, clientPhone, addressStreet, addressNumber, addressDistrict, addressComplement, paymentMethod, paymentStatus, deliveryMethod, deliveryDate, deliveryTime, products } = action.inputs
+      const { note, clientName, clientPhone, addressStreet, addressNumber, addressDistrict, addressComplement, paymentMethod, paymentStatus, deliveryMethod, deliveryDate, deliveryTime, products } = action.inputs
       return {
-        notes, 
+        note,
         payment: {
           method: paymentMethod,
           status: paymentStatus,
