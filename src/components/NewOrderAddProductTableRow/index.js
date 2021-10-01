@@ -38,7 +38,7 @@ function NewOrderAddProductTableRow({product, handleClick}) {
         />
       </td>
       <td>{`R$ ${productOption.price.toFixed(2).replace('.', ',')} / ${product.type === 'Wheight' ? 'Kg' : 'Uni.'}`}</td>
-      <td><InputComponent type='checkbox' onClick={() => addProduct(product)}/></td>
+      <td><InputComponent type='checkbox' handleChange={() => addProduct(product)}/></td>
     </tr>
   )
 }
