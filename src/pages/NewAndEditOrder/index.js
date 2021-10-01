@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import './style.scss'
 
@@ -12,6 +12,9 @@ import NewOrderForm from '../../components/NewOrderForm'
 import ContentPageTitle from '../../components/ContentPageTitle'
 
 function NewAndEditOrder() {
+  const { id: idOrderToEdit } = useParams()
+  const orderToEdit = idOrderToEdit && JSON.parse(localStorage.getItem('allOrders')).find(current => current.id === idOrderToEdit)
+
   const history = useHistory()
   const dispatch = useDispatch()
   const state = useSelector(state => state.order)
@@ -21,15 +24,13 @@ function NewAndEditOrder() {
         <Header />
         <div className='new-order-container'>
           <ContentPageTitle
-            title='Novo Pedido'
+            title={orderToEdit ? 'Editar Pedido' : 'Novo Pedido'}
             buttonText='Salvar Pedido'
-            handleClick={() => {
-              dispatch(createOrderAction(state, history))
-            }}
+            handleClick={() => dispatch(createOrderAction(state, history))}
           />
           <div className='new-order-page-content'>
-            <NewOrderTable />
-            <NewOrderForm />
+            <NewOrderTable orderToEdit={orderToEdit}/>
+            <NewOrderForm orderToEdit={orderToEdit}/>
           </div>
         </div>
       </div>
