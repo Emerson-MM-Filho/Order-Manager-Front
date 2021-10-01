@@ -20,10 +20,9 @@ export const newOrderFormValidation = (obj) => {
     products,
   } = obj
 
-  if ( name !== undefined && phone !== undefined ) {
-
+  if ( (name !== undefined && phone !== undefined) && (name !== '' && phone !== '')) {
     if ( method === 'dispatch' ) {
-      if ( street === undefined && number === undefined && district === undefined ) {
+      if ( (street === undefined && number === undefined && district === undefined) && (street === '' && number === '' && district === '') ) {
         throw new Error('[ERRO] - Não foi inserido o nome da rua, número da residência ou bairro!')
       }
     }
@@ -39,7 +38,7 @@ export const newOrderFormValidation = (obj) => {
         const currentHour = parseInt(hour)
         const currentMinute = parseInt(minutes)
 
-        if (orderHour < currentHour || (orderHour === currentHour && orderMinutes < currentMinute)) {
+        if (orderHour < currentHour && (orderHour === currentHour && orderMinutes < currentMinute)) {
           throw new Error ('[ERRO] - Não é possível adicionar um pedido para uma hora que já passou!')
         }
       }
