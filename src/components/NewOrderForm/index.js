@@ -9,17 +9,18 @@ import DefaultContainer from '../DefaultContainer'
 import LabelWithInput from '../LabelWithInput'
 import LabelWithSelect from '../LabelWithSelect'
 
-function NewOrderForm() {
+function NewOrderForm({orderToEdit = false}) {
+  const isAnEdition = orderToEdit ? true : false
+
   const dispatch = useDispatch()
 
-  const {setDeliveryMethod, showDateTime, setShowDateTime, currentDate, currentTime, deliveryMethods, paymentsMethods} = useContext(newOrderContext)
-  
-  const [shippingDate, setShippingDate] = useState(currentDate)
-  const [shippingHour, setShippingHour] = useState(currentTime)
-  const [showAddress, setShowAddress] = useState(true)
-  const [paymentStatus, setPaymentStatus] = useState(false)
-  const [haveDeliveryTime, setHaveDeliveryTime] = useState(false)
+  const {setDeliveryMethod, currentDate, currentTime, deliveryMethods, paymentsMethods} = useContext(newOrderContext)
 
+  const [shippingDate, setShippingDate] = useState(isAnEdition ? orderToEdit.delivery.date : currentDate)
+  const [shippingHour, setShippingHour] = useState(isAnEdition ? orderToEdit.delivery.time : currentTime)
+  const [showAddress, setShowAddress] = useState(isAnEdition ? (orderToEdit.delivery.method === 'dispatch' ? true : false) : true)
+  const [paymentStatus, setPaymentStatus] = useState(false)
+  const [haveDeliveryTime, setHaveDeliveryTime] = useState(isAnEdition ? orderToEdit.delivery.haveDeliveryTime : false)
   const showAddressForm = ({target}) => {
     if(target.value === 'dispatch') {
       setShowAddress(true)
@@ -52,35 +53,42 @@ function NewOrderForm() {
           label='Nome'
           text='Insira o Nome'
           name='clientName'
-          onChange={(event) => handleChange(event)}
+          inputValue={isAnEdition ? orderToEdit.client.name : ''}
+          handleChange={(event) => handleChange(event)}
         />
         <LabelWithInput
-          type='text'
+          type='number'
           label='Telefone'
           text='Insira o Telefone'
           name='clientPhone'
-          onChange={(event) => handleChange(event)}
+          inputValue={isAnEdition ? orderToEdit.client.phone : ''}
+          handleChange={(event) => handleChange(event)}
         />
         <LabelWithSelect
           options={paymentsMethods}
           text='Método de Pagamento'
           name='paymentMethod'
-          onChange={(event) => handleChange(event)}
+          selectedValue={isAnEdition ? orderToEdit.payment.method : ''}
+          handleChange={(event) => handleChange(event)}
         />
         <LabelWithInput
           type='checkbox'
           label='Este pedido está pago?'
           addClass='inline-label'
           name='paymentStatus'
-          value={paymentStatus}
-          onChange={(event => handlePaymentStatus(event))}
+          inputValue={isAnEdition ? orderToEdit.payment.status : paymentStatus}
+          checked={paymentStatus}
+          handleChange={(event) => handlePaymentStatus(event)}
         />
         <LabelWithSelect
           options={deliveryMethods}
           text='Método de Entrega'
           name='deliveryMethod'
-          onClick={(event) => showAddressForm(event)}
-          onChange={(event) => handleChange(event)}
+          selectedValue={isAnEdition ? orderToEdit.delivery.method : ''}
+          handleChange={(event) => {
+            handleChange(event)
+            showAddressForm(event)
+          }}
         />
         {showAddress && (
           <div>
@@ -89,7 +97,8 @@ function NewOrderForm() {
               label='Endereço'
               text='Insira o Endereço de Entrega'
               name='addressStreet'
-              onChange={(event) => handleChange(event)}
+              inputValue={isAnEdition ? orderToEdit.client.address.street : ''}
+              handleChange={(event) => handleChange(event)}
             />
             <div className='inline-input'>
               <LabelWithInput 
@@ -98,7 +107,8 @@ function NewOrderForm() {
                 text='Insira o Número'
                 addClass='inline'
                 name='addressNumber'
-                onChange={(event) => handleChange(event)}
+                inputValue={isAnEdition ? orderToEdit.client.address.number : ''}
+                handleChange={(event) => handleChange(event)}
               />
               <LabelWithInput
                 type='text'
@@ -106,7 +116,8 @@ function NewOrderForm() {
                 text='Insira o Bairro'
                 addClass='inline'
                 name='addressDistrict'
-                onChange={(event) => handleChange(event)}
+                inputValue={isAnEdition ? orderToEdit.client.address.district : ''}
+                handleChange={(event) => handleChange(event)}
               />
             </div>
             <LabelWithInput
@@ -114,7 +125,8 @@ function NewOrderForm() {
               label='Complemento'
               text='Insira o Complemento'
               name='addressComplement'
-              onChange={(event) => handleChange(event)}
+              inputValue={isAnEdition ? orderToEdit.client.address.complement : ''}
+              handleChange={(event) => handleChange(event)}
             />
           </div>
         )}
@@ -123,13 +135,11 @@ function NewOrderForm() {
           label='Este pedido é uma encomenda?'
           addClass='inline-label'
           name='haveDeliveryTime'
-          value={haveDeliveryTime}
-          onClick={(event) => {
-            handleDeliveryTime(event)
-            setShowDateTime(!haveDeliveryTime)
-          }}
+          inputValue={haveDeliveryTime}
+          checked={haveDeliveryTime}
+          handleChange={(event) => handleDeliveryTime(event)}
         />
-        {showDateTime && (
+        {haveDeliveryTime && (
           <div className='inline-input'>
             <LabelWithInput
               type='date'
@@ -138,8 +148,8 @@ function NewOrderForm() {
               addClass='inline'
               name='deliveryDate'
               min={currentDate}
-              value={shippingDate}
-              onChange={(event) => {
+              inputValue={isAnEdition ? orderToEdit.delivery.date : shippingDate}
+              handleChange={(event) => {
                 handleChange(event)
                 setShippingDate(event.target.value)
               }}
@@ -150,8 +160,8 @@ function NewOrderForm() {
               text='Hora de Entrega'
               addClass='inline'
               name='deliveryTime'
-              value={shippingHour}
-              onChange={(event) => {
+              inputValue={isAnEdition ? orderToEdit.delivery.time : shippingHour}
+              handleChange={(event) => {
                 handleChange(event)
                 setShippingHour(event.target.value)
               }}
@@ -163,7 +173,8 @@ function NewOrderForm() {
           label='Anotação'
           text='Insira uma anotação ao pedido'
           name='note'
-          onChange={(event) => handleChange(event)}
+          inputValue={isAnEdition ? orderToEdit.note : ''}
+          handleChange={(event) => handleChange(event)}
         />
       </div>
     </DefaultContainer>
