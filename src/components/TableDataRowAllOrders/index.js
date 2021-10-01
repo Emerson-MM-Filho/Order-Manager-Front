@@ -17,6 +17,13 @@ function TableDataRowAllOrders({data}) {
 
   const history = useHistory()
 
+  const deleteOrder = (orderId) => {
+    const allOrders = JSON.parse(localStorage.getItem('allOrders'))
+    const filtered = allOrders.filter(current => current.id !== orderId)
+    localStorage.setItem('allOrders', JSON.stringify(filtered))
+    setAllOrders(filtered)
+  }
+
   const total = (products) => {
     return products.reduce((acc, current) => {
       if(current.type === 'Wheight') {
@@ -26,7 +33,7 @@ function TableDataRowAllOrders({data}) {
     }, 0).toFixed(2).replace('.', ',')
   }
 
-  const { setModal, setOrder } = useContext(AllOrdersContext)
+  const { setModal, setOrder, setAllOrders } = useContext(AllOrdersContext)
 
   return(
     <tr className={`all-orders-table-row ${complete && 'order-complete'}`}>
@@ -54,6 +61,7 @@ function TableDataRowAllOrders({data}) {
         <ButtonIcon
           color='red'
           icon={trashIcon}
+          onClick={() => deleteOrder(data.id)}
         />
       </td>
     </tr>
