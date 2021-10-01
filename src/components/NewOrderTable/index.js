@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useDispatch } from 'react-redux'
 import './style.scss'
 
@@ -11,7 +11,10 @@ import NewOrderProductsModal from '../NewOrderProductsModal'
 
 import { plusIcon } from '../../icons'
 
-function NewOrderTable() {
+function NewOrderTable({orderToEdit}) {
+  useEffect(() => {
+    if (orderToEdit) setProducts(orderToEdit.products)
+  })
     const dispatch = useDispatch()
     const { products, modal, setModal, setProducts } = useContext(NewOrderContext)
     
