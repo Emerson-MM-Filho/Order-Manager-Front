@@ -3,11 +3,11 @@ import './style.scss'
 
 import InputComponent from '../InputComponent'
 
-function LabelWithInput({type, label, text, addClass, ...rest}) {
+function LabelWithInput({type, label, text, addClass, inputValue, ...rest}) {
   return(
     <label className={`label-with-input ${addClass}`}>
       {label}
-      <InputComponent type={type} text={text} {...rest}/>
+      <InputComponent type={type} text={text} inputValue={inputValue} {...rest}/>
     </label>
   )
 }
