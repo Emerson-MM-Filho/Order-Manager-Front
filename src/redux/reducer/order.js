@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
-import { RECIEVE_ORDER_FORM_INPUT, ADD_PRODUCTS, CREATE_ORDER} from '../actions'
+import { RECIEVE_ORDER_FORM_INPUT, ADD_PRODUCTS, CREATE_ORDER, ORDER_TO_EDIT} from '../actions'
 
 import { currentDate, currentTime } from '../../helpers/currentDateTime'
 import { newOrderFormValidation } from '../../helpers/newOrderFormValidation'
@@ -11,6 +11,7 @@ const INITIAL_STATE = {
   haveDeliveryTime: false,
   deliveryDate: currentDate,
   deliveryTime: currentTime,
+  isAnEdition: false,
 }
 
 
@@ -78,6 +79,12 @@ export const order = (state = INITIAL_STATE, action) => {
       action.history.push('/')
       return INITIAL_STATE
 
+    
+    case ORDER_TO_EDIT:
+      const order = JSON.parse(localStorage.getItem('allOrders')).filter(order => order.id === action.orderId)
+      return {
+        orderToEdit: order[0],
+      }
 
     default:
       return state
