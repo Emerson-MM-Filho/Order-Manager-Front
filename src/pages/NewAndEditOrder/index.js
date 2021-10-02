@@ -12,11 +12,11 @@ import NewOrderForm from '../../components/NewOrderForm'
 import ContentPageTitle from '../../components/ContentPageTitle'
 
 function NewAndEditOrder() {
+  const dispatch = useDispatch()
   const { id: idOrderToEdit } = useParams()
   const orderToEdit = idOrderToEdit && JSON.parse(localStorage.getItem('allOrders')).find(current => current.id === idOrderToEdit)
-
+  
   const history = useHistory()
-  const dispatch = useDispatch()
   const state = useSelector(state => state.order)
   return (
     <NewOrderProvider>

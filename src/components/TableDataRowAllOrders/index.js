@@ -1,6 +1,9 @@
 import React, { useContext, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
 import './style.scss'
+
+import { orderToEditAction } from '../../redux/actions/newOrder'
 
 import AllOrdersContext from '../../context/allOrders/allOrdersContext'
 import PaymentMethod from '../PaymentMethod'
@@ -13,6 +16,7 @@ import { eyeIcon, editIcon, trashIcon } from '../../icons'
 import { DateTransform } from '../../helpers/dateTransform'
 
 function TableDataRowAllOrders({data}) {
+  const dispatch = useDispatch()
   const [complete, setComplete] = useState(false)
 
   const history = useHistory()
@@ -56,7 +60,10 @@ function TableDataRowAllOrders({data}) {
         <ButtonIcon
           icon={editIcon}
           color='green'
-          onClick={() => history.push(`/order-edit/${data.id}`)}
+          onClick={() => {
+            dispatch(orderToEditAction(data.id))
+            history.push(`/order-edit/${data.id}`)
+          }}
         />
         <ButtonIcon
           color='red'
